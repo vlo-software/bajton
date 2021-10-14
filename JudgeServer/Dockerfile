@@ -5,14 +5,15 @@ COPY build/java_policy /etc
 ENV DEBIAN_FRONTEND=noninteractive
 RUN buildDeps='software-properties-common git libtool cmake python-dev python3-pip python-pip libseccomp-dev curl' && \
     apt-get update && apt-get install -y python python3 python-pkg-resources python3-pkg-resources $buildDeps && \
-    add-apt-repository ppa:openjdk-r/ppa && add-apt-repository ppa:longsleep/golang-backports && \
+    add-apt-repository ppa:longsleep/golang-backports && \
     add-apt-repository ppa:ubuntu-toolchain-r/test && \
     add-apt-repository ppa:ondrej/php && \
     add-apt-repository ppa:deadsnakes/ppa && \
     curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
-    apt-get update && apt-get install -y golang-go python3.10 openjdk-11-jdk php-cli nodejs gcc-9 g++-9 unzip && \
+    apt-get update && apt-get install -y golang-go python3.10 openjdk-17-jre-headless php-cli nodejs gcc-9 g++-9 unzip && \
     update-alternatives --install  /usr/bin/gcc gcc /usr/bin/gcc-9 40 && \
     update-alternatives --install  /usr/bin/g++ g++ /usr/bin/g++-9 40 && \
+    apt-get install -y openjdk-17-jre openjdk-17-jdk && \
     phpJitOption='opcache.enable=1\nopcache.enable_cli=1\nopcache.jit=1205\nopcache.jit_buffer_size=64M' && \
     echo $phpJitOption > /etc/php/8.0/cli/conf.d/10-opcache-jit.ini && \
     pip3 install -i https://mirrors.aliyun.com/pypi/simple/ -I --no-cache-dir psutil gunicorn flask requests idna && \
