@@ -1,0 +1,1 @@
+sudo docker exec -i oj-backend sh -c "echo \"from options.options import *; SysOptions.reset_languages()\" | python manage.py shell"
