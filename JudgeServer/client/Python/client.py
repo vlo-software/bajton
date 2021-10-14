@@ -3,7 +3,7 @@ import json
 
 import requests
 
-from .languages import c_lang_config, cpp_lang_config, java_lang_config, c_lang_spj_config, c_lang_spj_compile, py2_lang_config, py3_lang_config, go_lang_config, php_lang_config, js_lang_config, ts_lang_config
+from .languages import c_lang_config, cpp_lang_config, java_lang_config, csharp_lang_config, c_lang_spj_config, c_lang_spj_compile, py2_lang_config, py3_lang_config, go_lang_config, php_lang_config, js_lang_config, ts_lang_config
 
 
 class JudgeServerClientError(Exception):
@@ -98,6 +98,18 @@ if __name__ == "__main__":
     }
     """
 
+    csharp_src = r"""
+using System;
+class MainClass {
+    static void Main() {
+        string raw = Console.ReadLine();
+        int a = Convert.ToInt32(raw.Split(" ")[0]);
+        int b = Convert.ToInt32(raw.Split(" ")[1]);
+        Console.WriteLine(a + b);
+    }
+}
+"""
+
     py2_src = """s = raw_input()
 s1 = s.split(" ")
 print int(s1[0]) + int(s1[1])"""
@@ -159,6 +171,11 @@ console.log(a + b);
 
     print("java_judge")
     print(client.judge(src=java_src, language_config=java_lang_config,
+                       max_cpu_time=1000, max_memory=256 * 1024 * 1024,
+                       test_case_id="normal"), "\n\n")
+
+    print("csharp_judge")
+    print(client.judge(src=csharp_src, language_config=csharp_lang_config,
                        max_cpu_time=1000, max_memory=256 * 1024 * 1024,
                        test_case_id="normal"), "\n\n")
 

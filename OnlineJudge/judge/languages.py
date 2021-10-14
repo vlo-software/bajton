@@ -125,6 +125,30 @@ _java_lang_config = {
     }
 }
 
+_csharp_lang_config = {
+        "template": """//PREPEND BEGIN
+//PREPEND END
+
+//TEMPLATE BEGIN
+//TEMPLATE END
+
+//APPEND BEGIN
+//APPEND END""",
+    "compile": {
+        "src_name": "Main.cs",
+        "exe_name": "Main.exe",
+        "max_cpu_time": 3000,
+        "max_real_time": 5000,
+        "max_memory": -1,
+        "compile_command": "/usr/bin/mcs {src_path} -out:{exe_path}"
+    },
+    "run": {
+        "command": "/usr/bin/mono {exe_path}",
+        "seccomp_rule": None,
+        "env": default_env,
+        "memory_limit_check_only": 1
+    }
+}
 
 _py2_lang_config = {
     "template": """//PREPEND BEGIN
@@ -260,6 +284,7 @@ languages = [
     {"config": _cpp_lang_config, "spj": {"compile": _cpp_lang_spj_compile, "config": _cpp_lang_spj_config},
      "name": "C++", "description": "G++ 9.4", "content_type": "text/x-c++src"},
     {"config": _java_lang_config, "name": "Java", "description": "OpenJDK 17", "content_type": "text/x-java"},
+    {"config": _csharp_lang_config, "name": "C#", "description": "Mono 4.6.2", "content_type": "text/x-csharp"},
     {"config": _py2_lang_config, "name": "Python2", "description": "Python 2.7", "content_type": "text/x-python"},
     {"config": _py3_lang_config, "name": "Python3", "description": "Python 3.10", "content_type": "text/x-python"},
     {"config": _go_lang_config, "name": "Golang", "description": "Golang 1.17", "content_type": "text/x-go"},
