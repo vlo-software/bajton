@@ -99,6 +99,31 @@ _cpp_lang_spj_config = {
     "seccomp_rule": "c_cpp"
 }
 
+_rust_lang_config = {
+    "template": """//PREPEND BEGIN
+//PREPEND END
+
+//TEMPLATE BEGIN
+//TEMPLATE END
+
+//APPEND BEGIN
+//APPEND END""",
+    "compile": {
+        "src_name": "main.rs",
+        "exe_name": "main",
+        "max_cpu_time": 3000,
+        "max_real_time": 5000,
+        "max_memory": 128 * 1024 * 1024,
+        "compile_command": """bash -c "/usr/bin/cargo new ru && cp {src_path} ./ru/src/main.rs && cd ./ru && cargo build --offline --release && cp ./target/release/ru {exe_path} && cd .." """,
+        "env": ["RUSTUP_HOME=/usr", "CARGO_HOME=/usr"] + default_env
+    },
+    "run": {
+        "command": "{exe_path}",
+        "seccomp_rule": None,
+        "env": default_env
+    }
+}
+
 _java_lang_config = {
     "template": """//PREPEND BEGIN
 //PREPEND END
@@ -283,6 +308,7 @@ languages = [
      "name": "C", "description": "GCC 9.4", "content_type": "text/x-csrc"},
     {"config": _cpp_lang_config, "spj": {"compile": _cpp_lang_spj_compile, "config": _cpp_lang_spj_config},
      "name": "C++", "description": "G++ 9.4", "content_type": "text/x-c++src"},
+    {"config": _rust_lang_config, "name": "Rust", "description": "Rust 1.55.0", "content_type": "text/x-rust"},
     {"config": _java_lang_config, "name": "Java", "description": "OpenJDK 17", "content_type": "text/x-java"},
     {"config": _csharp_lang_config, "name": "C#", "description": "Mono 4.6.2", "content_type": "text/x-csharp"},
     {"config": _py2_lang_config, "name": "Python2", "description": "Python 2.7", "content_type": "text/x-python"},

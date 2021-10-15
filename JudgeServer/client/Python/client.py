@@ -3,7 +3,7 @@ import json
 
 import requests
 
-from .languages import c_lang_config, cpp_lang_config, java_lang_config, csharp_lang_config, c_lang_spj_config, c_lang_spj_compile, py2_lang_config, py3_lang_config, go_lang_config, php_lang_config, js_lang_config, ts_lang_config
+from .languages import c_lang_config, cpp_lang_config, rust_lang_config, java_lang_config, csharp_lang_config, c_lang_spj_config, c_lang_spj_compile, py2_lang_config, py3_lang_config, go_lang_config, php_lang_config, js_lang_config, ts_lang_config
 
 
 class JudgeServerClientError(Exception):
@@ -84,6 +84,17 @@ if __name__ == "__main__":
         cout << a+b << endl;
         return 0;
     }
+    """
+
+    rust_src = r"""
+fn main() {
+    let mut input = String::new();
+    std::io::stdin().read_line(&mut input).unwrap();
+    let x = input.split_whitespace().collect::<Vec<&str>>();
+    let a: i32 = x[0].trim().parse().unwrap();
+    let b: i32 = x[1].trim().parse().unwrap();
+    println!("{}", a + b);
+}
     """
 
     java_src = r"""
@@ -168,6 +179,11 @@ console.log(a + b);
     print(client.judge(src=cpp_src, language_config=cpp_lang_config,
                        max_cpu_time=1000, max_memory=1024 * 1024 * 128,
                        test_case_id="normal"), "\n\n")
+
+    print("rust_judge")
+    print(client.judge(src=rust_src, language_config=rust_lang_config,
+                       max_cpu_time=1000, max_memory=1024 * 1024 * 128,
+                       test_case_id="normal", output=True), "\n\n")
 
     print("java_judge")
     print(client.judge(src=java_src, language_config=java_lang_config,

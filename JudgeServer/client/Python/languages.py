@@ -51,6 +51,23 @@ cpp_lang_config = {
     }
 }
 
+rust_lang_config = {
+    "compile": {
+        "src_name": "raw.rs",
+        "exe_name": "main",
+        "max_cpu_time": 3000,
+        "max_real_time": 5000,
+        "max_memory": 128 * 1024 * 1024,
+        "compile_command": """bash -c "/usr/bin/cargo new ru && cp {src_path} ./ru/src/main.rs && cd ./ru && cargo build --offline --release && cp ./target/release/ru {exe_path} && cd .." """,
+        "env": ["RUSTUP_HOME=/usr", "CARGO_HOME=/usr"] + default_env
+    },
+    "run": {
+        "command": "{exe_path}",
+        "seccomp_rule": None,
+        "env": default_env
+    }
+}
+
 java_lang_config = {
     "name": "java",
     "compile": {
