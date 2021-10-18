@@ -114,7 +114,8 @@ _rust_lang_config = {
         "max_cpu_time": 3000,
         "max_real_time": 5000,
         "max_memory": 128 * 1024 * 1024,
-        "compile_command": """bash -c "/usr/bin/cargo new ru && cp {src_path} ./ru/src/main.rs && cd ./ru && cargo build --offline --release && cp ./target/release/ru {exe_path} && cd .." """,
+        # "compile_command": """/bin/bash -c "/usr/bin/cargo -q new ru && cp {src_path} ./ru/src/main.rs && cd ./ru && cargo -q build --offline --release && cp ./target/release/ru {exe_path} && cd .." """,
+        "compile_command": """/usr/bin/rustc {src_path} -L /usr/toolchains/stable-x86_64-unknown-linux-gnu/lib -L /usr/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/ -o {exe_path}""",
         "env": ["RUSTUP_HOME=/usr", "CARGO_HOME=/usr"] + default_env
     },
     "run": {
