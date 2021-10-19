@@ -178,7 +178,7 @@ console.log(a + b);
     print(client.compile_spj(src=c_spj_src, spj_version="2", spj_compile_config=c_lang_spj_compile
                              ), "\n\n")
 
-    print("hello")
+    print("c_judge")
     print(client.judge(src=c_src, language_config=c_lang_config,
                        max_cpu_time=1000, max_memory=1024 * 1024 * 128,
                        test_case_id="normal", output=True), "\n\n")
