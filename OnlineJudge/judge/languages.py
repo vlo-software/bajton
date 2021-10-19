@@ -250,6 +250,32 @@ _go_lang_config = {
     }
 }
 
+_perl_lang_config = {
+    "template": """//PREPEND BEGIN
+//PREPEND END
+
+//TEMPLATE BEGIN
+//TEMPLATE END
+
+//APPEND BEGIN
+//APPEND END""",
+    "compile": {
+        "src_name": "main.pl",
+        "exe_name": "main.pl",
+        "max_cpu_time": 3000,
+        "max_real_time": 5000,
+        "max_memory": 1024 * 1024 * 1024,
+        "compile_command": "/usr/bin/perl -c {src_path}",
+        "env": []
+    },
+    "run": {
+        "command": "/usr/bin/perl {exe_path}",
+        "seccomp_rule": "",
+        "env": [],
+        "memory_limit_check_only": 1
+    }
+}
+
 _node_lang_config = {
     "template": """//PREPEND BEGIN
 //PREPEND END
@@ -315,6 +341,7 @@ languages = [
     {"config": _py2_lang_config, "name": "Python2", "description": "Python 2.7", "content_type": "text/x-python"},
     {"config": _py3_lang_config, "name": "Python3", "description": "Python 3.10", "content_type": "text/x-python"},
     {"config": _go_lang_config, "name": "Golang", "description": "Golang 1.17", "content_type": "text/x-go"},
+    {"config": _perl_lang_config, "name": "Perl", "description": "Perl 5", "content_type": "text/x-perl"},
     {"config": _node_lang_config, "name": "JavaScript", "description": "Node 14", "content_type": "text/javascript"},
     {"config": _ts_lang_config, "name": "TypeScript", "description": "TS-Node", "content_type": "text/x-typescript"},
 ]

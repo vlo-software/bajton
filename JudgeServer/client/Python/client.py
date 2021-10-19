@@ -3,7 +3,7 @@ import json
 
 import requests
 
-from .languages import c_lang_config, cpp_lang_config, rust_lang_config, java_lang_config, csharp_lang_config, c_lang_spj_config, c_lang_spj_compile, py2_lang_config, py3_lang_config, go_lang_config, php_lang_config, js_lang_config, ts_lang_config
+from .languages import c_lang_config, cpp_lang_config, rust_lang_config, java_lang_config, csharp_lang_config, c_lang_spj_config, c_lang_spj_compile, py2_lang_config, py3_lang_config, go_lang_config, php_lang_config, perl_lang_config, js_lang_config, ts_lang_config
 
 
 class JudgeServerClientError(Exception):
@@ -143,6 +143,14 @@ func main() {
 fscanf(STDIN, "%d %d", $a, $b);
 print($a + $b);"""
 
+    perl_src = """use strict;
+
+my $raw = <STDIN>;
+my @ins = split(" ", $raw);
+
+print(@ins[0] + @ins[1] . "\n");
+"""
+
     js_src = """const readline = require('readline');
 const rl = readline.createInterface({ input: process.stdin });
 rl.on('line', (input) => {
@@ -170,7 +178,7 @@ console.log(a + b);
     print(client.compile_spj(src=c_spj_src, spj_version="2", spj_compile_config=c_lang_spj_compile
                              ), "\n\n")
 
-    print("c_judge")
+    print("hello")
     print(client.judge(src=c_src, language_config=c_lang_config,
                        max_cpu_time=1000, max_memory=1024 * 1024 * 128,
                        test_case_id="normal", output=True), "\n\n")
@@ -224,6 +232,11 @@ console.log(a + b);
 
     print("js_judge")
     print(client.judge(src=js_src, language_config=js_lang_config,
+                       max_cpu_time=1000, max_memory=128 * 1024 * 1024,
+                       test_case_id="normal", output=True), "\n\n")
+
+    print("perl_judge")
+    print(client.judge(src=perl_src, language_config=perl_lang_config,
                        max_cpu_time=1000, max_memory=128 * 1024 * 1024,
                        test_case_id="normal", output=True), "\n\n")
     

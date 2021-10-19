@@ -166,6 +166,25 @@ php_lang_config = {
     }
 }
 
+perl_lang_config = {
+    "compile": {
+        "src_name": "main.pl",
+        "exe_name": "main.pl",
+        "max_cpu_time": 3000,
+        "max_real_time": 5000,
+        "max_memory": 1024 * 1024 * 1024,
+        "compile_command": "/usr/bin/perl -c {src_path}",
+        "env": []
+    },
+    "run": {
+        "exe_name": "main.pl",
+        "command": "/usr/bin/perl {exe_path}",
+        "seccomp_rule": "",
+        "env": [],
+        "memory_limit_check_only": 1
+    }
+}
+
 js_lang_config = {
     "run": {
         "exe_name": "solution.js",
