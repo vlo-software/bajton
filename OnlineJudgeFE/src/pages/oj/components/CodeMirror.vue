@@ -49,6 +49,7 @@
   import 'codemirror/mode/python/python.js'
   import 'codemirror/mode/go/go.js'
   import 'codemirror/mode/javascript/javascript.js'
+  import 'codemirror/mode/perl/perl.js'
 
   // active-line.js
   import 'codemirror/addon/selection/active-line.js'
@@ -72,7 +73,7 @@
       languages: {
         type: Array,
         default: () => {
-          return ['C', 'C++', 'Java', 'Python2']
+          return ['C', 'C++', 'Java']
         }
       },
       language: {
@@ -115,7 +116,7 @@
       utils.getLanguages().then(languages => {
         let mode = {}
         languages.forEach(lang => {
-          mode[lang.name] = lang.content_type
+          mode[lang.name] = lang.name === 'TypeScript' ? 'text/typescript' : lang.content_type
         })
         this.mode = mode
         this.editor.setOption('mode', this.mode[this.language])
@@ -127,6 +128,7 @@
         this.$emit('update:value', newCode)
       },
       onLangChange (newVal) {
+        console.log(newVal, this.mode)
         this.editor.setOption('mode', this.mode[newVal])
         this.$emit('changeLang', newVal)
       },

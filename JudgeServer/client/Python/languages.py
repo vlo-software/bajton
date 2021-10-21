@@ -59,8 +59,8 @@ rust_lang_config = {
         "max_real_time": 5000,
         "max_memory": 128 * 1024 * 1024,
         # "compile_command": """/bin/bash -c "/usr/bin/cargo -q new ru && cp {src_path} ./ru/src/main.rs && cd ./ru && cargo -q build --offline --release && cp ./target/release/ru {exe_path} && cd .." """,
-        "compile_command": """/usr/bin/rustc {src_path} -L /usr/toolchains/stable-x86_64-unknown-linux-gnu/lib -L /usr/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/ -o {exe_path}""",
-        "env": ["RUSTUP_HOME=/usr", "CARGO_HOME=/usr"] + default_env
+        "compile_command": """/usr/bin/rustc {src_path} -L /usr/lib -o {exe_path}""",
+        "env": ["RUSTUP_HOME=/rust", "CARGO_HOME=/rust"] + default_env
     },
     "run": {
         "command": "{exe_path}",
@@ -102,22 +102,6 @@ csharp_lang_config = {
         "seccomp_rule": None,
         "env": default_env,
         "memory_limit_check_only": 1
-    }
-}
-
-py2_lang_config = {
-    "compile": {
-        "src_name": "solution.py",
-        "exe_name": "solution.pyc",
-        "max_cpu_time": 3000,
-        "max_real_time": 5000,
-        "max_memory": 128 * 1024 * 1024,
-        "compile_command": "/usr/bin/python -m py_compile {src_path}",
-    },
-    "run": {
-        "command": "/usr/bin/python {exe_path}",
-        "seccomp_rule": "general",
-        "env": default_env
     }
 }
 

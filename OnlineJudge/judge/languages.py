@@ -115,8 +115,8 @@ _rust_lang_config = {
         "max_real_time": 5000,
         "max_memory": 128 * 1024 * 1024,
         # "compile_command": """/bin/bash -c "/usr/bin/cargo -q new ru && cp {src_path} ./ru/src/main.rs && cd ./ru && cargo -q build --offline --release && cp ./target/release/ru {exe_path} && cd .." """,
-        "compile_command": """/usr/bin/rustc {src_path} -L /usr/toolchains/stable-x86_64-unknown-linux-gnu/lib -L /usr/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib/ -o {exe_path}""",
-        "env": ["RUSTUP_HOME=/usr", "CARGO_HOME=/usr"] + default_env
+        "compile_command": """/usr/bin/rustc {src_path} -L /usr/lib -o {exe_path}""",
+        "env": ["RUSTUP_HOME=/rust", "CARGO_HOME=/rust"] + default_env
     },
     "run": {
         "command": "{exe_path}",
@@ -176,29 +176,6 @@ _csharp_lang_config = {
     }
 }
 
-_py2_lang_config = {
-    "template": """//PREPEND BEGIN
-//PREPEND END
-
-//TEMPLATE BEGIN
-//TEMPLATE END
-
-//APPEND BEGIN
-//APPEND END""",
-    "compile": {
-        "src_name": "solution.py",
-        "exe_name": "solution.pyc",
-        "max_cpu_time": 3000,
-        "max_real_time": 10000,
-        "max_memory": 128 * 1024 * 1024,
-        "compile_command": "/usr/bin/python -m py_compile {src_path}",
-    },
-    "run": {
-        "command": "/usr/bin/python {exe_path}",
-        "seccomp_rule": "general",
-        "env": default_env
-    }
-}
 _py3_lang_config = {
     "template": """//PREPEND BEGIN
 //PREPEND END
@@ -338,10 +315,9 @@ languages = [
     {"config": _rust_lang_config, "name": "Rust", "description": "Rust 1.55.0", "content_type": "text/x-rust"},
     {"config": _java_lang_config, "name": "Java", "description": "OpenJDK 17", "content_type": "text/x-java"},
     {"config": _csharp_lang_config, "name": "C#", "description": "Mono 4.6.2", "content_type": "text/x-csharp"},
-    {"config": _py2_lang_config, "name": "Python2", "description": "Python 2.7", "content_type": "text/x-python"},
     {"config": _py3_lang_config, "name": "Python3", "description": "Python 3.10", "content_type": "text/x-python"},
     {"config": _go_lang_config, "name": "Golang", "description": "Golang 1.17", "content_type": "text/x-go"},
     {"config": _perl_lang_config, "name": "Perl", "description": "Perl 5", "content_type": "text/x-perl"},
     {"config": _node_lang_config, "name": "JavaScript", "description": "Node 14", "content_type": "text/javascript"},
-    {"config": _ts_lang_config, "name": "TypeScript", "description": "TS-Node", "content_type": "text/x-typescript"},
+    {"config": _ts_lang_config, "name": "TypeScript", "description": "TS-Node", "content_type": "text/typescript"},
 ]

@@ -3,7 +3,7 @@ import json
 
 import requests
 
-from .languages import c_lang_config, cpp_lang_config, rust_lang_config, java_lang_config, csharp_lang_config, c_lang_spj_config, c_lang_spj_compile, py2_lang_config, py3_lang_config, go_lang_config, php_lang_config, perl_lang_config, js_lang_config, ts_lang_config
+from .languages import c_lang_config, cpp_lang_config, rust_lang_config, java_lang_config, csharp_lang_config, c_lang_spj_config, c_lang_spj_compile, py3_lang_config, go_lang_config, php_lang_config, perl_lang_config, js_lang_config, ts_lang_config
 
 
 class JudgeServerClientError(Exception):
@@ -121,10 +121,6 @@ class MainClass {
 }
 """
 
-    py2_src = """s = raw_input()
-s1 = s.split(" ")
-print int(s1[0]) + int(s1[1])"""
-
     py3_src = """s = input()
 s1 = s.split(" ")
 print(int(s1[0]) + int(s1[1]))"""
@@ -209,11 +205,6 @@ console.log(a + b);
                        test_case_id="spj",
                        spj_version="3", spj_config=c_lang_spj_config,
                        spj_compile_config=c_lang_spj_compile, spj_src=c_spj_src), "\n\n")
-
-    print("py2_judge")
-    print(client.judge(src=py2_src, language_config=py2_lang_config,
-                       max_cpu_time=1000, max_memory=128 * 1024 * 1024,
-                       test_case_id="normal", output=True), "\n\n")
 
     print("py3_judge")
     print(client.judge(src=py3_src, language_config=py3_lang_config,
