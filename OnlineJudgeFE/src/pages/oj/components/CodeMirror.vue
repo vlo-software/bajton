@@ -50,6 +50,7 @@
   import 'codemirror/mode/go/go.js'
   import 'codemirror/mode/javascript/javascript.js'
   import 'codemirror/mode/perl/perl.js'
+  import 'codemirror/mode/brainfuck/brainfuck.js'
 
   // active-line.js
   import 'codemirror/addon/selection/active-line.js'

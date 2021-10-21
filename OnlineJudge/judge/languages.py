@@ -307,6 +307,32 @@ _ts_lang_config = {
     }
 }
 
+_bf_lang_config = {
+    "template": """//PREPEND BEGIN
+//PREPEND END
+
+//TEMPLATE BEGIN
+//TEMPLATE END
+
+//APPEND BEGIN
+//APPEND END""",
+    "compile": {
+        "src_name": "main.b",
+        "exe_name": "main",
+        "max_cpu_time": 6000,
+        "max_real_time": 10000,
+        "max_memory": 1024 * 1024 * 1024,
+        "compile_command": "/usr/bin/python3.10 /tools/bfc.py {src_path} {exe_path}",
+        "env": default_env
+    },
+    "run": {
+        "command": "{exe_path}",
+        "seccomp_rule": None,
+        "env": default_env,
+        "memory_limit_check_only": 1
+    }
+}
+
 languages = [
     {"config": _c_lang_config, "spj": {"compile": _c_lang_spj_compile, "config": _c_lang_spj_config},
      "name": "C", "description": "GCC 9.4", "content_type": "text/x-csrc"},
@@ -320,4 +346,5 @@ languages = [
     {"config": _perl_lang_config, "name": "Perl", "description": "Perl 5", "content_type": "text/x-perl"},
     {"config": _node_lang_config, "name": "JavaScript", "description": "Node 14", "content_type": "text/javascript"},
     {"config": _ts_lang_config, "name": "TypeScript", "description": "TS-Node", "content_type": "text/typescript"},
+    {"config": _bf_lang_config, "name": "BrainFuck", "description": "BF Compiler", "content_type": "text/x-brainfuck"},
 ]
