@@ -8,10 +8,12 @@ import ivzhTW from 'iview/dist/locale/zh-TW'
 import elenUS from 'element-ui/lib/locale/lang/en'
 import elzhCN from 'element-ui/lib/locale/lang/zh-CN'
 import elzhTW from 'element-ui/lib/locale/lang/zh-TW'
+import elplPL from 'element-ui/lib/locale/lang/pl'
 
 Vue.use(VueI18n)
 
 const languages = [
+  {value: 'pl-PL', label: 'Polski', iv: ivenUS, el: elplPL},
   {value: 'en-US', label: 'English', iv: ivenUS, el: elenUS},
   {value: 'zh-CN', label: '简体中文', iv: ivzhCN, el: elzhCN},
   {value: 'zh-TW', label: '繁體中文', iv: ivzhTW, el: elzhTW}
@@ -28,7 +30,7 @@ for (let lang of languages) {
 }
 // load language packages
 export default new VueI18n({
-  locale: 'en-US',
+  locale: 'pl-PL',
   messages: messages
 })
 
