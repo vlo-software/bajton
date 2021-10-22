@@ -16,6 +16,10 @@
         <Tooltip :content="this.$i18n.t('m.Upload_file')" placement="top" style="margin-left: 10px">
           <Button icon="upload" @click="onUploadFile"></Button>
         </Tooltip>
+        
+        <Tooltip :content="this.$i18n.t('m.Toggle_vim')" placement="top" style="margin-left: 10px">
+          <Button @click="onToggleVim" style="padding: 0px; height: 32px; width: 42.5px;"><img style="margin-top: 5px" height="20px" src="../../../assets/vim.svg" /></Button>
+        </Tooltip>
 
         <input type="file" id="file-uploader" style="display: none" @change="onUploadFileDone">
 
@@ -61,6 +65,10 @@
   import 'codemirror/addon/fold/brace-fold.js'
   import 'codemirror/addon/fold/indent-fold.js'
 
+  // keymaps
+  import 'codemirror/keymap/vim.js'
+  import 'codemirror/keymap/sublime.js'
+
   export default {
     name: 'CodeMirror',
     components: {
@@ -93,6 +101,7 @@
           tabSize: 4,
           mode: 'text/x-csrc',
           theme: 'solarized',
+          keyMap: 'sublime',
           lineNumbers: true,
           line: true,
           // 代码折叠
@@ -142,6 +151,22 @@
       },
       onUploadFile () {
         document.getElementById('file-uploader').click()
+      },
+      onToggleVim () {
+        const prevKeyMap = this.editor.options.keyMap
+        const newKeyMap = prevKeyMap === 'vim' ? 'sublime' : 'vim'
+        if (newKeyMap === 'vim') {
+          this.$Modal.confirm({
+            content: this.$i18n.t('m.Are_you_sure_you_want_to_enable_vim'),
+            onOk: () => {
+              this.editor.setOption('keyMap', newKeyMap)
+              this.$success(this.$i18n.t('m.Vim_enabled'))
+            }
+          })
+        } else {
+          this.editor.setOption('keyMap', newKeyMap)
+          this.$success(this.$i18n.t('m.Sublime_enabled'))
+        }
       },
       onUploadFileDone () {
         let f = document.getElementById('file-uploader').files[0]
