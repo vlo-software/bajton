@@ -48,6 +48,9 @@
 </script>
 
 <style scoped lang="less">
+  .el-menu {
+    border-right: solid 1px var(--diff-tone-color);
+  }
   .vertical_menu {
     overflow: auto;
     width: 205px;

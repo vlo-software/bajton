@@ -199,7 +199,7 @@
     #contest-list {
       > li {
         padding: 20px;
-        border-bottom: 1px solid rgba(187, 187, 187, 0.5);
+        border-bottom: 1px solid var(--contest-border-color);
         list-style: none;
 
         .trophy {
@@ -211,10 +211,10 @@
           .title {
             font-size: 18px;
             a.entry {
-              color: #495060;
+              color: var(--link-base-color);
               &:hover {
-                color: #2d8cf0;
-                border-bottom: 1px solid #2d8cf0;
+                color: var(--link-hover-color);
+                border-bottom: 1px solid var(--link-hover-color);
               }
             }
           }

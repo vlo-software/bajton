@@ -98,7 +98,7 @@
               top: 50%;
               left: 50%;
               z-index: 3;
-              color: #fff;
+              color: var(--background-color-full);
               font-size: 16px;
               text-align: center;
               transform: translate(-50%, -50%);
@@ -119,7 +119,7 @@
         display: block;
         width: 1px;
         height: 100%;
-        background: #dddee1;
+        background: var(--background-color-panel);
         position: absolute;
         top: 0;
         bottom: 0;

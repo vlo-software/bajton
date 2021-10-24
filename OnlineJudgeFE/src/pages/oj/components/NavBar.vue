@@ -136,10 +136,10 @@
     height: auto;
     width: 100%;
     z-index: 1000;
-    background-color: #fff;
+    background-color: var(--background-color-full);
     box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
     .oj-menu {
-      background: #fdfdfd;
+      background: var(--background-color-full);
     }
 
     .logo {

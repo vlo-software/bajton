@@ -231,7 +231,7 @@
         submitting: false,
         code: '',
         language: 'C++',
-        theme: 'solarized',
+        theme: 'material',
         submissionId: '',
         submitted: false,
         result: {
@@ -298,7 +298,11 @@
             return
           }
           // try to load problem template
-          this.language = this.problem.languages[0]
+          // We don't wanna have BrainFuck as the first option
+          const cppLang = this.problem.languages.find(lang => lang === 'C++')
+          const cLang = this.problem.languages.find(lang => lang === 'C')
+          const pythonLang = this.problem.languages.find(lang => lang === 'Python3')
+          this.language = cppLang || cLang || pythonLang || this.problem.languages[0]
           let template = this.problem.template
           if (template && template[this.language]) {
             this.code = template[this.language]
@@ -585,7 +589,7 @@
     ul {
       list-style-type: none;
       li {
-        border-bottom: 1px dotted #e9eaec;
+        border-bottom: 1px dotted var(--table-border-color);
         margin-bottom: 10px;
         p {
           display: inline-block;

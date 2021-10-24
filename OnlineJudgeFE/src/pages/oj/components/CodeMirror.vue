@@ -91,7 +91,7 @@
       },
       theme: {
         type: String,
-        default: 'solarized'
+        default: 'material'
       }
     },
     data () {
@@ -100,7 +100,7 @@
           // codemirror options
           tabSize: 4,
           mode: 'text/x-csrc',
-          theme: 'solarized',
+          theme: 'material',
           keyMap: 'sublime',
           lineNumbers: true,
           line: true,
@@ -138,7 +138,6 @@
         this.$emit('update:value', newCode)
       },
       onLangChange (newVal) {
-        console.log(newVal, this.mode)
         this.editor.setOption('mode', this.mode[newVal])
         this.$emit('changeLang', newVal)
       },

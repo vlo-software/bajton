@@ -1,13 +1,102 @@
+// Less variables - all start with oj so that there are no conflicts
+@oj-background-color: #212024;
+@oj-background-color-full: #000000;
+@oj-background-color-panel: #272a31;
+@oj-diff-tone-color: #2b2a30;
+@oj-text-color: #e9e8ec;
+@oj-link-color: #0099ff;
+@oj-link-base-color: #ffffff;
+@oj-link-hover-color: #2d8cf0;
+@oj-pre-background-color: #2b2b2c;
+@oj-pre-border-color: #323335;
+@oj-code-background-color: rgba(27, 31, 35, 0.05);
+@oj-blockqoute-border-color: #323336;
+@oj-blockqoute-text-color: #cccfdf;
+@oj-hr-text-color: #545661;
+@oj-md-table-border: var(--diff-tone-color);
+@oj-md-table-td-text-color: #adb2c4;
+@oj-table-border-color: #3a3a3b;
+@oj-table-first-active-background-color: #33cc99;
+@oj-table-active-text-color: #3c763d;
+@oj-table-active-background-color: #dff0d8;
+@oj-table-warn-text-color: #a94442;
+@oj-table-warn-background-color: #303235;
+@oj-contest-border-color: rgba(82, 82, 83, 0.5);
+
+// Light mode -- uncomment to switch
+//@oj-background-color: #eeeeee;
+//@oj-background-color-full: #ffffff;
+//@oj-background-color-panel: #dddee1;
+//@oj-diff-tone-color: #cccccc;
+//@oj-text-color: #111111;
+//@oj-link-color: #0099ff;
+//@oj-link-base-color: #495060;
+//@oj-link-hover-color: #2d8cf0;
+//@oj-pre-background-color: #f8f8f9;
+//@oj-pre-border-color: #e9eaec;
+//@oj-code-background-color: rgba(27, 31, 35, 0.05);
+//@oj-blockqoute-border-color: #bbbec4;
+//@oj-blockqoute-text-color: #7b7b7b;
+//@oj-hr-text-color: #999999;
+//@oj-md-table-border: var(--diff-tone-color);
+//@oj-md-table-td-text-color: #666666;
+//@oj-table-border-color: #dddddd;
+//@oj-table-first-active-background-color: #33cc99;
+//@oj-table-active-text-color: #3c763d;
+//@oj-table-active-background-color: #dff0d8;
+//@oj-table-warn-text-color: #a94442;
+//@oj-table-warn-background-color: #f2dede;
+//@oj-contest-border-color: rgba(187, 187, 187, 0.5);
+
+:root {
+  --background-color: @oj-background-color;
+  --background-color-full: @oj-background-color-full;
+  --background-color-panel: @oj-background-color-panel;
+  --diff-tone-color: @oj-diff-tone-color;
+  --text-color: @oj-text-color;
+  --link-color: @oj-link-color;
+  --link-base-color: @oj-link-base-color;
+  --link-hover-color: @oj-link-hover-color;
+  --pre-background-color: @oj-pre-background-color;
+  --pre-border-color: @oj-pre-border-color;
+  --code-background-color: @oj-code-background-color;
+  --blockqoute-border-color: @oj-blockqoute-border-color;
+  --blockqoute-text-color: @oj-blockqoute-text-color;
+  --hr-text-color: @oj-hr-text-color;
+  --md-table-border: @oj-md-table-border;
+  --md-table-td-text-color: @oj-md-table-td-text-color;
+  --table-border-color: @oj-table-border-color;
+  --table-first-active-background-color: @oj-table-first-active-background-color;
+  --table-active-text-color: @oj-table-active-text-color;
+  --table-active-background-color: @oj-table-active-background-color;
+  --table-warn-text-color: @oj-table-warn-text-color;
+  --table-warn-background-color: @oj-table-warn-background-color;
+  --contest-border-color: @oj-contest-border-color;
+  scrollbar-width: thin;
+  scrollbar-color: #27272a transparent;
+}
+
+::-webkit-scrollbar {
+  display: block;
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #27272a;
+  border-radius: 10px;
+}
+
 html {
-  background-color: #eee;
+  background-color: var(--background-color);
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  background-color: #eee;
+  background-color: var(--background-color);
   min-width: 900px;
 }
 
@@ -34,7 +123,7 @@ body {
   top: 0;
   bottom: 0;
   left: 50%;
-  border: 1px dashed #eee;
+  border: 1px dashed var(--background-color);
 }
 
 .oj-captcha {
@@ -57,10 +146,10 @@ body {
   position: relative;
 }
 
-a.emphasis{
-  color: #495060;
+a.emphasis {
+  color: var(--link-base-color);
   &:hover {
-    color: #2d8cf0;
+    color: var(--link-hover-color);
   }
 }
 
@@ -75,7 +164,7 @@ a.emphasis{
 }
 
 .markdown-body {
-  @import './markdown.less';
+  @import "./markdown.less";
 }
 
 @keyframes fadeInUp {
@@ -99,5 +188,3 @@ a.emphasis{
     opacity: 1;
   }
 }
-
-

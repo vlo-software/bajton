@@ -39,7 +39,7 @@
 <style scoped lang="less">
   .panel {
     margin-bottom: 20px;
-    background-color: #fff;
+    background-color: var(--background-color-full);
     border: 1px solid transparent;
     border-radius: 4px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
@@ -54,7 +54,7 @@
       z-index: 10;
       > .title {
         margin: 0;
-        color: #333;
+        color: var(--text-color);
         border-color: #ddd;
         font-size: 18px;
         font-weight: 300;

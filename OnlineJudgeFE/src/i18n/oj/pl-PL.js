@@ -13,7 +13,7 @@ export const m = {
   Information: 'Informacje',
   Time_Limit: 'Limit czasowy',
   Memory_Limit: 'Limit pamięci',
-  Created: 'Stworzone przez',
+  Created: 'Autor',
   Level: 'Poziom',
   Score: 'Wynik',
   Tags: 'Tagi',

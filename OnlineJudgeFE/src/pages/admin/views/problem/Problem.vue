@@ -618,15 +618,16 @@
     }
     .add-samples {
       width: 100%;
-      background-color: #fff;
+      background-color: var(--background-color);
       border: 1px dashed #aaa;
       outline: none;
       cursor: pointer;
       color: #666;
       height: 35px;
       font-size: 14px;
+      transition: 0.2s ease;
       &:hover {
-        background-color: #f9fafc;
+        background-color: var(--diff-tone-color);
       }
       i {
         margin-right: 10px;

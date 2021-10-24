@@ -35,22 +35,22 @@
     opacity: 1;
     /*cursor: not-allowed;*/
     pointer-events: none;
-    color: #ccc;
+    color: var(--diff-tone-color);
     &:hover {
       border-left: none;
-      color: #ccc;
-      background: #fff;
+      color: var(--diff-tone-color);
+      background: var(--background-color-full);
     }
   }
 
   li {
-    border-bottom: 1px dashed #e9eaec;
+    border-bottom: 1px dashed var(--pre-border-color);
     color: #495060;
     display: block;
     text-align: left;
     padding: 15px 20px;
     &:hover {
-      background: #f8f8f9;
+      background: var(--pre-background-color);
       border-left: 2px solid #5cadff;
       color: #2d8cf0;
     }

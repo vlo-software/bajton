@@ -1,3 +1,135 @@
+@import "~iview/src/styles/index.less";
+
+// iview colors - START
+// Colors
+@primary-color: #2d8cf0;
+@info-color: #1f8cbe;
+@success-color: #19be6b;
+@processing-color: @primary-color;
+@warning-color: #ff9900;
+@error-color: #ed4014;
+@normal-color: @oj-background-color;
+@link-hover-color: @oj-link-hover-color;
+@link-active-color: shade(@link-color, 5%);
+@selected-color: fade(@primary-color, 90%);
+@tooltip-color: @oj-background-color-full;
+@subsidiary-color: #808695;
+@rate-star-color: #f5a623;
+@white: @oj-background-color-full;
+@black: @oj-text-color;
+// Base
+@body-background: @oj-background-color;
+@title-color: @oj-text-color;
+@text-color: @oj-text-color;
+
+// Border color
+@border-color-base: @oj-background-color-panel; // outsie
+@border-color-split: @oj-pre-border-color; // insie
+
+// Background color
+@background-color-base: @oj-background-color; // bae
+@background-color-select-hover: @oj-hr-text-color;
+@tooltip-bg: @oj-contest-border-color;
+@head-bg: @oj-background-color;
+@table-thead-bg: @oj-diff-tone-color;
+@table-td-stripe-bg: @oj-diff-tone-color;
+@table-td-hover-bg: @oj-table-border-color;
+@table-td-highlight-bg: @oj-table-border-color;
+@menu-dark-title: @oj-hr-text-color;
+@menu-dark-active-bg: @oj-table-active-background-color;
+@menu-dark-subsidiary-color: @oj-contest-border-color;
+@menu-dark-group-title-color: @oj-code-background-color;
+@date-picker-cell-hover-bg: @oj-blockqoute-border-color;
+// iview colors - END
+
+// iview doesn't work with darkmode by default
+// so we have to override some stuff
+.@{card-prefix-cls}{
+  background-color: @oj-background-color-full;
+}
+.@{page-prefix-cls} {
+    &-item {
+        background-color: @primary-color;
+    }
+
+    &-item-jump-prev, &-item-jump-next {
+        &:after {
+            color: #ccc;
+        }
+    }
+
+    &-prev,
+    &-next {
+        background-color: @oj-hr-text-color;
+    }
+}
+.@{table-prefix-cls} {
+  background-color: @oj-background-color-full;
+  td {
+    background-color: @oj-background-color-full;
+  }
+}
+
+.@{select-prefix-cls} {
+    &-selection {
+      background-color: @oj-background-color-panel;
+    }
+}
+
+.@{input-prefix-cls} {
+  background-color: @oj-background-color-panel;
+}
+
+.@{switch-prefix-cls} {
+  border: 1px solid @oj-background-color-panel;
+  background-color: @oj-background-color-panel;
+}
+
+.@{alert-prefix-cls} {
+  border: 1px solid @oj-background-color-panel !important;
+  background-color: @oj-background-color-panel !important;
+}
+
+.@{modal-prefix-cls} {
+  &-content {
+    background-color: @oj-background-color-panel;
+  }
+}
+
+.@{message-prefix-cls} {
+  &-notice-content {
+    background-color: @oj-background-color-panel;
+  }
+}
+
+.@{tooltip-prefix-cls} {
+  &-inner {
+    background-color: @oj-background-color-panel;
+    color: @text-color;
+  }
+}
+
+.@{select-dropdown-prefix-cls} {
+  background-color: @oj-background-color-panel;
+}
+
+.@{card-prefix-cls} {
+  &-bordered {
+    border-color: @oj-pre-border-color !important;
+  }
+  &-body {
+    li {
+      color: @oj-blockqoute-text-color !important;
+    }
+  }
+}
+
+.@{tag-prefix-cls} {
+  &-dot {
+    background: @oj-background-color-panel !important;
+  }
+}
+
 table {
   width: 100% !important;
 }
@@ -11,7 +143,7 @@ table {
 }
 
 .ivu-table td {
-  border-bottom-color: #dddddd;
+  border-bottom-color: var(--table-border-color);
 }
 
 .ivu-card-head {
@@ -19,22 +151,22 @@ table {
 }
 
 .ivu-table td {
-  border-bottom-color: #dddddd;
+  border-bottom-color: var(--table-border-color);
 }
 
 .ivu-table .first-ac {
-  background-color: #33CC99;
-  color: #3c763d;
+  background-color: var(--table-first-active-background-color);
+  color: var(--table-active-text-color);
 }
 
 .ivu-table .ac {
-  background-color: #dff0d8;;
-  color: #3c763d;
+  background-color: var(--table-active-background-color);
+  color: var(--table-active-text-color);
 }
 
 .ivu-table .wa {
-  color: #a94442;
-  background-color: #f2dede;
+  color: var(--table-warn-text-color);
+  background-color: var(--table-warn-background-color);
 }
 
 .ivu-modal-footer {

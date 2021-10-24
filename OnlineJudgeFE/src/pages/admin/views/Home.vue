@@ -94,7 +94,7 @@
     font-weight: 400;
     height: 100%;
     -webkit-font-smoothing: antialiased;
-    background-color: #EDECEC;
+    background-color: var(--background-color);
     overflow-y: scroll;
     min-width: 1000px;
   }
@@ -109,7 +109,7 @@
     padding-right: 30px;
     line-height: 50px;
     height: 50px;
-    background: #F9FAFC;
+    background: var(--background-color-full);
     .screen-full {
       margin-right: 8px;
     }

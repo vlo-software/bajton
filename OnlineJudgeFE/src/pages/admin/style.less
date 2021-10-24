@@ -1,4 +1,5 @@
-[class^="el-icon-fa"], [class*=" el-icon-fa"] {
+[class^="el-icon-fa"],
+[class*=" el-icon-fa"] {
   font-family: FontAwesome !important;
   font-style: normal;
   font-weight: normal;
@@ -11,3 +12,24 @@
 
 @import url("../../../node_modules/font-awesome/less/font-awesome");
 @fa-css-prefix: el-icon-fa;
+
+:root {
+  --background-color: #212024;
+  --background-color-full: #000000;
+  --background-color-panel: #272a31;
+  --diff-tone-color: #2b2a30;
+  --text-color: #e9e8ec;
+  color: var(--text-color) !important;
+  scrollbar-width: thin;
+  scrollbar-color: #27272a transparent;
+}
+
+::-webkit-scrollbar {
+  display: block;
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #27272a;
+  border-radius: 10px;
+}
