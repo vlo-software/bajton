@@ -1,10 +1,7 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 COPY build/java_policy /etc
-#RUN sed -E -i -e 's/(archive|ports).ubuntu.com/mirrors.aliyun.com/g' -e '/security.ubuntu.com/d' /etc/apt/sources.list
 ENV DEBIAN_FRONTEND=noninteractive
-ENV RUSTUP_HOME=/rust
-ENV CARGO_HOME=/rust
 RUN buildDeps='software-properties-common git libtool cmake python3-dev python3-pip libseccomp-dev curl' && \
     apt-get update && apt-get install -y python3 python3-pkg-resources $buildDeps && \
     add-apt-repository ppa:longsleep/golang-backports && \
