@@ -254,33 +254,6 @@ _node_lang_config = {
     }
 }
 
-_ts_lang_config = {
-    "template": """//PREPEND BEGIN
-//PREPEND END
-
-//TEMPLATE BEGIN
-//TEMPLATE END
-
-//APPEND BEGIN
-//APPEND END""",
-    "compile": {
-        "src_name": "main.ts",
-        "exe_name": "main.ts",
-        "max_cpu_time": 6000,
-        "max_real_time": 10000,
-        "max_memory": 1024 * 1024 * 1024,
-        "compile_command": "/usr/bin/tsc --typeRoots /usr/lib/node_modules/@types --noEmit {src_path}",
-        "env": default_env
-    },
-    "run": {
-        "command": "/usr/bin/ts-node -T {exe_path}",
-        "seccomp_rule": "node",
-        # 降低内存占用
-        "env": default_env,
-        "memory_limit_check_only": 1
-    }
-}
-
 _bf_lang_config = {
     "template": """//PREPEND BEGIN
 //PREPEND END
@@ -318,6 +291,5 @@ languages = [
     {"config": _go_lang_config, "name": "Golang", "description": "Golang 1.17", "content_type": "text/x-go"},
     {"config": _perl_lang_config, "name": "Perl", "description": "Perl 5", "content_type": "text/x-perl"},
     {"config": _node_lang_config, "name": "JavaScript", "description": "Node 14", "content_type": "text/javascript"},
-    {"config": _ts_lang_config, "name": "TypeScript", "description": "TS-Node", "content_type": "text/typescript"},
     {"config": _bf_lang_config, "name": "BrainFuck", "description": "BF Compiler", "content_type": "text/x-brainfuck"},
 ]
