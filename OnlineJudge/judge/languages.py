@@ -144,7 +144,7 @@ _csharp_lang_config = {
     },
     "run": {
         "command": "/usr/bin/mono {exe_path}",
-        "seccomp_rule": None,
+        "seccomp_rule": "general",
         "env": default_env,
         "memory_limit_check_only": 1
     }
@@ -221,7 +221,7 @@ _perl_lang_config = {
     },
     "run": {
         "command": "/usr/bin/perl {exe_path}",
-        "seccomp_rule": "",
+        "seccomp_rule": "general",
         "env": [],
         "memory_limit_check_only": 1
     }
