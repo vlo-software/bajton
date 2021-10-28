@@ -65,9 +65,14 @@ exports.styleLoaders = function (options) {
     const loader = loaders[extension]
     output.push({
       test: new RegExp('\\.' + extension + '$'),
+      exclude: /\.useable\.less$/,
       use: loader
     })
   }
+  output.push({
+    test: /\.useable\.less$/,
+    use: [{ loader: 'style-loader', options: { injectType: 'lazySingletonStyleTag' } }, 'css-loader', 'less-loader']
+  })
   return output
 }
 

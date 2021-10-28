@@ -12,6 +12,7 @@ function keyMirror (obj) {
 export default keyMirror({
   'CHANGE_PROFILE': null,
   'CHANGE_MODAL_STATUS': null,
+  'CHANGE_DARKMODE': null,
   'UPDATE_WEBSITE_CONF': null,
 
   'NOW': null,

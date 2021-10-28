@@ -13,7 +13,6 @@ import iView from 'iview'
 import Panel from '@oj/components/Panel.vue'
 import VerticalMenu from '@oj/components/verticalMenu/verticalMenu.vue'
 import VerticalMenuItem from '@oj/components/verticalMenu/verticalMenu-item.vue'
-import '@/styles/index.less'
 
 import highlight from '@/plugins/highlight'
 import katex from '@/plugins/katex'

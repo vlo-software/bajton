@@ -20,6 +20,8 @@
 <script>
   import { mapActions, mapState } from 'vuex'
   import NavBar from '@oj/components/NavBar.vue'
+  import lightTheme from '@/styles/light.useable.less'
+  import darkTheme from '@/styles/dark.useable.less'
 
   export default {
     name: 'app',
@@ -39,16 +41,31 @@
     },
     mounted () {
       this.getWebsiteConfig()
+      const darkmode = window.localStorage.getItem('oj-darkmode')
+      darkTheme.use() // Dark theme is the default
+      if (darkmode !== null && darkmode !== 'true') {
+        this.changeDarkMode(false)
+      }
     },
     methods: {
-      ...mapActions(['getWebsiteConfig', 'changeDomTitle'])
+      ...mapActions(['getWebsiteConfig', 'changeDomTitle', 'changeDarkMode'])
     },
     computed: {
-      ...mapState(['website'])
+      ...mapState(['website', 'darkMode'])
     },
     watch: {
       'website' () {
         this.changeDomTitle()
+      },
+      'darkMode' () {
+        window.localStorage.setItem('oj-darkmode', this.darkMode)
+        if (this.darkMode) {
+          lightTheme.unuse()
+          darkTheme.use()
+        } else {
+          darkTheme.unuse()
+          lightTheme.use()
+        }
       },
       '$route' () {
         this.changeDomTitle()

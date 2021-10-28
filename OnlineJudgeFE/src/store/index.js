@@ -10,6 +10,7 @@ const debug = process.env.NODE_ENV !== 'production'
 
 const rootState = {
   website: {},
+  darkMode: true,
   modalStatus: {
     mode: 'login', // or 'register',
     visible: false
@@ -20,6 +21,9 @@ const rootGetters = {
   'website' (state) {
     return state.website
   },
+  'darkMode' (state) {
+    return state.darkMode
+  },
   'modalStatus' (state) {
     return state.modalStatus
   }
@@ -28,6 +32,9 @@ const rootGetters = {
 const rootMutations = {
   [types.UPDATE_WEBSITE_CONF] (state, payload) {
     state.website = payload.websiteConfig
+  },
+  [types.CHANGE_DARKMODE] (state, newValue) {
+    state.darkMode = newValue
   },
   [types.CHANGE_MODAL_STATUS] (state, {mode, visible}) {
     if (mode !== undefined) {
@@ -46,6 +53,9 @@ const rootActions = {
         websiteConfig: res.data.data
       })
     })
+  },
+  changeDarkMode ({commit}, newValue) {
+    commit(types.CHANGE_DARKMODE, newValue)
   },
   changeModalStatus ({commit}, payload) {
     commit(types.CHANGE_MODAL_STATUS, payload)
