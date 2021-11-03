@@ -60,7 +60,10 @@ Object.keys(proxyTable).forEach(function (context) {
 const rewrites = {
   rewrites: [{
     from: '/admin/', // 正则或者字符串
-    to: '/admin/index.html', // 字符串或者函数
+    to: '/admin/index.html' // 字符串或者函数
+  }, {
+    from: '/next/',
+    to: '/next/index.html'
   }]
 }
 const historyMiddleware = require('connect-history-api-fallback')(rewrites);

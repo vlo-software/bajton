@@ -18,10 +18,11 @@
 </template>
 
 <script>
-  import { mapActions, mapState } from 'vuex'
+  import { mapActions, mapGetters, mapState } from 'vuex'
   import NavBar from '@oj/components/NavBar.vue'
   import lightTheme from '@/styles/light.useable.less'
   import darkTheme from '@/styles/dark.useable.less'
+  import api from '@oj/api'
 
   export default {
     name: 'app',
@@ -41,6 +42,14 @@
     },
     mounted () {
       this.getWebsiteConfig()
+      // We cannot depend on the vuex value (isAuthenticated)
+      // Cuz it will be false by default
+      // So we have to fetch the data here
+      api.getUserInfo().then(res => {
+        if (res.data.data === null) {
+          window.location.href = '/next/'
+        }
+      })
       const darkmode = window.localStorage.getItem('oj-darkmode')
       darkTheme.use() // Dark theme is the default
       if (darkmode !== null && darkmode !== 'true') {
@@ -51,7 +60,8 @@
       ...mapActions(['getWebsiteConfig', 'changeDomTitle', 'changeDarkMode'])
     },
     computed: {
-      ...mapState(['website', 'darkMode'])
+      ...mapState(['website', 'darkMode']),
+      ...mapGetters(['isAuthenticated'])
     },
     watch: {
       'website' () {
@@ -69,6 +79,12 @@
       },
       '$route' () {
         this.changeDomTitle()
+      },
+      'isAuthenticated' () {
+        // This handles logout
+        if (!this.isAuthenticated) {
+          window.location.href = '/next/'
+        }
       }
     }
   }

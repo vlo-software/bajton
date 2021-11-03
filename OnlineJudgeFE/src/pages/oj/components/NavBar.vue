@@ -2,7 +2,7 @@
   <div id="header">
     <Menu theme="light" mode="horizontal" @on-select="handleRoute" :active-name="activeMenu" class="oj-menu">
       <div class="logo"><span>{{website.website_name}}</span></div>
-      <Menu-item name="/">
+      <Menu-item name="/home">
         <Icon type="home"></Icon>
         {{$t('m.Home')}}
       </Menu-item>
@@ -42,22 +42,7 @@
           {{$t('m.FAQ')}}
         </Menu-item>
       </Submenu>
-      <template v-if="!isAuthenticated">
-        <div class="btn-menu">
-          <Button type="ghost"
-                  ref="loginBtn"
-                  shape="circle"
-                  @click="handleBtnClick('login')">{{$t('m.Login')}}
-          </Button>
-          <Button v-if="website.allow_register"
-                  type="ghost"
-                  shape="circle"
-                  @click="handleBtnClick('register')"
-                  style="margin-left: 5px;">{{$t('m.Register')}}
-          </Button>
-        </div>
-      </template>
-      <template v-else>
+      <template>
         <Dropdown class="drop-menu" @on-click="handleRoute" placement="bottom" trigger="click">
           <Button type="text" class="drop-menu-title">{{ user.username }}
             <Icon type="arrow-down-b"></Icon>
@@ -116,7 +101,7 @@
       }
     },
     computed: {
-      ...mapGetters(['website', 'darkMode', 'modalStatus', 'user', 'isAuthenticated', 'isAdminRole']),
+      ...mapGetters(['website', 'darkMode', 'modalStatus', 'user', 'isAdminRole']),
       // 跟随路由变化
       activeMenu () {
         return '/' + this.$route.path.split('/')[1]

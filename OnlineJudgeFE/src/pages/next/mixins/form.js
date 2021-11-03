@@ -1,4 +1,4 @@
-import api from '@oj/api'
+import api from '../api'
 
 export default {
   data () {

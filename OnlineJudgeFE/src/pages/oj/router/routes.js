@@ -22,8 +22,14 @@ import * as Setting from '@oj/views/setting'
 
 export default [
   {
-    name: 'home',
     path: '/',
+    redirect: () => {
+      window.location.href = '/next/'
+    }
+  },
+  {
+    name: 'home',
+    path: '/home',
     meta: {title: 'Home'},
     component: Home
   },
