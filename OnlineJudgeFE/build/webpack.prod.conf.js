@@ -55,8 +55,8 @@ const webpackConfig = merge(baseWebpackConfig, {
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      chunks: ['oj', 'admin', 'next'],
-      minChunks: 3
+      chunks: ['oj', 'admin'],
+      minChunks: 2
       // minChunks: function (module) {
       // any required modules inside node_modules are extracted to vendor
       // return (
@@ -104,20 +104,6 @@ const webpackConfig = merge(baseWebpackConfig, {
       filename: config.build.adminIndex,
       template: config.build.adminTemplate,
       chunks: ['manifest', 'vendor', 'admin'],
-      inject: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
-      }
-    }),
-    // landing
-    new HtmlWebpackPlugin({
-      filename: config.build.landingIndex,
-      template: config.build.landingTemplate,
-      chunks: ['manifest', 'vendor', 'next'],
       inject: true,
       minify: {
         removeComments: true,

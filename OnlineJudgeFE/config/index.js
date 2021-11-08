@@ -18,8 +18,6 @@ module.exports = {
     ojTemplate: path.resolve(__dirname, '../src/pages/oj/index.html'),
     adminIndex: path.resolve(__dirname, '../dist/admin/index.html'),
     adminTemplate: path.resolve(__dirname, '../src/pages/admin/index.html'),
-    landingIndex: path.resolve(__dirname, '../dist/next/index.html'),
-    landingTemplate: path.resolve(__dirname, '../src/pages/next/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/__STATIC_CDN_HOST__/',

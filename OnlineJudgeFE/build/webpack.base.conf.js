@@ -14,8 +14,7 @@ function resolve (dir) {
 function getEntries () {
   const base = {
     'oj': ['./src/pages/oj/index.js'],
-    'admin': ['./src/pages/admin/index.js'],
-    'next': ['./src/pages/next/index.js']
+    'admin': ['./src/pages/admin/index.js']
   }
   if (process.env.USE_SENTRY === '1') {
     Object.keys(base).forEach(entry => {
@@ -117,7 +116,7 @@ module.exports = {
     }),
     new HtmlWebpackIncludeAssetsPlugin({
       assets: [vendorAssets[0]],
-      files: ['index.html', 'admin/index.html', 'next/index.html'],
+      files: ['index.html', 'admin/index.html'],
       append: false
     }),
   ]

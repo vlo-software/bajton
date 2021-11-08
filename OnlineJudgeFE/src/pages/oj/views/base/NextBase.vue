@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import api from './api'
+  import api from '@oj/api'
 
   export default {
     name: 'app',

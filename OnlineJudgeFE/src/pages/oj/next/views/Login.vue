@@ -29,7 +29,7 @@
 <script>
   import FormMixin from '../mixins/form'
   import Logo from '../components/Logo.vue'
-  import api from '../api'
+  import api from '@oj/api'
 
   export default {
     name: 'login',
@@ -88,7 +88,7 @@
         }
         api.login(formData).then(res => {
           this.btnLoginLoading = false
-          window.location.href = '/'
+          window.location.href = '/home'
         }, _ => {
           // TODO: Handle error
           this.btnLoginLoading = false
@@ -98,7 +98,7 @@
         this.$router.push({ name: 'register' })
       },
       goResetPassword () {
-        window.location.href = '/apply-reset-password'
+        this.$router.push({ name: 'reset-password' })
       }
     },
     watch: {

@@ -30,7 +30,7 @@
 <script>
   import Logo from '../components/Logo.vue'
   import FormMixin from '../mixins/form'
-  import api from '../api'
+  import api from '@oj/api'
 
   export default {
     name: 'register',
