@@ -67,7 +67,7 @@
 <script>
 import utils from '@/utils/utils'
 import { codemirror } from 'vue-codemirror-lite'
-import { Button } from '@oj/bajton-ui'
+import { Card, Button, Select, Option, Tooltip } from '@oj/bajton-ui'
 
 // theme
 import 'codemirror/theme/monokai.css'
@@ -99,7 +99,11 @@ export default {
   name: 'CodeMirror',
   components: {
     codemirror,
-    Button
+    Card,
+    Button,
+    Select,
+    Option,
+    Tooltip
   },
   props: {
     value: {

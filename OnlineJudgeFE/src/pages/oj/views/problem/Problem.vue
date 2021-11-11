@@ -206,7 +206,7 @@
           <Icon type="information-circled"></Icon>
           <span class="card-title">{{ $t('m.Information') }}</span>
         </div>
-        <ul>
+        <ul style="padding: 0px 20px">
           <li>
             <p>ID</p>
             <p>{{ problem._id }}</p>
@@ -298,7 +298,7 @@ import {
 } from '@/utils/constants'
 import api from '@oj/api'
 import { pie, largePie } from './chartData'
-import { Button } from '@oj/bajton-ui'
+import { Card, Button } from '@oj/bajton-ui'
 
 // 只显示这些状态的图形占用
 const filtedStatus = ['-1', '-2', '0', '1', '2', '3', '4', '8']
@@ -307,6 +307,7 @@ export default {
   name: 'Problem',
   components: {
     CodeMirror,
+    Card,
     Button
   },
   mixins: [FormMixin],

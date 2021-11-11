@@ -70,7 +70,8 @@ export default {
           [`btn-${this.shape}`]: !!this.shape,
           [`btn-${this.size}`]: !!this.size,
           [`btn-loading`]: this.loading != null && this.loading,
-          [`btn-icon-only`]: !this.showSlot && (!!this.icon || this.loading)
+          [`btn-icon-only`]: !this.showSlot && (!!this.icon || this.loading),
+          [`btn-disabled`]: !!this.disabled
         }
       ]
     }
@@ -152,6 +153,12 @@ export default {
   }
   &:hover {
     filter: brightness(110%);
+  }
+  &-disabled {
+    cursor: not-allowed;
+    &:hover {
+      filter: none;
+    }
   }
 }
 </style>
