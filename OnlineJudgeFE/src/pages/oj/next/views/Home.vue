@@ -5,13 +5,13 @@
     </div>
     <div class="main">
       <div class="content">
-        <div class="title">{{ $t("m.LandingTitle") }}</div>
-        <div class="text">{{ $t("m.LandingText") }}</div>
+        <div class="title">{{ $t('m.LandingTitle') }}</div>
+        <div class="text">{{ $t('m.LandingText') }}</div>
         <button @click="goRegister" class="btn-register">
-          {{ $t("m.LandingBtnRegister") }}
+          {{ $t('m.LandingBtnRegister') }}
         </button>
         <button @click="goLogin" class="btn-login">
-          {{ $t("m.LandingBtnLogin") }}
+          {{ $t('m.LandingBtnLogin') }}
         </button>
       </div>
       <div class="right">&lt;/&gt;</div>
@@ -40,16 +40,24 @@ export default {
 
 <style lang="less" scoped>
 .container {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(107.13deg, #4e007d 0.37%, #0b001d 93.6%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   height: 100vh;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 130px 2fr 4fr 2fr;
   grid-template-areas:
-    "top"
-    "."
-    "main"
-    ".";
+    'top'
+    '.'
+    'main'
+    '.';
   @media (max-width: 560px) {
     grid-template-rows: 100px 1fr 7fr 1fr;
   }
@@ -108,7 +116,8 @@ export default {
   }
 
   .btn {
-    &-login, &-register {
+    &-login,
+    &-register {
       margin-top: 40px;
       height: 60px;
       width: 250px;
@@ -131,7 +140,7 @@ export default {
     }
     &-login {
       margin-left: 20px;
-      background: #4A3082;
+      background: #4a3082;
       &:hover {
         background: #6943bd;
       }
@@ -161,7 +170,8 @@ export default {
 
   @media (max-width: 630px) {
     .btn {
-      &-register, &-login {
+      &-register,
+      &-login {
         width: 100%;
       }
       &-login {
