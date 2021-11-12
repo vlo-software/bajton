@@ -298,7 +298,7 @@ import {
 } from '@/utils/constants'
 import api from '@oj/api'
 import { pie, largePie } from './chartData'
-import { Card, Button } from '@oj/bajton-ui'
+import { Card, Button, Tag } from '@oj/bajton-ui'
 
 // 只显示这些状态的图形占用
 const filtedStatus = ['-1', '-2', '0', '1', '2', '3', '4', '8']
@@ -308,7 +308,8 @@ export default {
   components: {
     CodeMirror,
     Card,
-    Button
+    Button,
+    Tag
   },
   mixins: [FormMixin],
   data () {
