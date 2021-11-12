@@ -7,10 +7,12 @@
 </template>
 
 <script>
-  export default {
-    name: 'VerticalMenu'
-  }
+import { Card } from '@oj/bajton-ui'
+
+export default {
+  name: 'VerticalMenu',
+  components: { Card }
+}
 </script>
 
-<style scoped lang="less">
-</style>
+<style scoped lang="less"></style>
