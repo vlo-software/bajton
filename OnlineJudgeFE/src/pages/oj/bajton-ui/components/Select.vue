@@ -25,9 +25,6 @@ export default {
   data () {
     return { selectValue: this.value }
   },
-  mounted () {
-    console.log(this.value)
-  },
   methods: {
     change (e) {
       this.selectValue = e.target.value
