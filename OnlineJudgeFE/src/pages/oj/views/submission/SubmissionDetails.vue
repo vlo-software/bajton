@@ -29,13 +29,18 @@
 
     <!--后台返info就显示出来， 权限控制放后台 -->
     <Col v-if="submission.info && !isCE" :span="20">
-      <Table
-        stripe
-        :loading="loading"
-        :disabled-hover="true"
-        :columns="columns"
-        :data="submission.info.data"
-      ></Table>
+      <Panel>
+        <div slot="title">
+          {{ $t('m.Submission_Tests') }}
+        </div>
+        <Table
+          stripe
+          :loading="loading"
+          :disabled-hover="true"
+          :columns="columns"
+          :data="submission.info.data"
+        ></Table>
+      </Panel>
     </Col>
 
     <Col :span="20">
@@ -73,13 +78,14 @@ import api from '@oj/api'
 import { JUDGE_STATUS } from '@/utils/constants'
 import utils from '@/utils/utils'
 import Highlight from '@/pages/oj/components/Highlight'
-import { Button } from '@oj/bajton-ui'
+import { Button, Table } from '@oj/bajton-ui'
 
 export default {
   name: 'submissionDetails',
   components: {
     Highlight,
-    Button
+    Button,
+    Table
   },
   data () {
     return {

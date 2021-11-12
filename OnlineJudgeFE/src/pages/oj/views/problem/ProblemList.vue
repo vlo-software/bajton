@@ -94,14 +94,15 @@ import api from '@oj/api'
 import utils from '@/utils/utils'
 import { ProblemMixin } from '@oj/components/mixins'
 import Pagination from '@oj/components/Pagination'
-import { Button } from '@oj/bajton-ui'
+import { Button, Table } from '@oj/bajton-ui'
 
 export default {
   name: 'ProblemList',
   mixins: [ProblemMixin],
   components: {
     Pagination,
-    Button
+    Button,
+    Table
   },
   data () {
     return {

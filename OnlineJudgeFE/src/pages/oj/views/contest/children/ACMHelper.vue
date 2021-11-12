@@ -37,13 +37,14 @@ import { types } from '../../../../../store'
 import moment from 'moment'
 import Pagination from '@oj/components/Pagination.vue'
 import api from '@oj/api'
-import { Button } from '@oj/bajton-ui'
+import { Button, Table } from '@oj/bajton-ui'
 
 export default {
   name: 'acm-helper',
   components: {
     Pagination,
-    Button
+    Button,
+    Table
   },
   data () {
     return {

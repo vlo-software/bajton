@@ -57,13 +57,14 @@ import { mapActions } from 'vuex'
 import Pagination from '@oj/components/Pagination'
 import ContestRankMixin from './contestRankMixin'
 import utils from '@/utils/utils'
-import { Button } from '@oj/bajton-ui'
+import { Button, Table } from '@oj/bajton-ui'
 
 export default {
   name: 'acm-contest-rank',
   components: {
     Pagination,
-    Button
+    Button,
+    Table
   },
   mixins: [ContestRankMixin],
   data () {

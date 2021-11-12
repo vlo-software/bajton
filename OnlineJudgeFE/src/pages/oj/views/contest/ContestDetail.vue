@@ -29,13 +29,13 @@
                 />
                 <Button type="info" @click="checkPassword">Enter</Button>
               </div>
+              <Table
+                :columns="columns"
+                :data="contest_table"
+                disabled-hover
+                style="margin-bottom: 40px"
+              ></Table>
             </Panel>
-            <Table
-              :columns="columns"
-              :data="contest_table"
-              disabled-hover
-              style="margin-bottom: 40px"
-            ></Table>
           </div>
         </template>
       </div>
@@ -108,12 +108,13 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 import { types } from '@/store'
 import { CONTEST_STATUS_REVERSE, CONTEST_STATUS } from '@/utils/constants'
 import time from '@/utils/time'
-import { Button } from '@oj/bajton-ui'
+import { Button, Table } from '@oj/bajton-ui'
 
 export default {
   name: 'ContestDetail',
   components: {
-    Button
+    Button,
+    Table
   },
   data () {
     return {
