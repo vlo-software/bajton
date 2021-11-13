@@ -49,7 +49,15 @@ class JudgeClient(object):
     def _load_test_case_info(self):
         try:
             with open(os.path.join(self._test_case_dir, "info")) as f:
-                return json.load(f)
+                info = json.load(f)
+                # Appends test output to the info item
+                for test_case in info["test_cases"]:
+                    # Only read files that are smaller than 10000 chars long
+                    # To prevent littering the db
+                    if info["test_cases"][test_case]["output_size"] < 10000:
+                        with open(os.path.join(self._test_case_dir, info["test_cases"][test_case]["output_name"])) as ff:
+                            info["test_cases"][test_case]["output_data"] = ff.read()
+                return info
         except IOError:
             raise JudgeClientError("Test case not found")
         except ValueError:
@@ -171,6 +179,7 @@ class JudgeClient(object):
             try:
                 with open(user_output_file, "rb") as f:
                     run_result["output"] = f.read().decode("utf-8", errors="backslashreplace")
+                run_result["test_output"] = test_case_info["output_data"]
             except Exception:
                 pass
 

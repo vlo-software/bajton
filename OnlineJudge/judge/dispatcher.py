@@ -144,7 +144,7 @@ class JudgeDispatcher(DispatcherBase):
             "max_cpu_time": self.problem.time_limit,
             "max_memory": 1024 * 1024 * self.problem.memory_limit,
             "test_case_id": self.problem.test_case_id,
-            "output": False,
+            "output": True, # This is poetentially unsafe
             "spj_version": self.problem.spj_version,
             "spj_config": spj_config.get("config"),
             "spj_compile_config": spj_config.get("compile"),
@@ -170,6 +170,12 @@ class JudgeDispatcher(DispatcherBase):
             self.submission.statistic_info["score"] = 0
         else:
             resp["data"].sort(key=lambda x: int(x["test_case"]))
+            # Sanitizes outputs from the program, so u can only see the first 2
+            for idx, item in enumerate(resp["data"]):
+                if idx > 1:
+                    item["output"] = None
+                    item["output_md5"] = None
+                    item["test_output"] = None
             self.submission.info = resp
             self._compute_statistic_info(resp["data"])
             error_test_case = list(filter(lambda case: case["result"] != 0, resp["data"]))
