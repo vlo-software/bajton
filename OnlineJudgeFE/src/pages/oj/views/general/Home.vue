@@ -1,6 +1,6 @@
 <template>
-  <Row type="flex" justify="space-around">
-    <Col :span="22">
+  <Flex justify="around" style="width: 100%">
+    <div>
       <panel shadow v-if="contests.length" class="contest">
         <div slot="title">
           <Button type="text" class="contest-title" @click="goContest">{{
@@ -45,8 +45,8 @@
         </Carousel>
       </panel>
       <Announcements class="announcement"></Announcements>
-    </Col>
-  </Row>
+    </div>
+  </Flex>
 </template>
 
 <script>
@@ -54,13 +54,15 @@ import Announcements from './Announcements.vue'
 import api from '@oj/api'
 import time from '@/utils/time'
 import { CONTEST_STATUS } from '@/utils/constants'
-import { Button } from '@oj/bajton-ui'
+import { Button, Grid, Flex } from '@oj/bajton-ui'
 
 export default {
   name: 'home',
   components: {
     Announcements,
-    Button
+    Button,
+    Grid,
+    Flex
   },
   data () {
     return {

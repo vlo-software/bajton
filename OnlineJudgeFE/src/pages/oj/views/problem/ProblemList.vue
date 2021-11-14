@@ -1,6 +1,6 @@
 <template>
-  <Row type="flex" :gutter="18">
-    <Col :span="19">
+  <Grid gap="20">
+    <div style="width: 100%; font-size: 10px">
       <Panel shadow>
         <div slot="title">{{ $t('m.Problem_List') }}</div>
         <div slot="extra">
@@ -62,9 +62,9 @@
         :current.sync="query.page"
         :show-sizer="true"
       ></Pagination>
-    </Col>
+    </div>
 
-    <Col :span="5">
+    <div style="width: 25vw">
       <Panel :padding="10">
         <div slot="title" class="taglist-title">{{ $t('m.Tags') }}</div>
         <Button
@@ -84,8 +84,8 @@
         </Button>
       </Panel>
       <Spin v-if="loadings.tag" fix size="large"></Spin>
-    </Col>
-  </Row>
+    </div>
+  </Grid>
 </template>
 
 <script>
@@ -94,7 +94,7 @@ import api from '@oj/api'
 import utils from '@/utils/utils'
 import { ProblemMixin } from '@oj/components/mixins'
 import Pagination from '@oj/components/Pagination'
-import { Button, Table } from '@oj/bajton-ui'
+import { Button, Table, Grid, Flex } from '@oj/bajton-ui'
 
 export default {
   name: 'ProblemList',
@@ -102,7 +102,9 @@ export default {
   components: {
     Pagination,
     Button,
-    Table
+    Table,
+    Grid,
+    Flex
   },
   data () {
     return {

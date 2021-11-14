@@ -1,76 +1,78 @@
 <template>
-  <Row type="flex" justify="space-around">
-    <Col :span="20" id="status">
-      <Alert :type="status.type" showIcon>
-        <span class="title">{{
-          $t('m.' + status.statusName.replace(/ /g, '_'))
-        }}</span>
-        <div slot="desc" class="content">
-          <template v-if="isCE">
-            <pre>{{ submission.statistic_info.err_info }}</pre>
-          </template>
-          <template v-else>
-            <span
-              >{{ $t('m.Time') }}:
-              {{ submission.statistic_info.time_cost | submissionTime }}</span
-            >
-            <span
-              >{{ $t('m.Memory') }}:
-              {{
-                submission.statistic_info.memory_cost | submissionMemory
-              }}</span
-            >
-            <span>{{ $t('m.Lang') }}: {{ submission.language }}</span>
-            <span>{{ $t('m.Author') }}: {{ submission.username }}</span>
-          </template>
-        </div>
-      </Alert>
-    </Col>
-
-    <!--后台返info就显示出来， 权限控制放后台 -->
-    <Col v-if="submission.info && !isCE" :span="20">
-      <Panel>
-        <div slot="title">
-          {{ $t('m.Submission_Tests') }}
-        </div>
-        <Table
-          stripe
-          :loading="loading"
-          :disabled-hover="true"
-          :columns="columns"
-          :data="submission.info.data"
-        ></Table>
-      </Panel>
-    </Col>
-
-    <Col :span="20">
-      <Highlight
-        :code="submission.code"
-        :language="submission.language"
-        :border-color="status.color"
-      ></Highlight>
-    </Col>
-    <Col v-if="submission.can_unshare" :span="20">
-      <div id="share-btn">
-        <Button
-          v-if="submission.shared"
-          type="warning"
-          size="large"
-          @click="shareSubmission(false)"
-        >
-          {{ $t('m.UnShare') }}
-        </Button>
-        <Button
-          v-else
-          type="primary"
-          size="large"
-          @click="shareSubmission(true)"
-        >
-          {{ $t('m.Share') }}
-        </Button>
+  <Grid style="width: 100%" justify="center">
+    <Grid style="width: 80vw" direction="column" justify="around">
+      <div id="status">
+        <Alert :type="status.type" showIcon>
+          <span class="title">{{
+            $t('m.' + status.statusName.replace(/ /g, '_'))
+          }}</span>
+          <div slot="desc" class="content">
+            <template v-if="isCE">
+              <pre>{{ submission.statistic_info.err_info }}</pre>
+            </template>
+            <template v-else>
+              <span
+                >{{ $t('m.Time') }}:
+                {{ submission.statistic_info.time_cost | submissionTime }}</span
+              >
+              <span
+                >{{ $t('m.Memory') }}:
+                {{
+                  submission.statistic_info.memory_cost | submissionMemory
+                }}</span
+              >
+              <span>{{ $t('m.Lang') }}: {{ submission.language }}</span>
+              <span>{{ $t('m.Author') }}: {{ submission.username }}</span>
+            </template>
+          </div>
+        </Alert>
       </div>
-    </Col>
-  </Row>
+
+      <!--后台返info就显示出来， 权限控制放后台 -->
+      <div v-if="submission.info && !isCE">
+        <Panel>
+          <div slot="title">
+            {{ $t('m.Submission_Tests') }}
+          </div>
+          <Table
+            stripe
+            :loading="loading"
+            :disabled-hover="true"
+            :columns="columns"
+            :data="submission.info.data"
+          ></Table>
+        </Panel>
+      </div>
+
+      <div>
+        <Highlight
+          :code="submission.code"
+          :language="submission.language"
+          :border-color="status.color"
+        ></Highlight>
+      </div>
+      <div v-if="submission.can_unshare">
+        <div id="share-btn">
+          <Button
+            v-if="submission.shared"
+            type="warning"
+            size="large"
+            @click="shareSubmission(false)"
+          >
+            {{ $t('m.UnShare') }}
+          </Button>
+          <Button
+            v-else
+            type="primary"
+            size="large"
+            @click="shareSubmission(true)"
+          >
+            {{ $t('m.Share') }}
+          </Button>
+        </div>
+      </div>
+    </Grid>
+  </Grid>
 </template>
 
 <script>
@@ -78,14 +80,16 @@ import api from '@oj/api'
 import { JUDGE_STATUS } from '@/utils/constants'
 import utils from '@/utils/utils'
 import Highlight from '@/pages/oj/components/Highlight'
-import { Button, Table } from '@oj/bajton-ui'
+import { Button, Table, Grid, Flex } from '@oj/bajton-ui'
 
 export default {
   name: 'submissionDetails',
   components: {
     Highlight,
     Button,
-    Table
+    Table,
+    Grid,
+    Flex
   },
   data () {
     return {

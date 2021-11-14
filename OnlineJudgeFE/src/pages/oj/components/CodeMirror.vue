@@ -1,50 +1,48 @@
 <template>
   <div style="margin: 0px 0px 15px 0px">
-    <Row type="flex" justify="space-between" class="header">
-      <Col :span="12">
-        <div>
-          <span>{{ $t('m.Language') }}:</span>
-          <Select :value="language" @on-change="onLangChange" class="adjust">
-            <Option v-for="item in languages" :key="item" :value="item"
-              >{{ item }}
-            </Option>
-          </Select>
+    <Grid justify="between" align="center" class="header">
+      <div>
+        <span>{{ $t('m.Language') }}:</span>
+        <Select :value="language" @on-change="onLangChange" class="adjust">
+          <Option v-for="item in languages" :key="item" :value="item"
+            >{{ item }}
+          </Option>
+        </Select>
 
-          <Tooltip
-            :content="this.$i18n.t('m.Reset_to_default_code_definition')"
-            placement="top"
-            style="margin-left: 10px"
-          >
-            <Button icon="arrow-clockwise" @click="onResetClick"></Button>
-          </Tooltip>
+        <Tooltip
+          :content="this.$i18n.t('m.Reset_to_default_code_definition')"
+          placement="top"
+          style="margin-left: 10px"
+        >
+          <Button icon="arrow-clockwise" @click="onResetClick"></Button>
+        </Tooltip>
 
-          <Tooltip
-            :content="this.$i18n.t('m.Upload_file')"
-            placement="top"
-            style="margin-left: 10px"
-          >
-            <Button icon="upload" @click="onUploadFile"></Button>
-          </Tooltip>
+        <Tooltip
+          :content="this.$i18n.t('m.Upload_file')"
+          placement="top"
+          style="margin-left: 10px"
+        >
+          <Button icon="upload" @click="onUploadFile"></Button>
+        </Tooltip>
 
-          <Tooltip
-            :content="this.$i18n.t('m.Toggle_vim')"
-            placement="top"
-            style="margin-left: 10px"
-          >
-            <Button @click="onToggleVim" icon="keyboard">
-              <!-- <img style="" height="20px" src="../../../assets/vim.svg"/> -->
-            </Button>
-          </Tooltip>
+        <Tooltip
+          :content="this.$i18n.t('m.Toggle_vim')"
+          placement="top"
+          style="margin-left: 10px"
+        >
+          <Button @click="onToggleVim" icon="keyboard">
+            <!-- <img style="" height="20px" src="../../../assets/vim.svg"/> -->
+          </Button>
+        </Tooltip>
 
-          <input
-            type="file"
-            id="file-uploader"
-            style="display: none"
-            @change="onUploadFileDone"
-          />
-        </div>
-      </Col>
-      <Col :span="12">
+        <input
+          type="file"
+          id="file-uploader"
+          style="display: none"
+          @change="onUploadFileDone"
+        />
+      </div>
+      <div>
         <div class="fl-right">
           <span>{{ $t('m.Theme') }}:</span>
           <Select :value="theme" @on-change="onThemeChange" class="adjust">
@@ -53,8 +51,8 @@
             </Option>
           </Select>
         </div>
-      </Col>
-    </Row>
+      </div>
+    </Grid>
     <codemirror
       :value="value"
       :options="options"
@@ -67,7 +65,7 @@
 <script>
 import utils from '@/utils/utils'
 import { codemirror } from 'vue-codemirror-lite'
-import { Card, Button, Select, Option, Tooltip } from '@oj/bajton-ui'
+import { Card, Button, Select, Option, Tooltip, Grid } from '@oj/bajton-ui'
 
 // theme
 import 'codemirror/theme/monokai.css'
@@ -103,7 +101,8 @@ export default {
     Button,
     Select,
     Option,
-    Tooltip
+    Tooltip,
+    Grid
   },
   props: {
     value: {

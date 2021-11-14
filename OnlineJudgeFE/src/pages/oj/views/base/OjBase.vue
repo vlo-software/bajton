@@ -7,7 +7,9 @@
       </transition>
       <div class="footer">
         <p v-html="website.website_footer"></p>
-        <p>Powered by <a href="https://github.com/QingdaoU/OnlineJudge">OnlineJudge</a>
+        <p>
+          Powered by
+          <a href="https://github.com/QingdaoU/OnlineJudge">OnlineJudge</a>
           <span v-if="version">&nbsp; Version: {{ version }}</span>
         </p>
         <p>Customized by Zepsół Cyberniebezpieczeństwa V LO</p>
@@ -18,90 +20,89 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters, mapState } from 'vuex'
-  import NavBar from '@oj/components/NavBar.vue'
-  import lightTheme from '@/styles/light.useable.less'
-  import darkTheme from '@/styles/dark.useable.less'
-  import api from '@oj/api'
+import { mapActions, mapGetters, mapState } from 'vuex'
+import NavBar from '@oj/components/NavBar.vue'
+import lightTheme from '@/styles/light.useable.less'
+import darkTheme from '@/styles/dark.useable.less'
+import api from '@oj/api'
 
-  export default {
-    name: 'base',
-    components: {
-      NavBar
+export default {
+  name: 'base',
+  components: {
+    NavBar
+  },
+  data () {
+    return {
+      version: process.env.VERSION
+    }
+  },
+  mounted () {
+    this.getWebsiteConfig()
+    // We cannot depend on the vuex value (isAuthenticated)
+    // Cuz it will be false by default
+    // So we have to fetch the data here
+    api.getUserInfo().then((res) => {
+      if (res.data.data === null) {
+        window.location.href = '/next/'
+      }
+    })
+    const darkmode = window.localStorage.getItem('oj-darkmode')
+    darkTheme.use() // Dark theme is the default
+    if (darkmode !== null && darkmode !== 'true') {
+      this.changeDarkMode(false)
+    }
+  },
+  methods: {
+    ...mapActions(['getWebsiteConfig', 'changeDomTitle', 'changeDarkMode'])
+  },
+  computed: {
+    ...mapState(['website', 'darkMode']),
+    ...mapGetters(['isAuthenticated'])
+  },
+  watch: {
+    website () {
+      this.changeDomTitle()
     },
-    data () {
-      return {
-        version: process.env.VERSION
+    darkMode () {
+      window.localStorage.setItem('oj-darkmode', this.darkMode)
+      if (this.darkMode) {
+        lightTheme.unuse()
+        darkTheme.use()
+      } else {
+        darkTheme.unuse()
+        lightTheme.use()
       }
     },
-    mounted () {
-      this.getWebsiteConfig()
-      // We cannot depend on the vuex value (isAuthenticated)
-      // Cuz it will be false by default
-      // So we have to fetch the data here
-      api.getUserInfo().then(res => {
-        if (res.data.data === null) {
-          window.location.href = '/next/'
-        }
-      })
-      const darkmode = window.localStorage.getItem('oj-darkmode')
-      darkTheme.use() // Dark theme is the default
-      if (darkmode !== null && darkmode !== 'true') {
-        this.changeDarkMode(false)
-      }
+    $route () {
+      this.changeDomTitle()
     },
-    methods: {
-      ...mapActions(['getWebsiteConfig', 'changeDomTitle', 'changeDarkMode'])
-    },
-    computed: {
-      ...mapState(['website', 'darkMode']),
-      ...mapGetters(['isAuthenticated'])
-    },
-    watch: {
-      'website' () {
-        this.changeDomTitle()
-      },
-      'darkMode' () {
-        window.localStorage.setItem('oj-darkmode', this.darkMode)
-        if (this.darkMode) {
-          lightTheme.unuse()
-          darkTheme.use()
-        } else {
-          darkTheme.unuse()
-          lightTheme.use()
-        }
-      },
-      '$route' () {
-        this.changeDomTitle()
-      },
-      'isAuthenticated' () {
-        // This handles logout
-        if (!this.isAuthenticated) {
-          window.location.href = '/next/'
-        }
+    isAuthenticated () {
+      // This handles logout
+      if (!this.isAuthenticated) {
+        window.location.href = '/next/'
       }
     }
   }
+}
 </script>
 
 <style lang="less">
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
-  * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+a {
+  text-decoration: none;
+  background-color: transparent;
+  &:active,
+  &:hover {
+    outline-width: 0;
   }
+}
 
-  a {
-    text-decoration: none;
-    background-color: transparent;
-    &:active, &:hover {
-      outline-width: 0;
-    }
-  }
-
-
-  @media screen and (max-width: 1200px) {
+@media screen and (max-width: 1200px) {
   .content-app {
     margin-top: 160px;
     padding: 0 2%;
@@ -115,16 +116,14 @@
   }
 }
 
-  .footer {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    text-align: center;
-    font-size: small;
-  }
+.footer {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: small;
+}
 
-  .fadeInUp-enter-active {
-    animation: fadeInUp .8s;
-  }
-
-
+.fadeInUp-enter-active {
+  animation: fadeInUp 0.8s;
+}
 </style>

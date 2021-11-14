@@ -71,8 +71,8 @@
           @changeTheme="onChangeTheme"
           @changeLang="onChangeLang"
         ></CodeMirror>
-        <Row type="flex" justify="space-between">
-          <Col :span="10">
+        <Grid style="font-size: 14px" justify="between">
+          <div>
             <div class="status" v-if="statusVisible">
               <template
                 v-if="
@@ -80,14 +80,16 @@
                   (this.contestID && OIContestRealTimePermission)
                 "
               >
-                <span>{{ $t('m.Status') }}</span>
-                <Tag
-                  type="dot"
-                  :color="submissionStatus.color"
-                  @click.native="handleRoute('/status/' + submissionId)"
-                >
-                  {{ $t('m.' + submissionStatus.text.replace(/ /g, '_')) }}
-                </Tag>
+                <Grid align="center">
+                  <span style="font-weight: 600">{{ $t('m.Status') }}</span>
+                  <Tag
+                    type="dot"
+                    :color="submissionStatus.color"
+                    @click.native="handleRoute('/status/' + submissionId)"
+                  >
+                    {{ $t('m.' + submissionStatus.text.replace(/ /g, '_')) }}
+                  </Tag>
+                </Grid>
               </template>
               <template
                 v-else-if="this.contestID && !OIContestRealTimePermission"
@@ -118,9 +120,9 @@
                 $t('m.Contest_has_ended')
               }}</Alert>
             </div>
-          </Col>
+          </div>
 
-          <Col :span="12">
+          <div>
             <template v-if="captchaRequired">
               <div class="captcha-container">
                 <Tooltip
@@ -144,8 +146,8 @@
               <span v-if="submitting">{{ $t('m.Submitting') }}</span>
               <span v-else>{{ $t('m.Submit') }}</span>
             </Button>
-          </Col>
-        </Row>
+          </div>
+        </Grid>
       </Card>
     </div>
 
@@ -298,7 +300,7 @@ import {
 } from '@/utils/constants'
 import api from '@oj/api'
 import { pie, largePie } from './chartData'
-import { Card, Button, Tag } from '@oj/bajton-ui'
+import { Card, Button, Tooltip, Tag, Flex, Grid } from '@oj/bajton-ui'
 
 // 只显示这些状态的图形占用
 const filtedStatus = ['-1', '-2', '0', '1', '2', '3', '4', '8']
@@ -309,7 +311,10 @@ export default {
     CodeMirror,
     Card,
     Button,
-    Tag
+    Tooltip,
+    Tag,
+    Flex,
+    Grid
   },
   mixins: [FormMixin],
   data () {

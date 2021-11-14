@@ -1,6 +1,6 @@
 <template>
-  <Row type="flex" justify="space-around">
-    <Col :span="22">
+  <Grid style="width: 100%" justify="center">
+    <div style="width: 80%">
       <Panel :padding="10">
         <div slot="title">{{ $t('m.ACM_Ranklist') }}</div>
         <div class="echarts">
@@ -21,8 +21,8 @@
         show-sizer
         @on-page-size-change="getRankData(1)"
       ></Pagination>
-    </Col>
-  </Row>
+    </div>
+  </Grid>
 </template>
 
 <script>
@@ -30,13 +30,15 @@ import api from '@oj/api'
 import Pagination from '@oj/components/Pagination'
 import utils from '@/utils/utils'
 import { RULE_TYPE } from '@/utils/constants'
-import { Table } from '@oj/bajton-ui'
+import { Table, Grid, Flex } from '@oj/bajton-ui'
 
 export default {
   name: 'acm-rank',
   components: {
     Pagination,
-    Table
+    Table,
+    Grid,
+    Flex
   },
   data () {
     return {
