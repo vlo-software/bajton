@@ -8,5 +8,6 @@ import Table from './components/Table'
 import Tag from './components/Tag'
 import Flex from './components/Flex'
 import Grid from './components/Grid'
+import Input from './components/Input'
 
-export { Card, Button, Page, Select, Option, Tooltip, Table, Tag, Flex, Grid }
+export { Card, Button, Page, Select, Option, Tooltip, Table, Tag, Flex, Grid, Input }

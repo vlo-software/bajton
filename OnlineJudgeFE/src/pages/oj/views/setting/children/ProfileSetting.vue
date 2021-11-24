@@ -69,7 +69,7 @@
     <div class="section-title">{{ $t('m.Profile_Setting') }}</div>
     <Form ref="formProfile" :model="formProfile">
       <Grid gap="30" justify="around">
-        <div style="width: 100%">
+        <Grid gap="20" direction="column" style="width: 100%">
           <FormItem label="Real Name">
             <Input v-model="formProfile.real_name" />
           </FormItem>
@@ -97,9 +97,9 @@
               >Save All</Button
             >
           </Form-item>
-        </div>
+        </Grid>
 
-        <div style="width: 100%">
+        <Grid gap="20" direction="column" style="width: 100%">
           <Form-item label="Mood">
             <Input v-model="formProfile.mood" />
           </Form-item>
@@ -109,7 +109,7 @@
           <Form-item label="Github">
             <Input v-model="formProfile.github" />
           </Form-item>
-        </div>
+        </Grid>
       </Grid>
     </Form>
   </div>
@@ -121,14 +121,15 @@ import utils from '@/utils/utils'
 import { VueCropper } from 'vue-cropper'
 import { types } from '@/store'
 import { languages } from '@/i18n'
-import { Button, Flex, Grid } from '@oj/bajton-ui'
+import { Button, Flex, Grid, Input } from '@oj/bajton-ui'
 
 export default {
   components: {
     VueCropper,
     Button,
     Flex,
-    Grid
+    Grid,
+    Input
   },
   data () {
     return {

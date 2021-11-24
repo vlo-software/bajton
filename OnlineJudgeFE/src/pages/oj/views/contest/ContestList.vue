@@ -57,7 +57,7 @@
                 @on-enter="changeRoute"
                 @on-click="changeRoute"
                 v-model="query.keyword"
-                icon="ios-search-strong"
+                icon="search"
                 placeholder="Keyword"
               />
             </li>
@@ -139,7 +139,7 @@ import utils from '@/utils/utils'
 import Pagination from '@/pages/oj/components/Pagination'
 import time from '@/utils/time'
 import { CONTEST_STATUS_REVERSE, CONTEST_TYPE } from '@/utils/constants'
-import { Button, Tag, Flex, Grid } from '@oj/bajton-ui'
+import { Button, Tag, Flex, Grid, Input } from '@oj/bajton-ui'
 
 const limit = 10
 
@@ -150,7 +150,8 @@ export default {
     Button,
     Tag,
     Flex,
-    Grid
+    Grid,
+    Input
   },
   data () {
     return {

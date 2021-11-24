@@ -76,14 +76,15 @@ import { JUDGE_STATUS, USER_TYPE } from '@/utils/constants'
 import utils from '@/utils/utils'
 import time from '@/utils/time'
 import Pagination from '@/pages/oj/components/Pagination'
-import { Button, Table } from '@oj/bajton-ui'
+import { Button, Table, Input } from '@oj/bajton-ui'
 
 export default {
   name: 'submissionList',
   components: {
     Pagination,
     Button,
-    Table
+    Table,
+    Input
   },
   data () {
     return {

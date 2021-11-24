@@ -35,7 +35,7 @@
                 @on-enter="filterByKeyword"
                 @on-click="filterByKeyword"
                 placeholder="keyword"
-                icon="ios-search-strong"
+                icon="search"
               />
             </li>
             <li>
@@ -94,7 +94,7 @@ import api from '@oj/api'
 import utils from '@/utils/utils'
 import { ProblemMixin } from '@oj/components/mixins'
 import Pagination from '@oj/components/Pagination'
-import { Button, Table, Grid, Flex } from '@oj/bajton-ui'
+import { Button, Table, Grid, Flex, Input } from '@oj/bajton-ui'
 
 export default {
   name: 'ProblemList',
@@ -104,7 +104,8 @@ export default {
     Button,
     Table,
     Grid,
-    Flex
+    Flex,
+    Input
   },
   data () {
     return {

@@ -30,9 +30,12 @@
               >You will need to login again after 5 seconds..</Alert
             >
           </FormItem>
-          <Button type="primary" @click="changePassword">{{
-            $t('m.Update_Password')
-          }}</Button>
+          <Button
+            style="margin-top: 30px"
+            type="primary"
+            @click="changePassword"
+            >{{ $t('m.Update_Password') }}</Button
+          >
         </Form>
       </div>
 
@@ -62,9 +65,12 @@
           >
             <Input v-model="formEmail.tfa_code" />
           </FormItem>
-          <Button type="primary" @click="changeEmail">{{
-            $t('m.ChangeEmail')
-          }}</Button>
+          <Button
+            style="margin-top: 30px"
+            type="primary"
+            @click="changeEmail"
+            >{{ $t('m.ChangeEmail') }}</Button
+          >
         </Form>
       </div>
     </div>
@@ -74,12 +80,13 @@
 <script>
 import api from '@oj/api'
 import { FormMixin } from '@oj/components/mixins'
-import { Button } from '@oj/bajton-ui'
+import { Button, Input } from '@oj/bajton-ui'
 
 export default {
   mixins: [FormMixin],
   components: {
-    Button
+    Button,
+    Input
   },
   data () {
     const oldPasswordCheck = [

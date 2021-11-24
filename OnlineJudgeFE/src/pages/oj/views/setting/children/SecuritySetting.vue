@@ -45,6 +45,7 @@
         <template v-if="!loadingQRcode">
           <FormItem style="width: 250px">
             <Input
+              style="width: 100%"
               v-model="formTwoFactor.code"
               placeholder="Enter the code from your application"
             />
@@ -69,7 +70,7 @@
 import api from '@oj/api'
 import { mapGetters, mapActions } from 'vuex'
 import browserDetector from 'browser-detect'
-import { Button } from '@oj/bajton-ui'
+import { Button, Input } from '@oj/bajton-ui'
 
 const browsers = {}
 const loadBrowser = (userAgent) => {
@@ -84,7 +85,7 @@ const loadBrowser = (userAgent) => {
 }
 
 export default {
-  components: { Button },
+  components: { Button, Input },
   data () {
     return {
       qrcodeSrc: '',

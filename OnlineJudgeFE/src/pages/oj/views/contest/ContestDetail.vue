@@ -20,14 +20,16 @@
               </div>
               <div v-html="contest.description" class="markdown-body"></div>
               <div v-if="passwordFormVisible" class="contest-password">
-                <Input
-                  v-model="contestPassword"
-                  type="password"
-                  placeholder="contest password"
-                  class="contest-password-input"
-                  @on-enter="checkPassword"
-                />
-                <Button type="info" @click="checkPassword">Enter</Button>
+                <Grid style="margin-bottom: 30px">
+                  <Input
+                    v-model="contestPassword"
+                    type="password"
+                    placeholder="contest password"
+                    class="contest-password-input"
+                    @on-enter="checkPassword"
+                  />
+                  <Button type="info" @click="checkPassword">Enter</Button>
+                </Grid>
               </div>
               <Table
                 :columns="columns"
@@ -108,13 +110,15 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 import { types } from '@/store'
 import { CONTEST_STATUS_REVERSE, CONTEST_STATUS } from '@/utils/constants'
 import time from '@/utils/time'
-import { Button, Table } from '@oj/bajton-ui'
+import { Button, Table, Input, Grid } from '@oj/bajton-ui'
 
 export default {
   name: 'ContestDetail',
   components: {
     Button,
-    Table
+    Table,
+    Input,
+    Grid
   },
   data () {
     return {
