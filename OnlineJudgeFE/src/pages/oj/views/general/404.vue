@@ -12,7 +12,7 @@
           <Button
             @click="goHome"
             size="large"
-            style="width: 200px"
+            style="width: 250px"
             type="ghost"
             >{{ $t('m.Go_Home') }}</Button
           >
@@ -30,10 +30,10 @@
 </template>
 
 <script>
-import { Button } from '@oj/bajton-ui'
+import { Button, Card } from '@oj/bajton-ui'
 export default {
   name: 'Error404',
-  components: { Button },
+  components: { Button, Card },
   methods: {
     backPage () {
       this.$router.go(-1)
