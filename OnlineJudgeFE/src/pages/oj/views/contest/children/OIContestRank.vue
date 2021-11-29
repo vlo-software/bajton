@@ -1,46 +1,48 @@
 <template>
-  <Panel shadow>
-    <div slot="title">{{ contest.title }}</div>
-    <div slot="extra">
-      <screen-full :height="18" :width="18" class="screen-full"></screen-full>
-      <Poptip trigger="hover" placement="left-start">
-        <Icon type="android-settings" size="20"></Icon>
-        <div slot="content" id="switches">
-          <p>
-            <span>{{ $t('m.Menu') }}</span>
-            <i-switch v-model="showMenu"></i-switch>
-            <span>{{ $t('m.Chart') }}</span>
-            <i-switch v-model="showChart"></i-switch>
-          </p>
-          <p>
-            <span>{{ $t('m.Auto_Refresh') }}(10s)</span>
-            <i-switch
-              :disabled="refreshDisabled"
-              @on-change="handleAutoRefresh"
-            ></i-switch>
-          </p>
-          <p v-if="isContestAdmin">
-            <span>{{ $t('m.RealName') }}</span>
-            <i-switch v-model="showRealName"></i-switch>
-          </p>
-          <p>
-            <Button type="primary" size="small" @click="downloadRankCSV">{{
-              $t('m.download_csv')
-            }}</Button>
-          </p>
-        </div>
-      </Poptip>
-    </div>
-    <div v-show="showChart" class="echarts">
-      <ECharts :options="options" ref="chart" auto-resize></ECharts>
-    </div>
-    <Table
-      ref="tableRank"
-      class="auto-resize"
-      :columns="columns"
-      :data="dataRank"
-      disabled-hover
-    ></Table>
+  <div>
+    <Panel shadow>
+      <div slot="title">{{ contest.title }}</div>
+      <div slot="extra">
+        <screen-full :height="18" :width="18" class="screen-full"></screen-full>
+        <Poptip trigger="hover" placement="left-start">
+          <Icon type="android-settings" size="20"></Icon>
+          <div slot="content" id="switches">
+            <p>
+              <span>{{ $t('m.Menu') }}</span>
+              <i-switch v-model="showMenu"></i-switch>
+              <span>{{ $t('m.Chart') }}</span>
+              <i-switch v-model="showChart"></i-switch>
+            </p>
+            <p>
+              <span>{{ $t('m.Auto_Refresh') }}(10s)</span>
+              <i-switch
+                :disabled="refreshDisabled"
+                @on-change="handleAutoRefresh"
+              ></i-switch>
+            </p>
+            <p v-if="isContestAdmin">
+              <span>{{ $t('m.RealName') }}</span>
+              <i-switch v-model="showRealName"></i-switch>
+            </p>
+            <p>
+              <Button type="primary" size="small" @click="downloadRankCSV">{{
+                $t('m.download_csv')
+              }}</Button>
+            </p>
+          </div>
+        </Poptip>
+      </div>
+      <div v-show="showChart" class="echarts">
+        <ECharts :options="options" ref="chart" auto-resize></ECharts>
+      </div>
+      <Table
+        ref="tableRank"
+        class="auto-resize"
+        :columns="columns"
+        :data="dataRank"
+        disabled-hover
+      ></Table>
+    </Panel>
     <Pagination
       :total="total"
       :page-size.sync="limit"
@@ -49,7 +51,7 @@
       @on-page-size-change="getContestRankData(1)"
       show-sizer
     ></Pagination>
-  </Panel>
+  </div>
 </template>
 <script>
 import { mapActions } from 'vuex'

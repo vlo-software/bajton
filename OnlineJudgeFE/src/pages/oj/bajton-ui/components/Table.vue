@@ -2,8 +2,19 @@
   <table v-if="data.length !== 0">
     <thead>
       <tr>
-        <th v-for="col in columns" :key="col.key || col.title">
-          {{ col.title }}
+        <th
+          v-for="col in columns"
+          :class="col.align === 'center' ? 'center' : ''"
+          :key="col.key || col.title"
+        >
+          <render-table-header
+            v-if="col.renderHeader !== undefined"
+            :column="col"
+            :render="col.renderHeader"
+          />
+          <span v-else>
+            {{ col.title }}
+          </span>
         </th>
       </tr>
     </thead>
@@ -17,6 +28,15 @@
         <td
           v-for="col in columns"
           :style="col.width !== undefined ? `width: ${col.width}px` : ``"
+          :class="
+            (col.align === 'center' ? 'center' : '') +
+            ' ' +
+            (item.cellClassName
+              ? item.cellClassName[col.key]
+                ? item.cellClassName[col.key]
+                : ''
+              : '')
+          "
           :key="col.key || col.title"
         >
           <render-table-cell
@@ -38,8 +58,9 @@
 
 <script>
 import RenderTableCell from './RenderTableCell.vue'
+import RenderTableHeader from './RenderTableHeader.vue'
 export default {
-  components: { RenderTableCell },
+  components: { RenderTableCell, RenderTableHeader },
   name: 'Table',
   props: {
     columns: Array,
@@ -57,9 +78,6 @@ export default {
     onRowClick (row, idx) {
       this.$emit('on-row-click', row, idx)
     }
-  },
-  mounted () {
-    console.log(this.columns)
   },
   computed: {
     classes () {
@@ -105,5 +123,9 @@ div.no-data {
   align-items: center;
   font-size: 1.2em;
   font-weight: 600;
+}
+
+.center {
+  text-align: center;
 }
 </style>

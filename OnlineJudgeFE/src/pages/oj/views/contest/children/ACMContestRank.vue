@@ -1,55 +1,56 @@
 <template>
-  <Panel shadow>
-    <div slot="title">{{ contest.title }}</div>
-    <div slot="extra">
-      <screen-full :height="18" :width="18" class="screen-full"></screen-full>
-      <Poptip trigger="hover" placement="left-start">
-        <Icon type="android-settings" size="20"></Icon>
-        <div slot="content" id="switches">
-          <p>
-            <span>{{ $t('m.Menu') }}</span>
-            <i-switch v-model="showMenu"></i-switch>
-            <span>{{ $t('m.Chart') }}</span>
-            <i-switch v-model="showChart"></i-switch>
-          </p>
-          <p>
-            <span>{{ $t('m.Auto_Refresh') }}(10s)</span>
-            <i-switch
-              :disabled="refreshDisabled"
-              @on-change="handleAutoRefresh"
-            ></i-switch>
-          </p>
-          <template v-if="isContestAdmin">
+  <div>
+    <Panel shadow>
+      <div slot="title">{{ contest.title }}</div>
+      <div slot="extra">
+        <screen-full :height="18" :width="18" class="screen-full"></screen-full>
+        <Poptip trigger="hover" placement="left-start">
+          <Icon type="android-settings" size="20"></Icon>
+          <div slot="content" id="switches">
             <p>
-              <span>{{ $t('m.RealName') }}</span>
-              <i-switch v-model="showRealName"></i-switch>
+              <span>{{ $t('m.Menu') }}</span>
+              <i-switch v-model="showMenu"></i-switch>
+              <span>{{ $t('m.Chart') }}</span>
+              <i-switch v-model="showChart"></i-switch>
             </p>
             <p>
-              <span>{{ $t('m.Force_Update') }}</span>
+              <span>{{ $t('m.Auto_Refresh') }}(10s)</span>
               <i-switch
                 :disabled="refreshDisabled"
-                v-model="forceUpdate"
+                @on-change="handleAutoRefresh"
               ></i-switch>
             </p>
-          </template>
-          <template>
-            <Button type="primary" size="small" @click="downloadRankCSV">{{
-              $t('m.download_csv')
-            }}</Button>
-          </template>
-        </div>
-      </Poptip>
-    </div>
-    <div v-show="showChart" class="echarts">
-      <ECharts :options="options" ref="chart" auto-resize></ECharts>
-    </div>
-    <Table
-      ref="tableRank"
-      :columns="columns"
-      :data="dataRank"
-      disabled-hover
-      height="600"
-    ></Table>
+            <template v-if="isContestAdmin">
+              <p>
+                <span>{{ $t('m.RealName') }}</span>
+                <i-switch v-model="showRealName"></i-switch>
+              </p>
+              <p>
+                <span>{{ $t('m.Force_Update') }}</span>
+                <i-switch
+                  :disabled="refreshDisabled"
+                  v-model="forceUpdate"
+                ></i-switch>
+              </p>
+            </template>
+            <template>
+              <Button type="primary" size="small" @click="downloadRankCSV">{{
+                $t('m.download_csv')
+              }}</Button>
+            </template>
+          </div>
+        </Poptip>
+      </div>
+      <div v-show="showChart" class="echarts">
+        <ECharts :options="options" ref="chart" auto-resize></ECharts>
+      </div>
+      <Table
+        ref="tableRank"
+        :columns="columns"
+        :data="dataRank"
+        disabled-hover
+      ></Table>
+    </Panel>
     <Pagination
       :total="total"
       :page-size.sync="limit"
@@ -58,7 +59,7 @@
       @on-page-size-change="getContestRankData(1)"
       show-sizer
     ></Pagination>
-  </Panel>
+  </div>
 </template>
 <script>
 import moment from 'moment'
@@ -86,8 +87,7 @@ export default {
       columns: [
         {
           align: 'center',
-          width: 50,
-          fixed: 'left',
+          width: 60,
           render: (h, params) => {
             return h(
               'span',
@@ -99,7 +99,6 @@ export default {
         {
           title: this.$i18n.t('m.User_User'),
           align: 'center',
-          fixed: 'left',
           width: 150,
           render: (h, params) => {
             return h(
@@ -125,7 +124,7 @@ export default {
         {
           title: 'AC / ' + this.$i18n.t('m.Total'),
           align: 'center',
-          width: 100,
+          width: 150,
           render: (h, params) => {
             return h('span', {}, [
               h('span', {}, params.row.accepted_number + ' / '),
@@ -149,7 +148,7 @@ export default {
         {
           title: this.$i18n.t('m.TotalTime'),
           align: 'center',
-          width: 100,
+          width: 150,
           render: (h, params) => {
             return h('span', this.parseTotalTime(params.row.total_time))
           }
