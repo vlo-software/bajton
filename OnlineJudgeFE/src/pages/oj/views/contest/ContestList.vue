@@ -139,7 +139,16 @@ import utils from '@/utils/utils'
 import Pagination from '@/pages/oj/components/Pagination'
 import time from '@/utils/time'
 import { CONTEST_STATUS_REVERSE, CONTEST_TYPE } from '@/utils/constants'
-import { Button, Tag, Flex, Grid, Input } from '@oj/bajton-ui'
+import {
+  Button,
+  Tag,
+  Flex,
+  Grid,
+  Input,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu
+} from '@oj/bajton-ui'
 
 const limit = 10
 
@@ -151,7 +160,10 @@ export default {
     Tag,
     Flex,
     Grid,
-    Input
+    Input,
+    Dropdown,
+    DropdownItem,
+    DropdownMenu
   },
   data () {
     return {

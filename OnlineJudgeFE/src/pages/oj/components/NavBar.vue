@@ -38,18 +38,18 @@
           {{ $t('m.OI_Rank') }}
         </Menu-item>
       </Submenu>
-      <Submenu name="about">
-        <template slot="title">
-          <Icon type="information-circled"></Icon>
-          {{ $t('m.About') }}
-        </template>
-        <Menu-item name="/about">
-          {{ $t('m.Judger') }}
-        </Menu-item>
-        <Menu-item name="/FAQ">
-          {{ $t('m.FAQ') }}
-        </Menu-item>
-      </Submenu>
+      <Dropdown @on-click="handleRoute">
+        <Icon type="information-circled"></Icon>
+        {{ $t('m.About') }}
+        <Dropdown-menu slot="list">
+          <Dropdown-item name="/about">
+            {{ $t('m.Judger') }}
+          </Dropdown-item>
+          <Dropdown-item name="/FAQ">
+            {{ $t('m.FAQ') }}
+          </Dropdown-item>
+        </Dropdown-menu>
+      </Dropdown>
       <template>
         <Dropdown
           class="drop-menu"
@@ -109,13 +109,16 @@
 import { mapGetters, mapActions } from 'vuex'
 import login from '@oj/views/user/Login'
 import register from '@oj/views/user/Register'
-import { Button } from '@oj/bajton-ui'
+import { Button, Dropdown, DropdownMenu, DropdownItem } from '@oj/bajton-ui'
 
 export default {
   components: {
     login,
     register,
-    Button
+    Button,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem
   },
   mounted () {
     this.getProfile()

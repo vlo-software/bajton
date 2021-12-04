@@ -94,7 +94,16 @@ import api from '@oj/api'
 import utils from '@/utils/utils'
 import { ProblemMixin } from '@oj/components/mixins'
 import Pagination from '@oj/components/Pagination'
-import { Button, Table, Grid, Flex, Input } from '@oj/bajton-ui'
+import {
+  Button,
+  Table,
+  Grid,
+  Flex,
+  Input,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem
+} from '@oj/bajton-ui'
 
 export default {
   name: 'ProblemList',
@@ -105,7 +114,10 @@ export default {
     Table,
     Grid,
     Flex,
-    Input
+    Input,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem
   },
   data () {
     return {

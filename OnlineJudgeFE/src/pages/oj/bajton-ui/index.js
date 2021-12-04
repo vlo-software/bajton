@@ -9,5 +9,23 @@ import Tag from './components/Tag'
 import Flex from './components/Flex'
 import Grid from './components/Grid'
 import Input from './components/Input'
+import Dropdown from './components/Dropdown'
+import DropdownMenu from './components/DropdownMenu'
+import DropdownItem from './components/DropdownItem'
 
-export { Card, Button, Page, Select, Option, Tooltip, Table, Tag, Flex, Grid, Input }
+export {
+  Card,
+  Button,
+  Page,
+  Select,
+  Option,
+  Tooltip,
+  Table,
+  Tag,
+  Flex,
+  Grid,
+  Input,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem
+}
