@@ -2,9 +2,7 @@
   <div>
     <NavBar></NavBar>
     <div class="content-app">
-      <transition name="fadeInUp" mode="out-in">
-        <router-view></router-view>
-      </transition>
+      <router-view></router-view>
       <div class="footer">
         <p v-html="website.website_footer"></p>
         <p>
