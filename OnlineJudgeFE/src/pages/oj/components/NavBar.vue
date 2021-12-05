@@ -1,107 +1,77 @@
 <template>
   <div id="header">
-    <Menu
-      theme="light"
-      mode="horizontal"
-      @on-select="handleRoute"
-      :active-name="activeMenu"
-      class="oj-menu"
-    >
-      <div class="logo">
-        <span>{{ website.website_name }}</span>
-      </div>
-      <Menu-item name="/home">
-        <Icon type="home"></Icon>
-        {{ $t('m.Home') }}
-      </Menu-item>
-      <Menu-item name="/problem">
-        <Icon type="ios-keypad"></Icon>
-        {{ $t('m.NavProblems') }}
-      </Menu-item>
-      <Menu-item name="/contest">
-        <Icon type="trophy"></Icon>
-        {{ $t('m.Contests') }}
-      </Menu-item>
-      <Menu-item name="/status">
-        <Icon type="ios-pulse-strong"></Icon>
-        {{ $t('m.NavStatus') }}
-      </Menu-item>
-      <Submenu name="rank">
-        <template slot="title">
-          <Icon type="podium"></Icon>
-          {{ $t('m.Rank') }}
-        </template>
-        <Menu-item name="/acm-rank">
-          {{ $t('m.ACM_Rank') }}
-        </Menu-item>
-        <Menu-item name="/oi-rank">
-          {{ $t('m.OI_Rank') }}
-        </Menu-item>
-      </Submenu>
-      <Dropdown @on-click="handleRoute">
-        <Icon type="information-circled"></Icon>
-        {{ $t('m.About') }}
-        <Dropdown-menu slot="list">
-          <Dropdown-item name="/about">
-            {{ $t('m.Judger') }}
-          </Dropdown-item>
-          <Dropdown-item name="/FAQ">
-            {{ $t('m.FAQ') }}
-          </Dropdown-item>
-        </Dropdown-menu>
-      </Dropdown>
-      <template>
-        <Dropdown
-          class="drop-menu"
-          @on-click="handleRoute"
-          placement="bottom"
-          trigger="click"
-        >
-          <Button type="text" class="drop-menu-title"
-            >{{ user.username }}
-            <Icon type="arrow-down-b"></Icon>
-          </Button>
+    <div class="content">
+      <div class="left">
+        <logo :style="darkMode ? '' : 'filter: invert(100)'" class="logo" />
+        <i @click="() => handleRoute('/home')" class="icon bi bi-house" />
+        <i
+          @click="() => handleRoute('/problem')"
+          class="icon bi bi-clipboard"
+        />
+        <i @click="() => handleRoute('/contest')" class="icon bi bi-trophy" />
+        <i @click="() => handleRoute('/status')" class="icon bi bi-activity" />
+        <Dropdown margin="8" @on-click="handleRoute">
+          <i class="icon bi bi-bar-chart" />
           <Dropdown-menu slot="list">
-            <Dropdown-item name="/user-home">{{
-              $t('m.MyHome')
-            }}</Dropdown-item>
-            <Dropdown-item name="/status?myself=1">{{
-              $t('m.MySubmissions')
-            }}</Dropdown-item>
-            <Dropdown-item name="/setting/profile">{{
-              $t('m.Settings')
-            }}</Dropdown-item>
-            <Dropdown-item v-if="isAdminRole" name="/admin">{{
-              $t('m.Management')
-            }}</Dropdown-item>
-            <Dropdown-item divided name="/logout">{{
-              $t('m.Logout')
-            }}</Dropdown-item>
+            <Dropdown-item name="/acm-rank">
+              {{ $t('m.ACM_Rank') }}
+            </Dropdown-item>
+            <Dropdown-item name="/oi-rank">
+              {{ $t('m.OI_Rank') }}
+            </Dropdown-item>
           </Dropdown-menu>
         </Dropdown>
-      </template>
-      <div @click="toggleDarkmode" class="btn-darkmode">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-moon-fill"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"
-          />
-        </svg>
+        <Dropdown margin="8" @on-click="handleRoute">
+          <i class="icon bi bi-info-circle" />
+          <Dropdown-menu slot="list">
+            <Dropdown-item name="/about">
+              {{ $t('m.Judger') }}
+            </Dropdown-item>
+            <Dropdown-item name="/FAQ">
+              {{ $t('m.FAQ') }}
+            </Dropdown-item>
+          </Dropdown-menu>
+        </Dropdown>
       </div>
-    </Menu>
-    <Modal v-model="modalVisible" :width="400">
-      <div slot="header" class="modal-title">
-        {{ $t('m.Welcome_to') }} {{ website.website_name_shortcut }}
+      <div class="right">
+        <template>
+          <Dropdown
+            class="drop-menu"
+            @on-click="handleRoute"
+            placement="bottom"
+            trigger="click"
+          >
+            <Button type="text" class="drop-menu-title"
+              >{{ user.username }}
+              <Icon type="arrow-down-b"></Icon>
+            </Button>
+            <Dropdown-menu slot="list">
+              <Dropdown-item name="/user-home">{{
+                $t('m.MyHome')
+              }}</Dropdown-item>
+              <Dropdown-item name="/status?myself=1">{{
+                $t('m.MySubmissions')
+              }}</Dropdown-item>
+              <Dropdown-item name="/setting/profile">{{
+                $t('m.Settings')
+              }}</Dropdown-item>
+              <Dropdown-item v-if="isAdminRole" name="/admin">{{
+                $t('m.Management')
+              }}</Dropdown-item>
+              <Dropdown-item divided name="/logout">{{
+                $t('m.Logout')
+              }}</Dropdown-item>
+            </Dropdown-menu>
+          </Dropdown>
+        </template>
+        <i v-if="!darkMode" @click="toggleDarkmode" class="icon bi bi-moon"></i>
+        <i
+          v-else
+          @click="toggleDarkmode"
+          class="icon bi bi-brightness-high"
+        ></i>
       </div>
-      <component :is="modalStatus.mode" v-if="modalVisible"></component>
-      <div slot="footer" style="display: none"></div>
-    </Modal>
+    </div>
   </div>
 </template>
 
@@ -110,6 +80,7 @@ import { mapGetters, mapActions } from 'vuex'
 import login from '@oj/views/user/Login'
 import register from '@oj/views/user/Register'
 import { Button, Dropdown, DropdownMenu, DropdownItem } from '@oj/bajton-ui'
+import Logo from './Logo'
 
 export default {
   components: {
@@ -118,7 +89,8 @@ export default {
     Button,
     Dropdown,
     DropdownMenu,
-    DropdownItem
+    DropdownItem,
+    Logo
   },
   mounted () {
     this.getProfile()
@@ -172,54 +144,53 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  height: auto;
   width: 100%;
+  height: 60px;
   z-index: 1000;
   background-color: var(--background-color-full);
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-  .oj-menu {
-    background: var(--background-color-full);
+
+  .content {
+    position: absolute;
+    left: 2vw;
+    right: 2vw;
+    top: 0px;
+    bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .content .left,
+  .right {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .content .left {
+    justify-content: flex-start;
+  }
+
+  .content .right {
+    justify-content: flex-end;
   }
 
   .logo {
-    margin-left: 2%;
-    margin-right: 2%;
-    font-size: 20px;
-    float: left;
-    line-height: 60px;
-  }
-
-  .drop-menu {
-    float: right;
-    margin-right: 30px;
-    position: absolute;
-    right: 10px;
-    &-title {
-      font-size: 18px;
-    }
-  }
-  .btn-menu {
-    font-size: 16px;
-    float: right;
+    height: 30px;
+    width: 180px;
     margin-right: 10px;
   }
-  .btn-darkmode {
-    float: right;
-    height: 50px;
-    margin-right: 20px;
-    padding-top: 3px;
-    transition: 0.2s ease;
-    cursor: pointer;
-    &:hover {
-      color: var(--link-hover-color);
-    }
-  }
-}
 
-.modal {
-  &-title {
-    font-size: 18px;
-    font-weight: 600;
+  .icon {
+    font-size: 22px;
+    line-height: 22px;
+    padding: 9px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    &:hover {
+      box-shadow: 0px 0px 5px 0px var(--text-color);
+    }
   }
 }
 </style>

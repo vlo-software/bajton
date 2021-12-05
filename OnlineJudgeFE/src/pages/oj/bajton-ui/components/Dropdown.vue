@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <slot></slot>
-    <div class="content">
+    <div class="content" :style="margin ? `margin-top: ${margin}px` : ''">
       <slot name="list"></slot>
     </div>
   </div>
@@ -9,7 +9,10 @@
 
 <script>
 export default {
-  name: 'Dropdown'
+  name: 'Dropdown',
+  props: {
+    margin: Number
+  }
 }
 </script>
 
@@ -24,7 +27,7 @@ export default {
   position: absolute;
   background: var(--background-color-panel);
   box-sizing: border-box;
-  padding: 5px;
+  padding: 2px;
   margin-top: -1px;
   border-radius: 10px;
   z-index: 1;
