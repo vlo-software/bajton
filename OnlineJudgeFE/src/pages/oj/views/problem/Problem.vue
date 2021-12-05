@@ -243,7 +243,7 @@
             <p>
               <Poptip trigger="hover" placement="left-end">
                 <a>{{ $t('m.Show') }}</a>
-                <div slot="content">
+                <div style="color: var(--background-color)" slot="content">
                   <Tag v-for="tag in problem.tags" :key="tag">{{ tag }}</Tag>
                 </div>
               </Poptip>
