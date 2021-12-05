@@ -102,7 +102,7 @@ export default {
   transition: 0.2s ease;
   cursor: pointer;
   &-small {
-    padding: 7px;
+    padding: 8px 10px;
     font-size: 0.8em;
     font-weight: 500;
   }

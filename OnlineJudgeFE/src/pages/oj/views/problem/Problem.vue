@@ -263,9 +263,9 @@
           <Button
             type="ghost"
             size="small"
-            id="detail"
+            style="margin-left: 30px"
             @click="graphVisible = !graphVisible"
-            >Details</Button
+            >{{ $t('m.Details') }}</Button
           >
         </div>
         <div class="echarts">
