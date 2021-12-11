@@ -70,7 +70,7 @@
 import api from '@oj/api'
 import { mapGetters, mapActions } from 'vuex'
 import browserDetector from 'browser-detect'
-import { Button, Input } from '@oj/bajton-ui'
+import { Button, Input, Form, FormItem } from '@oj/bajton-ui'
 
 const browsers = {}
 const loadBrowser = (userAgent) => {
@@ -85,7 +85,7 @@ const loadBrowser = (userAgent) => {
 }
 
 export default {
-  components: { Button, Input },
+  components: { Button, Input, Form, FormItem },
   data () {
     return {
       qrcodeSrc: '',

@@ -121,7 +121,7 @@ import utils from '@/utils/utils'
 import { VueCropper } from 'vue-cropper'
 import { types } from '@/store'
 import { languages } from '@/i18n'
-import { Button, Flex, Grid, Input } from '@oj/bajton-ui'
+import { Button, Flex, Grid, Input, Form, FormItem } from '@oj/bajton-ui'
 
 export default {
   components: {
@@ -129,7 +129,9 @@ export default {
     Button,
     Flex,
     Grid,
-    Input
+    Input,
+    Form,
+    FormItem
   },
   data () {
     return {

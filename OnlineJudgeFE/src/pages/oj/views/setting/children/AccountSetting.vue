@@ -80,13 +80,15 @@
 <script>
 import api from '@oj/api'
 import { FormMixin } from '@oj/components/mixins'
-import { Button, Input } from '@oj/bajton-ui'
+import { Button, Input, Form, FormItem } from '@oj/bajton-ui'
 
 export default {
   mixins: [FormMixin],
   components: {
     Button,
-    Input
+    Input,
+    Form,
+    FormItem
   },
   data () {
     const oldPasswordCheck = [
