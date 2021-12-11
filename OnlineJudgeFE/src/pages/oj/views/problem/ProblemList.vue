@@ -24,10 +24,10 @@
               </Dropdown>
             </li>
             <li>
-              <i-switch size="large" @on-change="handleTagsVisible">
+              <Toggle size="large" @on-change="handleTagsVisible">
                 <span slot="open">{{ $t('m.Tags') }}</span>
                 <span slot="close">{{ $t('m.Tags') }}</span>
-              </i-switch>
+              </Toggle>
             </li>
             <li>
               <Input
@@ -102,7 +102,8 @@ import {
   Input,
   Dropdown,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Toggle
 } from '@oj/bajton-ui'
 
 export default {
@@ -117,7 +118,8 @@ export default {
     Input,
     Dropdown,
     DropdownMenu,
-    DropdownItem
+    DropdownItem,
+    Toggle
   },
   data () {
     return {

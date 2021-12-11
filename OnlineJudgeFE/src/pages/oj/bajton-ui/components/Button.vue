@@ -117,6 +117,7 @@ export default {
   }
   &-primary {
     background: var(--primary-color);
+    color: #fff;
     border: none;
   }
   &-ghost {
@@ -124,6 +125,7 @@ export default {
   }
   &-dashed {
     background: var(--dashed-color);
+    color: #fff;
   }
   &-text {
     background: transparent;
@@ -131,18 +133,22 @@ export default {
   }
   &-info {
     background: var(--info-color);
+    color: #fff;
     border: none;
   }
   &-success {
     background: var(--success-color);
+    color: #fff;
     border: none;
   }
   &-warning {
     background: var(--warning-color);
+    color: #fff;
     border: none;
   }
   &-error {
     background: var(--error-color);
+    color: #fff;
     border: none;
   }
   &-default {

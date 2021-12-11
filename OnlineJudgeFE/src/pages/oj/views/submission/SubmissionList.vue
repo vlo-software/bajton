@@ -27,14 +27,14 @@
             </li>
 
             <li>
-              <i-switch
+              <Toggle
                 size="large"
                 v-model="formFilter.myself"
                 @on-change="handleQueryChange"
               >
                 <span slot="open">{{ $t('m.Mine') }}</span>
                 <span slot="close">{{ $t('m.All') }}</span>
-              </i-switch>
+              </Toggle>
             </li>
             <li>
               <Input
@@ -82,7 +82,8 @@ import {
   Input,
   Dropdown,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Toggle
 } from '@oj/bajton-ui'
 
 export default {
@@ -94,7 +95,8 @@ export default {
     Input,
     Dropdown,
     DropdownMenu,
-    DropdownItem
+    DropdownItem,
+    Toggle
   },
   data () {
     return {

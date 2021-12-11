@@ -1,7 +1,10 @@
 <template>
   <div :class="classes">
     <slot></slot>
-    <span class="tiptext">{{ content }}</span>
+    <span v-if="content" class="tiptext">{{ content }}</span>
+    <span v-else :class="`tiptext ${!!fullBg ? 'full-bg' : ''}`">
+      <slot name="content" />
+    </span>
   </div>
 </template>
 
@@ -10,6 +13,7 @@ export default {
   name: 'Tooltip',
   props: {
     content: String,
+    fullBg: { type: Boolean, default: false },
     placement: {
       validator (value) {
         return ['top', 'bottom', 'left', 'right'].includes(value)
@@ -104,5 +108,10 @@ export default {
   right: 100%;
   border-color: var(--background-color-panel) transparent transparent
     transparent;
+}
+
+.full-bg {
+  background: var(--background-color-diff) !important;
+  opacity: 1 !important;
 }
 </style>

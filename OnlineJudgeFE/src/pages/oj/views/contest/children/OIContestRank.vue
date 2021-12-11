@@ -4,25 +4,25 @@
       <div slot="title">{{ contest.title }}</div>
       <div slot="extra">
         <screen-full :height="18" :width="18" class="screen-full"></screen-full>
-        <Poptip trigger="hover" placement="left-start">
+        <Tooltip full-bg placement="left">
           <Icon type="android-settings" size="20"></Icon>
           <div slot="content" id="switches">
             <p>
               <span>{{ $t('m.Menu') }}</span>
-              <i-switch v-model="showMenu"></i-switch>
+              <Toggle v-model="showMenu"></Toggle>
               <span>{{ $t('m.Chart') }}</span>
-              <i-switch v-model="showChart"></i-switch>
+              <Toggle v-model="showChart"></Toggle>
             </p>
             <p>
               <span>{{ $t('m.Auto_Refresh') }}(10s)</span>
-              <i-switch
+              <Toggle
                 :disabled="refreshDisabled"
                 @on-change="handleAutoRefresh"
-              ></i-switch>
+              ></Toggle>
             </p>
             <p v-if="isContestAdmin">
               <span>{{ $t('m.RealName') }}</span>
-              <i-switch v-model="showRealName"></i-switch>
+              <Toggle v-model="showRealName"></Toggle>
             </p>
             <p>
               <Button type="primary" size="small" @click="downloadRankCSV">{{
@@ -30,7 +30,7 @@
               }}</Button>
             </p>
           </div>
-        </Poptip>
+        </Tooltip>
       </div>
       <div v-show="showChart" class="echarts">
         <ECharts :options="options" ref="chart" auto-resize></ECharts>
@@ -59,14 +59,16 @@ import { mapActions } from 'vuex'
 import Pagination from '@oj/components/Pagination'
 import ContestRankMixin from './contestRankMixin'
 import utils from '@/utils/utils'
-import { Button, Table } from '@oj/bajton-ui'
+import { Button, Table, Tooltip, Toggle } from '@oj/bajton-ui'
 
 export default {
   name: 'acm-contest-rank',
   components: {
     Pagination,
     Button,
-    Table
+    Table,
+    Tooltip,
+    Toggle
   },
   mixins: [ContestRankMixin],
   data () {

@@ -12,6 +12,7 @@ import Input from './components/Input'
 import Dropdown from './components/Dropdown'
 import DropdownMenu from './components/DropdownMenu'
 import DropdownItem from './components/DropdownItem'
+import Toggle from './components/Toggle'
 
 export {
   Card,
@@ -27,5 +28,6 @@ export {
   Input,
   Dropdown,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Toggle
 }

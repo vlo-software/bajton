@@ -5,10 +5,10 @@
       <ul class="filter">
         <li>
           {{ $t('m.Auto_Refresh') }} (10s)
-          <i-switch
+          <Toggle
             style="margin-left: 5px"
             @on-change="handleAutoRefresh"
-          ></i-switch>
+          ></Toggle>
         </li>
         <li>
           <Button type="info" @click="getACInfo">{{ $t('m.Refresh') }}</Button>
@@ -37,14 +37,15 @@ import { types } from '../../../../../store'
 import moment from 'moment'
 import Pagination from '@oj/components/Pagination.vue'
 import api from '@oj/api'
-import { Button, Table } from '@oj/bajton-ui'
+import { Button, Table, Toggle } from '@oj/bajton-ui'
 
 export default {
   name: 'acm-helper',
   components: {
     Pagination,
     Button,
-    Table
+    Table,
+    Toggle
   },
   data () {
     return {
