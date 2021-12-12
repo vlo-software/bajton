@@ -28,6 +28,7 @@ export default {
   methods: {
     change (e) {
       this.selectValue = e.target.value
+      this.$emit('input', e.target.value)
       this.$emit('on-change', e.target.value)
     }
   },
