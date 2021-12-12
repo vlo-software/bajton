@@ -3,10 +3,16 @@
     <p class="section-title">{{ $t('m.Sessions') }}</p>
     <div class="flex-container setting-content">
       <template v-for="session in sessions">
-        <Card :padding="20" class="flex-child">
+        <Card
+          style="background: var(--background-color)"
+          :padding="20"
+          class="flex-child"
+        >
           <span slot="title" style="line-height: 20px">{{ session.ip }}</span>
           <div slot="extra">
-            <Tag v-if="session.current_session" color="green">Current</Tag>
+            <Button v-if="session.current_session" size="small" type="success"
+              >Current</Button
+            >
             <Button
               v-else
               type="warning"
@@ -70,7 +76,7 @@
 import api from '@oj/api'
 import { mapGetters, mapActions } from 'vuex'
 import browserDetector from 'browser-detect'
-import { Button, Input, Form, FormItem } from '@oj/bajton-ui'
+import { Button, Input, Form, FormItem, Card, Tag } from '@oj/bajton-ui'
 
 const browsers = {}
 const loadBrowser = (userAgent) => {
@@ -85,7 +91,7 @@ const loadBrowser = (userAgent) => {
 }
 
 export default {
-  components: { Button, Input, Form, FormItem },
+  components: { Button, Input, Form, FormItem, Card, Tag },
   data () {
     return {
       qrcodeSrc: '',

@@ -3,33 +3,42 @@
     <Card :padding="0">
       <div class="flex-container">
         <div class="menu">
-          <Menu
-            accordion
-            @on-select="goRoute"
-            :activeName="activeName"
-            style="text-align: center"
-            width="auto"
-          >
-            <div class="avatar-editor">
-              <div class="avatar-container">
-                <img class="avatar" :src="profile.avatar" />
-                <div class="avatar-mask">
-                  <a @click.stop="goRoute({ name: 'profile-setting' })">
-                    <div class="mask-content">
-                      <Icon type="camera" size="30"></Icon>
-                      <p class="text">change avatar</p>
-                    </div>
-                  </a>
-                </div>
+          <div class="avatar-editor">
+            <div class="avatar-container">
+              <img class="avatar" :src="profile.avatar" />
+              <div class="avatar-mask">
+                <a @click.stop="goRoute({ name: 'profile-setting' })">
+                  <div class="mask-content">
+                    <Icon type="camera" size="30"></Icon>
+                    <p class="text">change avatar</p>
+                  </div>
+                </a>
               </div>
             </div>
+          </div>
 
-            <Menu-item name="/setting/profile">{{ $t('m.Profile') }}</Menu-item>
-            <Menu-item name="/setting/account">{{ $t('m.Account') }}</Menu-item>
-            <Menu-item name="/setting/security">{{
-              $t('m.Security')
-            }}</Menu-item>
-          </Menu>
+          <Button
+            @click="() => goRoute('/setting/profile')"
+            :type="activeName === '/setting/profile' ? 'primary' : 'ghost'"
+            class="menu-item"
+          >
+            {{ $t('m.Profile') }}
+          </Button>
+          <Button
+            @click="() => goRoute('/setting/account')"
+            :type="activeName === '/setting/account' ? 'primary' : 'ghost'"
+            class="menu-item"
+          >
+            {{ $t('m.Account') }}
+          </Button>
+          <Button
+            @click="() => goRoute('/setting/security')"
+            :type="activeName === '/setting/security' ? 'primary' : 'ghost'"
+            class="menu-item"
+          >
+            {{ $t('m.Security') }}
+          </Button>
+          <!-- </Menu> -->
         </div>
         <div class="panel">
           <router-view></router-view>
@@ -40,12 +49,13 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import { Card } from '@oj/bajton-ui'
+import { Card, Button } from '@oj/bajton-ui'
 
 export default {
   name: 'profile',
   components: {
-    Card
+    Card,
+    Button
   },
   methods: {
     goRoute (routePath) {
@@ -64,6 +74,11 @@ export default {
 <style lang="less" scoped>
 @avatar-radius: 50%;
 
+.menu-item {
+  width: calc(100% - 30px);
+  margin: 5px 15px;
+}
+
 .container {
   width: 90%;
   min-width: 800px;
@@ -72,7 +87,7 @@ export default {
 
 .flex-container {
   .menu {
-    flex: 1 0 150px;
+    flex: 1 0 250px;
     max-width: 250px;
     .avatar-editor {
       padding: 10% 22%;
