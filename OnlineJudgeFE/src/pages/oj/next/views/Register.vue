@@ -138,8 +138,8 @@ export default {
           this.btnRegisterLoading = false
           this.$router.push({ name: 'login' })
         },
-        (_) => {
-          // TODO: Handle error
+        (e) => {
+          this.errors.push(e.data.data)
           this.getCaptchaSrc()
           this.formRegister.captcha = ''
           this.btnRegisterLoading = false
