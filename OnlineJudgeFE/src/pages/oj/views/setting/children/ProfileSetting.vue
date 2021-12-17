@@ -33,20 +33,20 @@
           >
           </vueCropper>
         </div>
-        <ButtonGroup vertical class="cropper-btn">
+        <div class="cropper-btn">
           <Button @click="rotate('left')">
-            <Icon type="arrow-return-left" size="20"></Icon>
+            <i class="bi bi-arrow-counterclockwise"></i>
           </Button>
           <Button @click="rotate('right')">
-            <Icon type="arrow-return-right" size="20"></Icon>
+            <i class="bi bi-arrow-clockwise"></i>
           </Button>
           <Button @click="reselect">
-            <Icon type="refresh" size="20"></Icon>
+            <i class="bi bi-x-lg"></i>
           </Button>
           <Button @click="finishCrop">
-            <Icon type="checkmark-round" size="20"></Icon>
+            <i class="bi bi-check-lg"></i>
           </Button>
-        </ButtonGroup>
+        </div>
         <div class="cropper-preview" :style="previewStyle">
           <div :style="preview.div">
             <img :src="avatarOption.imgSrc" :style="preview.img" />
@@ -316,8 +316,11 @@ export default {
     .copper-img;
   }
   .cropper-btn {
-    flex: none;
-    vertical-align: top;
+    display: flex;
+    flex-direction: column;
+    button {
+      margin: 5px;
+    }
   }
   .cropper-preview {
     flex: none;
