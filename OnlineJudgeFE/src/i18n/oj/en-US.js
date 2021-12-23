@@ -285,5 +285,10 @@ export const m = {
   List_Solved_Problems: 'List of solved problems',
   UserHomeIntro: 'This person is so lazy that has not solved any problem yet.',
   // Problem - TODO: move this
-  Details: 'Details'
+  Details: 'Details',
+  Submission_Outputs: 'Outputs',
+  Submission_Output_Test: 'Test output:',
+  Submission_Output_SubmissionOutput: 'Program output:',
+  Submission_Tests: 'Tests results',
+  Submission_Code: 'Code'
 }

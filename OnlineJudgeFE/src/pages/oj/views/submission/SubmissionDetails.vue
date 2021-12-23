@@ -30,9 +30,9 @@
 
       <!--后台返info就显示出来， 权限控制放后台 -->
       <div v-if="submission.info && !isCE">
-        <Panel>
+        <Panel style="margin-bottom: 10px">
           <div slot="title">
-            {{ $t('m.Submission_Tests') }}
+            <h4>{{ $t('m.Submission_Tests') }}</h4>
           </div>
           <Table
             stripe
@@ -42,15 +42,41 @@
             :data="submission.info.data"
           ></Table>
         </Panel>
+        <Panel style="margin-bottom: 10px">
+          <div slot="title">
+            <h4>{{ $t('m.Submission_Outputs') }}</h4>
+          </div>
+          <div
+            style="margin: 0px 35px; margin-bottom: 30px"
+            v-for="item in submission.info.data.slice(0, 2)"
+            v-bind:key="item['test_case']"
+          >
+            <h2 style="margin-bottom: 10px">{{ item['test_case'] }}.</h2>
+            <h4>{{ $t('m.Submission_Output_Test') }}</h4>
+            <Highlight
+              :border-color="item.result === 0 ? '#1b6' : '#F00'"
+              :code="item['test_output']"
+            />
+            <h4>{{ $t('m.Submission_Output_SubmissionOutput') }}</h4>
+            <Highlight
+              :border-color="item.result === 0 ? '#1b6' : '#F00'"
+              :code="item['output']"
+            />
+          </div>
+        </Panel>
       </div>
-
-      <div>
-        <Highlight
-          :code="submission.code"
-          :language="submission.language"
-          :border-color="status.color"
-        ></Highlight>
-      </div>
+      <Panel style="margin-bottom: 10px">
+        <div slot="title">
+          <h4>{{ $t('m.Submission_Code') }}</h4>
+        </div>
+        <div style="margin: 0px 30px; margin-top: -20px">
+          <Highlight
+            :code="submission.code"
+            :language="submission.language"
+            :border-color="status.color"
+          ></Highlight>
+        </div>
+      </Panel>
       <div v-if="submission.can_unshare">
         <div id="share-btn">
           <Button

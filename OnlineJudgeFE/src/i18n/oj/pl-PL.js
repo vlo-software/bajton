@@ -288,5 +288,10 @@ export const m = {
   UserHomeIntro:
     'Ta osoba jest tak leniwa, że nie rozwiązała jeszcze żadnych problemów.',
   // TODO: move this
-  Details: 'Więcej'
+  Details: 'Więcej',
+  Submission_Outputs: 'Wyjścia',
+  Submission_Output_Test: 'Wyjście testu:',
+  Submission_Output_SubmissionOutput: 'Wyjście programu:',
+  Submission_Tests: 'Wyniki testów',
+  Submission_Code: 'Kod'
 }
