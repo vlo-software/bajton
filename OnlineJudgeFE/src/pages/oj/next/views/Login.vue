@@ -108,8 +108,9 @@ export default {
           this.btnLoginLoading = false
           window.location.href = '/home'
         },
-        (_) => {
-          // TODO: Handle error
+        (e) => {
+          console.error(e)
+          this.errors.push(e.data.data)
           this.btnLoginLoading = false
         }
       )

@@ -1,11 +1,9 @@
 <template>
-  <Row type="flex">
-    <Col :span="24">
+  <Flex style="font-size: 10px; padding-bottom: 80px">
+    <div style="width: 100%">
       <Panel id="contest-card" shadow>
         <div slot="title">
-          {{
-            query.rule_type === '' ? this.$i18n.t('m.All') : query.rule_type
-          }}
+          {{ query.rule_type === '' ? this.$i18n.t('m.All') : query.rule_type }}
           {{ $t('m.Contests') }}
         </div>
         <div slot="extra">
@@ -59,7 +57,7 @@
                 @on-enter="changeRoute"
                 @on-click="changeRoute"
                 v-model="query.keyword"
-                icon="ios-search-strong"
+                icon="search"
                 placeholder="Keyword"
               />
             </li>
@@ -70,38 +68,40 @@
         </p>
         <ol id="contest-list">
           <li v-for="contest in contests" :key="contest.title">
-            <Row type="flex" justify="space-between" align="middle">
-              <img class="trophy" src="../../../../assets/Cup.png" />
-              <Col :span="18" class="contest-main">
-                <p class="title">
-                  <a class="entry" @click.stop="goContest(contest)">
-                    {{ contest.title }}
-                  </a>
-                  <template v-if="contest.contest_type != 'Public'">
-                    <Icon type="ios-locked-outline" size="20"></Icon>
-                  </template>
-                </p>
-                <ul class="detail">
-                  <li>
-                    <Icon type="calendar" color="#3091f2"></Icon>
-                    {{ contest.start_time | localtime('YYYY-M-D HH:mm') }}
-                  </li>
-                  <li>
-                    <Icon type="android-time" color="#3091f2"></Icon>
-                    {{ getDuration(contest.start_time, contest.end_time) }}
-                  </li>
-                  <li>
-                    <Button
-                      size="small"
-                      shape="circle"
-                      @click="onRuleChange(contest.rule_type)"
-                    >
-                      {{ contest.rule_type }}
-                    </Button>
-                  </li>
-                </ul>
-              </Col>
-              <Col :span="4" style="text-align: center">
+            <Grid justify="between" align="center">
+              <Grid align="center" gap="50">
+                <img class="trophy" src="../../../../assets/Cup.png" />
+                <div class="contest-main">
+                  <p class="title">
+                    <a class="entry" @click.stop="goContest(contest)">
+                      {{ contest.title }}
+                    </a>
+                    <template v-if="contest.contest_type != 'Public'">
+                      <Icon type="ios-locked-outline" size="20"></Icon>
+                    </template>
+                  </p>
+                  <ul class="detail">
+                    <li>
+                      <Icon type="calendar" color="#3091f2"></Icon>
+                      {{ contest.start_time | localtime('YYYY-M-D HH:mm') }}
+                    </li>
+                    <li>
+                      <Icon type="android-time" color="#3091f2"></Icon>
+                      {{ getDuration(contest.start_time, contest.end_time) }}
+                    </li>
+                    <li>
+                      <Button
+                        size="small"
+                        shape="circle"
+                        @click="onRuleChange(contest.rule_type)"
+                      >
+                        {{ contest.rule_type }}
+                      </Button>
+                    </li>
+                  </ul>
+                </div>
+              </Grid>
+              <Flex align="center" justify="start" style="margin-right: 50px">
                 <Tag
                   type="dot"
                   :color="CONTEST_STATUS_REVERSE[contest.status].color"
@@ -115,8 +115,8 @@
                     )
                   }}</Tag
                 >
-              </Col>
-            </Row>
+              </Flex>
+            </Grid>
           </li>
         </ol>
       </Panel>
@@ -128,8 +128,8 @@
         :show-sizer="true"
         @on-page-size-change="changeRoute"
       ></Pagination>
-    </Col>
-  </Row>
+    </div>
+  </Flex>
 </template>
 
 <script>
@@ -139,7 +139,16 @@ import utils from '@/utils/utils'
 import Pagination from '@/pages/oj/components/Pagination'
 import time from '@/utils/time'
 import { CONTEST_STATUS_REVERSE, CONTEST_TYPE } from '@/utils/constants'
-import { Button } from '@oj/bajton-ui'
+import {
+  Button,
+  Tag,
+  Flex,
+  Grid,
+  Input,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu
+} from '@oj/bajton-ui'
 
 const limit = 10
 
@@ -147,7 +156,14 @@ export default {
   name: 'contest-list',
   components: {
     Pagination,
-    Button
+    Button,
+    Tag,
+    Flex,
+    Grid,
+    Input,
+    Dropdown,
+    DropdownItem,
+    DropdownMenu
   },
   data () {
     return {

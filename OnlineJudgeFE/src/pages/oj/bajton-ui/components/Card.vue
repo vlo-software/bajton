@@ -65,8 +65,9 @@ export default {
   }
 }
 .main {
-  overflow: auto;
+  display: grid;
   border-radius: 10px;
   background: var(--background-color-full);
+  font-size: 1.2em;
 }
 </style>

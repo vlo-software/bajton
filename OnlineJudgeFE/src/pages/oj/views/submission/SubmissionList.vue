@@ -27,14 +27,14 @@
             </li>
 
             <li>
-              <i-switch
+              <Toggle
                 size="large"
                 v-model="formFilter.myself"
                 @on-change="handleQueryChange"
               >
                 <span slot="open">{{ $t('m.Mine') }}</span>
                 <span slot="close">{{ $t('m.All') }}</span>
-              </i-switch>
+              </Toggle>
             </li>
             <li>
               <Input
@@ -76,13 +76,27 @@ import { JUDGE_STATUS, USER_TYPE } from '@/utils/constants'
 import utils from '@/utils/utils'
 import time from '@/utils/time'
 import Pagination from '@/pages/oj/components/Pagination'
-import { Button } from '@oj/bajton-ui'
+import {
+  Button,
+  Table,
+  Input,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Toggle
+} from '@oj/bajton-ui'
 
 export default {
   name: 'submissionList',
   components: {
     Pagination,
-    Button
+    Button,
+    Table,
+    Input,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    Toggle
   },
   data () {
     return {

@@ -70,7 +70,8 @@ export default {
           [`btn-${this.shape}`]: !!this.shape,
           [`btn-${this.size}`]: !!this.size,
           [`btn-loading`]: this.loading != null && this.loading,
-          [`btn-icon-only`]: !this.showSlot && (!!this.icon || this.loading)
+          [`btn-icon-only`]: !this.showSlot && (!!this.icon || this.loading),
+          [`btn-disabled`]: !!this.disabled
         }
       ]
     }
@@ -101,7 +102,7 @@ export default {
   transition: 0.2s ease;
   cursor: pointer;
   &-small {
-    padding: 7px;
+    padding: 8px 10px;
     font-size: 0.8em;
     font-weight: 500;
   }
@@ -116,6 +117,7 @@ export default {
   }
   &-primary {
     background: var(--primary-color);
+    color: #fff;
     border: none;
   }
   &-ghost {
@@ -123,6 +125,7 @@ export default {
   }
   &-dashed {
     background: var(--dashed-color);
+    color: #fff;
   }
   &-text {
     background: transparent;
@@ -130,18 +133,22 @@ export default {
   }
   &-info {
     background: var(--info-color);
+    color: #fff;
     border: none;
   }
   &-success {
     background: var(--success-color);
+    color: #fff;
     border: none;
   }
   &-warning {
     background: var(--warning-color);
+    color: #fff;
     border: none;
   }
   &-error {
     background: var(--error-color);
+    color: #fff;
     border: none;
   }
   &-default {
@@ -152,6 +159,12 @@ export default {
   }
   &:hover {
     filter: brightness(110%);
+  }
+  &-disabled {
+    cursor: not-allowed;
+    &:hover {
+      filter: none;
+    }
   }
 }
 </style>

@@ -25,25 +25,33 @@ export const m = {
   Statistic: 'Statystyki',
   Close: 'Zamknij',
   View_Contest: 'Pokaż konkurs',
-  Are_you_sure_you_want_to_reset_your_code: 'Czy napewno chcesz usunąć swój kod?',
+  Are_you_sure_you_want_to_reset_your_code:
+    'Czy napewno chcesz usunąć swój kod?',
   Code_can_not_be_empty: 'Kod nie może być pusty.',
   Submit_code_successfully: 'Wysyłanie kodu powiodło się',
   You_have_solved_the_problem: 'Problem jest już przez ciebie rozwiązany',
   Submitted_successfully: 'Wysłano z powodzeniem',
   You_have_submitted_a_solution: 'Rozwiązanie zostało przez ciebie wysłane.',
   Contest_has_ended: 'Konkurs się skończył',
-  You_have_submission_in_this_problem_sure_to_cover_it: 'Masz już rozwiązanie tego problemu, czy napewno chcesz je zastąpić?',
+  You_have_submission_in_this_problem_sure_to_cover_it:
+    'Masz już rozwiązanie tego problemu, czy napewno chcesz je zastąpić?',
   // About.vue
   Compiler: 'Kompilator',
   Result_Explanation: 'Wyjaśnienie wyniku',
-  Pending_Judging_Description: 'Twoje rozwiązanie zostanie niedługo ocenione, zaczekaj na wynik.',
-  Compile_Error_Description: 'Twój kod się nie skompilował. Kliknij na link aby zobaczyć output kompilatora.',
+  Pending_Judging_Description:
+    'Twoje rozwiązanie zostanie niedługo ocenione, zaczekaj na wynik.',
+  Compile_Error_Description:
+    'Twój kod się nie skompilował. Kliknij na link aby zobaczyć output kompilatora.',
   Accepted_Description: 'Gratulacje. Twoje rozwiązanie jest poprawne.',
-  Wrong_Answer_Description: 'Wyjście twojego programu nie zgadza się z odpowiedzią sędziego.',
-  Runtime_Error_Description: 'Twój program wyszedł w sposób nadzwyczajny. Możliwe przyczyny: segment fault, dzielenie przez zero lub exit code inny niż 0.',
-  Time_Limit_Exceeded_Description: 'Twój program przekroczył limit czasu procesora.',
+  Wrong_Answer_Description:
+    'Wyjście twojego programu nie zgadza się z odpowiedzią sędziego.',
+  Runtime_Error_Description:
+    'Twój program wyszedł w sposób nadzwyczajny. Możliwe przyczyny: segment fault, dzielenie przez zero lub exit code inny niż 0.',
+  Time_Limit_Exceeded_Description:
+    'Twój program przekroczył limit czasu procesora.',
   Memory_Limit_Exceeded_Description: 'Twój program przekroczył limit pamięci.',
-  System_Error_Description: 'Ups, sędzia spadł z rowerka. Proszę poimformuj o tym administratora.',
+  System_Error_Description:
+    'Ups, sędzia spadł z rowerka. Proszę poimformuj o tym administratora.',
   // ACMContestRank.vue
   Menu: 'Menu',
   Chart: 'Wykres',
@@ -74,21 +82,27 @@ export const m = {
   // ApplyResetPassword.vue
   The_email_doesnt_exist: 'Email nie istnieje',
   Success: 'Sukces',
-  Password_reset_mail_sent: 'Email do przywrócenia pasła został do ciebie wysłany.',
+  Password_reset_mail_sent:
+    'Email do przywrócenia pasła został do ciebie wysłany.',
   // FAQ.vue
   Frequently_Asked_Questions: 'Często zadawane pytania',
   Where_is_the_input_and_the_output: 'Gdzie jest wejście i wyjście?',
-  Where_is_the_input_and_the_output_answer_part_1: 'Twój program powinnien wczytać wejście z',
+  Where_is_the_input_and_the_output_answer_part_1:
+    'Twój program powinnien wczytać wejście z',
   Standard_Input: 'Standard Input',
   Where_is_the_input_and_the_output_answer_part_3: 'i zapisać wyjście do',
   Standard_Output: 'Standard Output',
   Where_is_the_input_and_the_output_answer_part_5: 'Na przykład, możesz użyć',
   Where_is_the_input_and_the_output_answer_part_6: 'w C lub',
-  Where_is_the_input_and_the_output_answer_part_7: 'w C++ aby wczytać z stdin, oraz',
+  Where_is_the_input_and_the_output_answer_part_7:
+    'w C++ aby wczytać z stdin, oraz',
   Where_is_the_input_and_the_output_answer_part_8: 'w C lub',
-  Where_is_the_input_and_the_output_answer_part_9: 'w C++ aby zapisać do stdout.  Programy użytkowników nie mogą czytać, ani zapisywać plików, albo dostaniesz',
-  What_is_the_meaning_of_submission_execution_time: 'Jakie jest znaczenie czasu wykonywania rozwiąznia?',
-  What_is_the_meaning_of_submission_execution_time_answer: 'SędziaOnline może testować twój kod wielokrotnie, z różnymi wejściami. Jeśli twój kod zwróci poprwaną odpowiedź, mieszcząc się w limicie czasowym dla każdego pliku wejściowego, wyświetlony czas wykonywania to maksymalny czas spędzony na wykonywaniu każdego przypadku testowego. W przeciwnym wypadku, czas wykonywania nie będzie miał sensu.',
+  Where_is_the_input_and_the_output_answer_part_9:
+    'w C++ aby zapisać do stdout.  Programy użytkowników nie mogą czytać, ani zapisywać plików, albo dostaniesz',
+  What_is_the_meaning_of_submission_execution_time:
+    'Jakie jest znaczenie czasu wykonywania rozwiąznia?',
+  What_is_the_meaning_of_submission_execution_time_answer:
+    'SędziaOnline może testować twój kod wielokrotnie, z różnymi wejściami. Jeśli twój kod zwróci poprwaną odpowiedź, mieszcząc się w limicie czasowym dla każdego pliku wejściowego, wyświetlony czas wykonywania to maksymalny czas spędzony na wykonywaniu każdego przypadku testowego. W przeciwnym wypadku, czas wykonywania nie będzie miał sensu.',
   How_Can_I_use_CPP_Int64: 'Jak mogę użyć C++ Int64?',
   How_Can_I_use_CPP_Int64_answer_part_1: 'Musisz zadeklarować jako',
   How_Can_I_use_CPP_Int64_answer_part_2: 'i użyć z',
@@ -96,16 +110,23 @@ export const m = {
   using: 'użycie',
   How_Can_I_use_CPP_Int64_answer_part_3: 'zaowocuje w',
   Java_specifications: 'Specyfikacja Java?',
-  Java_specifications_answer_part_1: 'Wszystkie programy muszą zaczynać się od metody static main w',
-  Java_specifications_answer_part_2: 'klasie. Nie używaj klas publicznych: nawet',
-  Java_specifications_answer_part_3: 'musi być niepubliczne aby uniknąć błędu kompilacji. Używaj buffered I/O aby uniknąć przekroczenia czasu procesora, przez nadmierne czyszczenie strumienia.',
+  Java_specifications_answer_part_1:
+    'Wszystkie programy muszą zaczynać się od metody static main w',
+  Java_specifications_answer_part_2:
+    'klasie. Nie używaj klas publicznych: nawet',
+  Java_specifications_answer_part_3:
+    'musi być niepubliczne aby uniknąć błędu kompilacji. Używaj buffered I/O aby uniknąć przekroczenia czasu procesora, przez nadmierne czyszczenie strumienia.',
   About_presentation_error: 'Co z błędem przezntacji?',
-  About_presentation_error_answer_part_1: 'Nie ma tu błędu przezntacji. Sędzia obetnie zawinięcia w twojego wyjścia',
+  About_presentation_error_answer_part_1:
+    'Nie ma tu błędu przezntacji. Sędzia obetnie zawinięcia w twojego wyjścia',
   last: 'ostatniej',
-  About_presentation_error_answer_part_2: 'lini.  Jeśli wynik dalej się nie zgadza, zwrócony zostanie',
+  About_presentation_error_answer_part_2:
+    'lini.  Jeśli wynik dalej się nie zgadza, zwrócony zostanie',
   How_to_report_bugs: 'Jak zgłaszać bugi?',
-  How_to_report_bugs_answer_part_1: 'Onlinejudge jest open source, możesz stworzyć issue na',
-  How_to_report_bugs_answer_part_2: 'Szczegóły (jak env, wersja..) na temat buga są wymagane, pomogą rozwiązać twój problem. Ta wersja Onlinejudge jest zmodyfikowna na potrzeby V Liceum w Gdańsku, więc lekko odbiega od kodu dostępnego w oficjalnym repozytorium.',
+  How_to_report_bugs_answer_part_1:
+    'Onlinejudge jest open source, możesz stworzyć issue na',
+  How_to_report_bugs_answer_part_2:
+    'Szczegóły (jak env, wersja..) na temat buga są wymagane, pomogą rozwiązać twój problem. Ta wersja Onlinejudge jest zmodyfikowna na potrzeby V Liceum w Gdańsku, więc lekko odbiega od kodu dostępnego w oficjalnym repozytorium.',
   // Cancel.vue
   Cancel: 'Anuluj',
   // ContestDetail.vue
@@ -141,7 +162,8 @@ export const m = {
   Toggle_vim: 'Przełącz tryb Vim',
   Vim_enabled: 'Key bindingi Vim zostały włączone.',
   Sublime_enabled: 'Key bindingi Sublime zostały włączone.',
-  Are_you_sure_you_want_to_enable_vim: 'Czy napewno chcesz włączyć key bindingi Vim?<br/><br/><em>Raczej nie chcesz.</em><br/><br/>Jeśli klikniesz ok i utkniesz, możesz zawsze wrócić do key bindingów sublime, klikając ponownie na przycisk Vim.',
+  Are_you_sure_you_want_to_enable_vim:
+    'Czy napewno chcesz włączyć key bindingi Vim?<br/><br/><em>Raczej nie chcesz.</em><br/><br/>Jeśli klikniesz ok i utkniesz, możesz zawsze wrócić do key bindingów sublime, klikając ponownie na przycisk Vim.',
   Monokai: 'Monokai',
   Solarized_Light: 'Solarized Light',
   Material: 'Material',
@@ -218,7 +240,8 @@ export const m = {
   The_username_already_exists: 'Nazwa użytkownika jest już zajęta.',
   The_email_already_exists: 'Adres email jest już zajęty',
   password_does_not_match: 'pasło się nie zgadza',
-  Thanks_for_registering: 'Dziękujemy za rejestrację, możesz się teraz zalogować!',
+  Thanks_for_registering:
+    'Dziękujemy za rejestrację, możesz się teraz zalogować!',
   // ResetPassword.vue and ApplyResetPassword.vue
   Reset_Password: 'Zgubione pasło',
   RPassword: 'Pasło',
@@ -230,7 +253,8 @@ export const m = {
   // Save.vue
   Save: 'Zapisz',
   // Simditor.vue
-  Uploading_is_in_progress: 'Wgrywanie w toku, czy napewno chcesz opuścić tą stronę?',
+  Uploading_is_in_progress:
+    'Wgrywanie w toku, czy napewno chcesz opuścić tą stronę?',
   // SubmissionDetails.vue
   Lang: 'Język',
   Share: 'Udostępnij',
@@ -261,5 +285,8 @@ export const m = {
   UserHomeserSubmissions: 'Rozwiązania',
   UserHomeScore: 'Wynik',
   List_Solved_Problems: 'Lista rozwiązanych problemów',
-  UserHomeIntro: 'Ta osoba jest tak leniwa, że nie rozwiązała jeszcze żadnych problemów.'
+  UserHomeIntro:
+    'Ta osoba jest tak leniwa, że nie rozwiązała jeszcze żadnych problemów.',
+  // TODO: move this
+  Details: 'Więcej'
 }

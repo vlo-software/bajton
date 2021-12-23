@@ -33,20 +33,20 @@
           >
           </vueCropper>
         </div>
-        <ButtonGroup vertical class="cropper-btn">
+        <div class="cropper-btn">
           <Button @click="rotate('left')">
-            <Icon type="arrow-return-left" size="20"></Icon>
+            <i class="bi bi-arrow-counterclockwise"></i>
           </Button>
           <Button @click="rotate('right')">
-            <Icon type="arrow-return-right" size="20"></Icon>
+            <i class="bi bi-arrow-clockwise"></i>
           </Button>
           <Button @click="reselect">
-            <Icon type="refresh" size="20"></Icon>
+            <i class="bi bi-x-lg"></i>
           </Button>
           <Button @click="finishCrop">
-            <Icon type="checkmark-round" size="20"></Icon>
+            <i class="bi bi-check-lg"></i>
           </Button>
-        </ButtonGroup>
+        </div>
         <div class="cropper-preview" :style="previewStyle">
           <div :style="preview.div">
             <img :src="avatarOption.imgSrc" :style="preview.img" />
@@ -68,8 +68,8 @@
 
     <div class="section-title">{{ $t('m.Profile_Setting') }}</div>
     <Form ref="formProfile" :model="formProfile">
-      <Row type="flex" :gutter="30" justify="space-around">
-        <Col :span="11">
+      <Grid gap="30" justify="around">
+        <Grid gap="20" direction="column" style="width: 100%">
           <FormItem label="Real Name">
             <Input v-model="formProfile.real_name" />
           </FormItem>
@@ -97,9 +97,9 @@
               >Save All</Button
             >
           </Form-item>
-        </Col>
+        </Grid>
 
-        <Col :span="11">
+        <Grid gap="20" direction="column" style="width: 100%">
           <Form-item label="Mood">
             <Input v-model="formProfile.mood" />
           </Form-item>
@@ -109,8 +109,8 @@
           <Form-item label="Github">
             <Input v-model="formProfile.github" />
           </Form-item>
-        </Col>
-      </Row>
+        </Grid>
+      </Grid>
     </Form>
   </div>
 </template>
@@ -121,12 +121,28 @@ import utils from '@/utils/utils'
 import { VueCropper } from 'vue-cropper'
 import { types } from '@/store'
 import { languages } from '@/i18n'
-import { Button } from '@oj/bajton-ui'
+import {
+  Button,
+  Flex,
+  Grid,
+  Input,
+  Form,
+  FormItem,
+  Select,
+  Option
+} from '@oj/bajton-ui'
 
 export default {
   components: {
     VueCropper,
-    Button
+    Button,
+    Flex,
+    Grid,
+    Input,
+    Form,
+    FormItem,
+    Select,
+    Option
   },
   data () {
     return {
@@ -300,8 +316,11 @@ export default {
     .copper-img;
   }
   .cropper-btn {
-    flex: none;
-    vertical-align: top;
+    display: flex;
+    flex-direction: column;
+    button {
+      margin: 5px;
+    }
   }
   .cropper-preview {
     flex: none;

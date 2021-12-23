@@ -1,65 +1,67 @@
 <template>
-  <li @click.stop="handleClick" :class="{disabled: disabled}">
+  <li @click.stop="handleClick" :class="{ disabled: disabled }">
     <slot></slot>
   </li>
 </template>
 
 <script>
-  import Emitter from '../mixins/emitter'
+import Emitter from '../mixins/emitter'
 
-  export default {
-    name: 'VerticalMenu-item',
-    mixins: [Emitter],
-    props: {
-      route: {
-        type: [String, Object]
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      }
+export default {
+  name: 'VerticalMenu-item',
+  mixins: [Emitter],
+  props: {
+    route: {
+      type: [String, Object]
     },
-    methods: {
-      handleClick () {
-        if (this.route) {
-          this.dispatch('VerticalMenu', 'on-click', this.route)
-        }
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {
+    handleClick () {
+      if (this.route) {
+        this.dispatch('VerticalMenu', 'on-click', this.route)
       }
     }
   }
+}
 </script>
 
 <style scoped lang="less">
-  .disabled {
-    /*background-color: #ccc;*/
-    opacity: 1;
-    /*cursor: not-allowed;*/
-    pointer-events: none;
+.disabled {
+  /*background-color: #ccc;*/
+  opacity: 1;
+  /*cursor: not-allowed;*/
+  pointer-events: none;
+  color: var(--diff-tone-color);
+  &:hover {
+    border-left: none;
     color: var(--diff-tone-color);
-    &:hover {
-      border-left: none;
-      color: var(--diff-tone-color);
-      background: var(--background-color-full);
-    }
+    background: var(--background-color-full);
   }
+}
 
-  li {
-    border-bottom: 1px dashed var(--pre-border-color);
-    color: #495060;
-    display: block;
-    text-align: left;
-    padding: 15px 20px;
-    &:hover {
-      background: var(--pre-background-color);
-      border-left: 2px solid #5cadff;
-      color: #2d8cf0;
-    }
-    & > .ivu-icon {
-      font-size: 16px;
-      margin-right: 8px;
-    }
-    &:last-child {
-      border-bottom: none;
-    }
+li {
+  color: var(--text-color);
+  display: block;
+  text-align: left;
+  padding: 15px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  &:hover {
+    border-left: 2px solid var(--primary-color);
+    background: var(--pre-background-color);
+    color: var(--primary-color);
   }
+  & > .ivu-icon {
+    font-size: 16px;
+    margin-right: 8px;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+}
 </style>
