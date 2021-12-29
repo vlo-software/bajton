@@ -4,7 +4,7 @@
       <div>
         <span>{{ $t('m.Language') }}:</span>
         <Select :value="language" @on-change="onLangChange" class="adjust">
-          <Option v-for="item in languages" :key="item" :value="item"
+          <Option v-for="item in languagesData" :key="item" :value="item"
             >{{ item }}
           </Option>
         </Select>
@@ -145,6 +145,7 @@ export default {
       mode: {
         'C++': 'text/x-csrc'
       },
+      languagesData: [],
       themes: [
         { label: this.$i18n.t('m.Monokai'), value: 'monokai' },
         { label: this.$i18n.t('m.Solarized_Light'), value: 'solarized' },
@@ -168,6 +169,8 @@ export default {
       this.$emit('update:value', newCode)
     },
     onLangChange (newVal) {
+      console.log(newVal)
+      if (newVal.toLowerCase() === 'brainf**k') newVal = 'BrainFuck'
       this.editor.setOption('mode', this.mode[newVal])
       this.$emit('changeLang', newVal)
     },
@@ -218,6 +221,16 @@ export default {
   watch: {
     theme (newVal, oldVal) {
       this.editor.setOption('theme', newVal)
+    },
+    languages (newVal, oldVal) {
+      this.languagesData = newVal
+        .map((lang) =>
+          lang.toLowerCase() === 'brainfuck' ? 'BrainF**k' : lang
+        )
+        .sort((a, b) =>
+          a === 'C++' || a === 'C' || a === 'Python3' ? -1 : a.localeCompare(b)
+        )
+      this.onLangChange(this.languagesData[0])
     }
   }
 }

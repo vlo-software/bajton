@@ -300,7 +300,13 @@ export default {
           }
           this.adjustRejudgeColumn()
           this.loadingTable = false
-          this.submissions = data.results
+          this.submissions = data.results.map((submission) => ({
+            ...submission,
+            language:
+              submission.language.toLowerCase() === 'brainfuck'
+                ? 'BrainF**k'
+                : submission.language
+          }))
           this.total = data.total
         })
         .catch(() => {
