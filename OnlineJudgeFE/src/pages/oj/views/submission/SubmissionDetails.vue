@@ -54,12 +54,12 @@
             <h2 style="margin-bottom: 10px">{{ item['test_case'] }}.</h2>
             <h4>{{ $t('m.Submission_Output_Test') }}</h4>
             <Highlight
-              :border-color="item.result === 0 ? '#1b6' : '#F00'"
+              :border-color="item.result === 0 ? '#10B060' : '#F00'"
               :code="item['test_output']"
             />
             <h4>{{ $t('m.Submission_Output_SubmissionOutput') }}</h4>
             <Highlight
-              :border-color="item.result === 0 ? '#1b6' : '#F00'"
+              :border-color="item.result === 0 ? '#10B060' : '#F00'"
               :code="item['output']"
             />
           </div>

@@ -30,6 +30,9 @@ export default {
       default: 'green'
     }
   },
+  mounted () {
+    this.styleObject['border-left'] = '2.5px solid ' + this.borderColor
+  },
   watch: {
     borderColor (newVal, oldVal) {
       this.styleObject['border-left'] = '2.5px solid ' + newVal
