@@ -12,6 +12,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "async-validator": "^4.0.7",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",

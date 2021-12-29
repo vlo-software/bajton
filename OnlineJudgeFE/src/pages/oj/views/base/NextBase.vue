@@ -6,11 +6,14 @@
 
 <script>
 import api from '@oj/api'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default {
   name: 'app',
   components: {},
   mounted () {
+    AOS.init()
     api.getUserInfo().then((res) => {
       if (res.data.data !== null) {
         window.location.href = '/home'
@@ -27,6 +30,22 @@ export default {
 body {
   margin: 0;
   padding: 0;
+}
+
+:root {
+  scrollbar-width: thin;
+  scrollbar-color: #4c007b #0b001d;
+}
+
+::-webkit-scrollbar {
+  display: block;
+  background: #0b001d;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4c007b;
+  border-radius: 10px;
 }
 
 #app {
