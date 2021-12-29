@@ -46,6 +46,7 @@ pre {
   padding: 0;
   display: block;
   code {
+    max-width: calc(80vw - 70px);
     padding: 20px;
     font-size: 1.1em;
   }
