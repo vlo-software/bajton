@@ -117,7 +117,7 @@ export default {
     },
     language: {
       type: String,
-      default: 'C++'
+      default: 'Python3'
     },
     theme: {
       type: String,
@@ -143,7 +143,7 @@ export default {
         highlightSelectionMatches: { showToken: /\w/, annotateScrollbar: true }
       },
       mode: {
-        'C++': 'text/x-csrc'
+        Python3: 'text/x-csrc'
       },
       languagesData: [],
       themes: [

@@ -7,7 +7,6 @@
         <div id="problem-content" class="markdown-body" v-katex>
           <p class="title">{{ $t('m.Description') }}</p>
           <p class="content" v-html="problem.description"></p>
-          <!-- {{$t('m.music')}} -->
           <p class="title">
             {{ $t('m.Input') }}
             <span v-if="problem.io_mode.io_mode == 'File IO'"
@@ -35,7 +34,10 @@
                     v-clipboard:success="onCopy"
                     v-clipboard:error="onCopyError"
                   >
-                    <Icon type="clipboard"></Icon>
+                    <Icon
+                      style="color: var(--primary-color)"
+                      type="clipboard"
+                    ></Icon>
                   </a>
                 </p>
                 <pre>{{ sample.input }}</pre>
@@ -330,7 +332,7 @@ export default {
       problemID: '',
       submitting: false,
       code: '',
-      language: 'C++',
+      language: 'Python3',
       theme: 'material',
       submissionId: '',
       submitted: false,
@@ -670,7 +672,7 @@ export default {
     font-size: 20px;
     font-weight: 400;
     margin: 25px 0 8px 0;
-    color: #3091f2;
+    color: var(--primary-color);
     .copy {
       padding-left: 8px;
     }
