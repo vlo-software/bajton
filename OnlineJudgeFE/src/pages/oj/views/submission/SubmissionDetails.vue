@@ -216,6 +216,9 @@ export default {
               this.columns = this.columns.concat(adminColumn)
             }
           }
+          if (data.language === 'BrainFuck') {
+            data.language = 'BrainF**k'
+          }
           this.submission = data
         },
         () => {
