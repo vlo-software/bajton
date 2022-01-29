@@ -1,5 +1,5 @@
 <template>
-  <div style="margin: 0px 0px 15px 0px">
+  <div style="margin: 0px 0px 15px 0px; position: relative">
     <Grid justify="between" align="center" class="header">
       <div>
         <span>{{ $t('m.Language') }}:</span>
@@ -255,5 +255,8 @@ export default {
 .CodeMirror-scroll {
   min-height: 300px;
   max-height: 1000px;
+}
+pre.CodeMirror-line {
+  word-break: break-all !important;
 }
 </style>
