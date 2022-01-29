@@ -169,7 +169,6 @@ export default {
       this.$emit('update:value', newCode)
     },
     onLangChange (newVal) {
-      console.log(newVal)
       if (newVal.toLowerCase() === 'brainf**k') newVal = 'BrainFuck'
       this.editor.setOption('mode', this.mode[newVal])
       this.$emit('changeLang', newVal)

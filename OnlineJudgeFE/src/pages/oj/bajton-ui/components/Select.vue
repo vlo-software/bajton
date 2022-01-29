@@ -42,11 +42,6 @@ export default {
         }
       ]
     }
-  },
-  watch: {
-    value (newVal, _) {
-      console.log(newVal)
-    }
   }
   // TODO: Add support for search
 }

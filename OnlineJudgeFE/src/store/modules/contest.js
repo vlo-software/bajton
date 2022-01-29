@@ -43,8 +43,11 @@ const getters = {
     return state.contest.rule_type || null
   },
   isContestAdmin: (state, getters, _, rootGetters) => {
-    return rootGetters.isAuthenticated &&
-      (state.contest.created_by.id === rootGetters.user.id || rootGetters.user.admin_type === USER_TYPE.SUPER_ADMIN)
+    return (
+      rootGetters.isAuthenticated &&
+      (state.contest.created_by.id === rootGetters.user.id ||
+        rootGetters.user.admin_type === USER_TYPE.SUPER_ADMIN)
+    )
   },
   contestMenuDisabled: (state, getters) => {
     if (getters.isContestAdmin) return false
@@ -54,7 +57,10 @@ const getters = {
     return !state.access
   },
   OIContestRealTimePermission: (state, getters, _, rootGetters) => {
-    if (getters.contestRuleType === 'ACM' || getters.contestStatus === CONTEST_STATUS.ENDED) {
+    if (
+      getters.contestRuleType === 'ACM' ||
+      getters.contestStatus === CONTEST_STATUS.ENDED
+    ) {
       return true
     }
     return state.contest.real_time_rank === true || getters.isContestAdmin
@@ -68,7 +74,11 @@ const getters = {
     return !rootGetters.isAuthenticated
   },
   passwordFormVisible: (state, getters) => {
-    return state.contest.contest_type !== CONTEST_TYPE.PUBLIC && !state.access && !getters.isContestAdmin
+    return (
+      state.contest.contest_type !== CONTEST_TYPE.PUBLIC &&
+      !state.access &&
+      !getters.isContestAdmin
+    )
   },
   contestStartTime: (state) => {
     return moment(state.contest.start_time)
@@ -78,16 +88,30 @@ const getters = {
   },
   countdown: (state, getters) => {
     if (getters.contestStatus === CONTEST_STATUS.NOT_START) {
-      let duration = moment.duration(getters.contestStartTime.diff(state.now, 'seconds'), 'seconds')
+      let duration = moment.duration(
+        getters.contestStartTime.diff(state.now, 'seconds'),
+        'seconds'
+      )
       // time is too long
       if (duration.weeks() > 0) {
         return 'Start At ' + duration.humanize()
       }
-      let texts = [Math.floor(duration.asHours()), duration.minutes(), duration.seconds()]
+      let texts = [
+        Math.floor(duration.asHours()),
+        duration.minutes(),
+        duration.seconds()
+      ]
       return '-' + texts.join(':')
     } else if (getters.contestStatus === CONTEST_STATUS.UNDERWAY) {
-      let duration = moment.duration(getters.contestEndTime.diff(state.now, 'seconds'), 'seconds')
-      let texts = [Math.floor(duration.asHours()), duration.minutes(), duration.seconds()]
+      let duration = moment.duration(
+        getters.contestEndTime.diff(state.now, 'seconds'),
+        'seconds'
+      )
+      let texts = [
+        Math.floor(duration.asHours()),
+        duration.minutes(),
+        duration.seconds()
+      ]
       return '-' + texts.join(':')
     } else {
       return 'Ended'
@@ -100,7 +124,7 @@ const mutations = {
     state.contest = payload.contest
   },
   [types.CHANGE_CONTEST_ITEM_VISIBLE] (state, payload) {
-    state.itemVisible = {...state.itemVisible, ...payload}
+    state.itemVisible = { ...state.itemVisible, ...payload }
   },
   [types.CHANGE_RANK_FORCE_UPDATE] (state, payload) {
     state.forceUpdate = payload.value
@@ -115,7 +139,7 @@ const mutations = {
     state.access = payload.access
   },
   [types.CLEAR_CONTEST] (state) {
-    state.contest = {created_by: {}}
+    state.contest = { created_by: {} }
     state.contestProblems = []
     state.access = false
     state.itemVisible = {
@@ -134,45 +158,56 @@ const mutations = {
 }
 
 const actions = {
-  getContest ({commit, rootState, dispatch}) {
+  getContest ({ commit, rootState, dispatch }) {
     return new Promise((resolve, reject) => {
-      api.getContest(rootState.route.params.contestID).then((res) => {
-        resolve(res)
-        let contest = res.data.data
-        commit(types.CHANGE_CONTEST, {contest: contest})
-        commit(types.NOW, {now: moment(contest.now)})
-        if (contest.contest_type === CONTEST_TYPE.PRIVATE) {
-          dispatch('getContestAccess')
-        }
-      }, err => {
-        reject(err)
-      })
-    })
-  },
-  getContestProblems ({commit, rootState}) {
-    return new Promise((resolve, reject) => {
-      api.getContestProblemList(rootState.route.params.contestID).then(res => {
-        res.data.data.sort((a, b) => {
-          if (a._id === b._id) {
-            return 0
-          } else if (a._id > b._id) {
-            return 1
+      api.getContest(rootState.route.params.contestID).then(
+        (res) => {
+          resolve(res)
+          let contest = res.data.data
+          commit(types.CHANGE_CONTEST, { contest: contest })
+          commit(types.NOW, { now: moment(contest.now) })
+          if (contest.contest_type === CONTEST_TYPE.PRIVATE) {
+            dispatch('getContestAccess')
           }
-          return -1
-        })
-        commit(types.CHANGE_CONTEST_PROBLEMS, {contestProblems: res.data.data})
-        resolve(res)
-      }, () => {
-        commit(types.CHANGE_CONTEST_PROBLEMS, {contestProblems: []})
-      })
+        },
+        (err) => {
+          reject(err)
+        }
+      )
     })
   },
-  getContestAccess ({commit, rootState}) {
+  getContestProblems ({ commit, rootState }) {
     return new Promise((resolve, reject) => {
-      api.getContestAccess(rootState.route.params.contestID).then(res => {
-        commit(types.CONTEST_ACCESS, {access: res.data.data.access})
-        resolve(res)
-      }).catch()
+      api.getContestProblemList(rootState.route.params.contestID).then(
+        (res) => {
+          res.data.data.sort((a, b) => {
+            if (a._id === b._id) {
+              return 0
+            } else if (a._id > b._id) {
+              return 1
+            }
+            return -1
+          })
+          commit(types.CHANGE_CONTEST_PROBLEMS, {
+            contestProblems: res.data.data
+          })
+          resolve(res)
+        },
+        () => {
+          commit(types.CHANGE_CONTEST_PROBLEMS, { contestProblems: [] })
+        }
+      )
+    })
+  },
+  getContestAccess ({ commit, rootState }) {
+    return new Promise((resolve, reject) => {
+      api
+        .getContestAccess(rootState.route.params.contestID)
+        .then((res) => {
+          commit(types.CONTEST_ACCESS, { access: res.data.data.access })
+          resolve(res)
+        })
+        .catch()
     })
   }
 }

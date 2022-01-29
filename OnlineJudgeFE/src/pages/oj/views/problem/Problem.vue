@@ -412,8 +412,9 @@ export default {
           const pythonLang = this.problem.languages.find(
             (lang) => lang === 'Python3'
           )
+          // If u change this.language remember to change this \/
           this.language =
-            cppLang || cLang || pythonLang || this.problem.languages[0]
+            pythonLang || cppLang || cLang || this.problem.languages[0]
           let template = this.problem.template
           if (template && template[this.language]) {
             this.code = template[this.language]
@@ -470,7 +471,10 @@ export default {
     },
     onChangeLang (newLang) {
       if (this.problem.template[newLang]) {
-        if (this.code.trim() === '') {
+        if (
+          this.code.trim() === '' ||
+          this.code === this.problem.template[this.language]
+        ) {
           this.code = this.problem.template[newLang]
         }
       }
