@@ -96,7 +96,7 @@ export const m = {
   Low: 'Low',
   Tag: 'Tag',
   New_Tag: 'New Tag',
-   // ProblemList.vue
+  // ProblemList.vue
   Contest_Problem_List: 'Contest Problem List',
   // Contest.vue
   ContestTitle: 'Title',
@@ -120,5 +120,6 @@ export const m = {
   Welcome_to_Login: 'Welcome to Login',
   GO: 'GO',
   username: 'username',
-  password: 'password'
+  password: 'password',
+  Add_Problem: 'Add problem'
 }

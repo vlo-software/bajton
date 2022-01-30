@@ -26,7 +26,7 @@ export const m = {
   User_Username: 'Nazwa użytkonika',
   User_Real_Name: 'Prawdziwa nazwa',
   User_Email: 'Email',
-  User_New_Password: 'Nowe pasło',
+  User_New_Password: 'Nowe hasło',
   User_Type: 'Rodzaj użytkownia',
   Problem_Permission: 'Uprawnienia problemu',
   Two_Factor_Auth: 'Two Factor Auth',
@@ -41,7 +41,7 @@ export const m = {
   Server: 'Server',
   Port: 'Port',
   Email: 'Email',
-  Password: 'Pasło',
+  Password: 'Hasło',
   Website_Config: 'Web Config',
   Base_Url: 'Base Url',
   Name: 'Nazwa',
@@ -60,6 +60,7 @@ export const m = {
   // PruneTestCase
   Test_Case_Prune_Test_Case: 'Wyczyść przypadek testowy',
   // Problem.vue
+  Add_Problem: 'Dodaj problem',
   Display_ID: 'Display ID',
   Title: 'Tytuł',
   Description: 'Opis',
@@ -96,14 +97,14 @@ export const m = {
   Low: 'Niski',
   Tag: 'Tag',
   New_Tag: 'Nowy tag',
-   // ProblemList.vue
+  // ProblemList.vue
   Contest_Problem_List: 'Lista problemów konkursowych',
   // Contest.vue
   ContestTitle: 'Tytuł',
   ContestDescription: 'Opis',
   Contest_Start_Time: 'Czas rozpoczęcia',
   Contest_End_Time: 'Czas zakończenia',
-  Contest_Password: 'Pasło',
+  Contest_Password: 'Hasło',
   Contest_Rule_Type: 'Typ zasady konkursu',
   Real_Time_Rank: 'Ranking czasu rzeczywistego',
   Contest_Status: 'Status',
@@ -120,5 +121,5 @@ export const m = {
   Welcome_to_Login: 'Witaj na ekranie logowania',
   GO: 'Przejdź',
   username: 'nazwa użytkownika',
-  password: 'pasło'
+  password: 'hasło'
 }
