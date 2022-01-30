@@ -44,7 +44,7 @@ export const m = {
     "Failed to compile your source code. Click on the link to see compiler's output.",
   Accepted_Description: 'Congratulations. Your solution is correct.',
   Wrong_Answer_Description:
-    "Your program's output doesn't match judger's answer.",
+    "Your program's output doesn't match Bajton's answer.",
   Runtime_Error_Description:
     'Your program terminated abnormally. Possible reasons are: segment fault, divided by zero or exited with code other than 0.',
   Time_Limit_Exceeded_Description:
@@ -52,7 +52,7 @@ export const m = {
   Memory_Limit_Exceeded_Description:
     'The memory your program actually used has exceeded limit.',
   System_Error_Description:
-    'Oops, something has gone wrong with the judger. Please report this to administrator.',
+    'Oops, something has gone wrong with Bajton. Please report this to administrator.',
   // ACMContestRank.vue
   Menu: 'Menu',
   Chart: 'Chart',
@@ -102,7 +102,7 @@ export const m = {
   What_is_the_meaning_of_submission_execution_time:
     "What's the meaning of the submission execution time?",
   What_is_the_meaning_of_submission_execution_time_answer:
-    'The onlinejudge might test your code multiple times with different input files. If your code gives the correct answer within the time limit for each input file, the execution time displayed is the max of the time spent for each test case. Otherwise, the execution time will have no sense.',
+    'Bajton might test your code multiple times with different input files. If your code gives the correct answer within the time limit for each input file, the execution time displayed is the max of the time spent for each test case. Otherwise, the execution time will have no sense.',
   How_Can_I_use_CPP_Int64: 'How can I use C++ Int64?',
   How_Can_I_use_CPP_Int64_answer_part_1: 'You should declare as',
   How_Can_I_use_CPP_Int64_answer_part_2: 'and use with',
@@ -117,15 +117,14 @@ export const m = {
     'must be non public to avoid compile error.Use buffered I/O to avoid time limit exceeded due to excesive flushing.',
   About_presentation_error: 'About presentation error?',
   About_presentation_error_answer_part_1:
-    "There is no presentation error in this oj.The judger will trim the blacks and wraps in your ouput's",
+    "There is no presentation error in this oj. Bajton will trim excess characters in your ouput's",
   last: 'last',
   About_presentation_error_answer_part_2:
     "line.  if it's still different with the correct output, the result will be",
   How_to_report_bugs: 'How to report bugs about this oj?',
   How_to_report_bugs_answer_part_1:
-    'The onlinejudge is open source, you can open an issue in',
-  How_to_report_bugs_answer_part_2:
-    'The details(like env, version..) about a bug is required, which will help us a lot to solve the bug. Certainly, we are very pleased to merge your pull requests.',
+    'Bajton is open source, you can open an issue in',
+  How_to_report_bugs_answer_part_2: 'The details about the bug are required.',
   // Cancel.vue
   Cancel: 'Cancel',
   // ContestDetail.vue
@@ -177,7 +176,7 @@ export const m = {
   ACM_Rank: 'ACM Rank',
   OI_Rank: 'OI Rank',
   About: 'About',
-  Judger: 'Judger',
+  Judger: 'Bajton',
   FAQ: 'FAQ',
   Login: 'Login',
   Register: 'Register',
@@ -290,5 +289,22 @@ export const m = {
   Submission_Output_Test: 'Test output:',
   Submission_Output_SubmissionOutput: 'Program output:',
   Submission_Tests: 'Tests results',
-  Submission_Code: 'Code'
+  Submission_Code: 'Code',
+  Real_Name: 'Real Name',
+  School: 'School',
+  Major: 'Major',
+  Settings_Language: 'Language',
+  Mood: 'Mood',
+  Blog: 'Blog',
+  Github: 'GitHub',
+  Settings_Save_All: 'Save All',
+  Settings_Old_Password: 'Old Password',
+  Settings_New_Password: 'New Password',
+  Settings_Confirm_New_Password: 'Confirm New Password',
+  Settings_Two_Factor_Auth: 'Two Factor Auth',
+  Settings_Login_Again_Alert: 'You will need to login again after 5 seconds',
+  Settings_Current_Password: 'Current Password',
+  Settings_Old_Email: 'Old Email',
+  Settings_New_Email: 'New Email',
+  Search: 'Search'
 }

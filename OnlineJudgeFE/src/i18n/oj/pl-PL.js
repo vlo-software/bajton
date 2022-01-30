@@ -83,7 +83,7 @@ export const m = {
   The_email_doesnt_exist: 'Email nie istnieje',
   Success: 'Sukces',
   Password_reset_mail_sent:
-    'Email do przywrócenia pasła został do ciebie wysłany.',
+    'Email do przywrócenia hasła został do ciebie wysłany.',
   // FAQ.vue
   Frequently_Asked_Questions: 'Często zadawane pytania',
   Where_is_the_input_and_the_output: 'Gdzie jest wejście i wyjście?',
@@ -102,7 +102,7 @@ export const m = {
   What_is_the_meaning_of_submission_execution_time:
     'Jakie jest znaczenie czasu wykonywania rozwiąznia?',
   What_is_the_meaning_of_submission_execution_time_answer:
-    'SędziaOnline może testować twój kod wielokrotnie, z różnymi wejściami. Jeśli twój kod zwróci poprwaną odpowiedź, mieszcząc się w limicie czasowym dla każdego pliku wejściowego, wyświetlony czas wykonywania to maksymalny czas spędzony na wykonywaniu każdego przypadku testowego. W przeciwnym wypadku, czas wykonywania nie będzie miał sensu.',
+    'Bajton może testować twój kod wielokrotnie, z różnymi wejściami. Jeśli twój kod zwróci poprwaną odpowiedź, mieszcząc się w limicie czasowym dla każdego pliku wejściowego, wyświetlony czas wykonywania to maksymalny czas spędzony na wykonywaniu każdego przypadku testowego. W przeciwnym wypadku, czas wykonywania nie będzie miał sensu.',
   How_Can_I_use_CPP_Int64: 'Jak mogę użyć C++ Int64?',
   How_Can_I_use_CPP_Int64_answer_part_1: 'Musisz zadeklarować jako',
   How_Can_I_use_CPP_Int64_answer_part_2: 'i użyć z',
@@ -118,15 +118,15 @@ export const m = {
     'musi być niepubliczne aby uniknąć błędu kompilacji. Używaj buffered I/O aby uniknąć przekroczenia czasu procesora, przez nadmierne czyszczenie strumienia.',
   About_presentation_error: 'Co z błędem przezntacji?',
   About_presentation_error_answer_part_1:
-    'Nie ma tu błędu przezntacji. Sędzia obetnie zawinięcia w twojego wyjścia',
+    'O bład prezentacji nie należy się martwić. Bajton obetnie niepotrzebne znaki z',
   last: 'ostatniej',
   About_presentation_error_answer_part_2:
-    'lini.  Jeśli wynik dalej się nie zgadza, zwrócony zostanie',
+    'lini.  Jeśli wynik dalej się nie zgadza, zwrócony zostanie błąd',
   How_to_report_bugs: 'Jak zgłaszać bugi?',
   How_to_report_bugs_answer_part_1:
-    'Onlinejudge jest open source, możesz stworzyć issue na',
+    'Bajton jest open source, możesz stworzyć issue na',
   How_to_report_bugs_answer_part_2:
-    'Szczegóły (jak env, wersja..) na temat buga są wymagane, pomogą rozwiązać twój problem. Ta wersja Onlinejudge jest zmodyfikowna na potrzeby V Liceum w Gdańsku, więc lekko odbiega od kodu dostępnego w oficjalnym repozytorium.',
+    'Szczegóły na temat buga są wymagane, pomogą rozwiązać twój problem.',
   // Cancel.vue
   Cancel: 'Anuluj',
   // ContestDetail.vue
@@ -141,7 +141,7 @@ export const m = {
   ContestType: 'Rodzaj konkursu',
   Creator: 'Twórca',
   Public: 'Publiczne',
-  Password_Protected: 'Zabezpieczone pasłem',
+  Password_Protected: 'Zabezpieczone hasłem',
   // ContestList.vue
   Rule: 'Zasada',
   OI: 'OI',
@@ -197,21 +197,21 @@ export const m = {
   Account: 'Konto',
   Security: 'Bezpieczeństwo',
   // AccoutSetting.vue
-  ChangePassword: 'Zmień pasło',
+  ChangePassword: 'Zmień hasło',
   ChangeEmail: 'Zmień email',
-  Update_Password: 'Zaktualizuj pasło',
+  Update_Password: 'Zaktualizuj hasło',
   // ProfileSetting.vue
-  Avatar_Setting: 'Ustawienia avatara',
+  Avatar_Setting: 'Ustawienia awatara',
   Profile_Setting: 'Ustawienia profilu',
   // SecuritySettig
   Sessions: 'Sesje',
   Two_Factor_Authentication: 'Two Factor Authentication',
   // Login.vue
   LoginUsername: 'Nazwa użytkownika',
-  LoginPassword: 'Pasło',
+  LoginPassword: 'Hasło',
   TFA_Code: 'Kod z twojej aplikacji TFA',
   No_Account: 'Nie masz konta? Zarejestruj się teraz!',
-  Forget_Password: 'Nie pamiętasz pasła?',
+  Forget_Password: 'Nie pamiętasz hasła?',
   UserLogin: 'Zaloguj się',
   Welcome_back: 'Witaj z powrotem w OJ',
   // OIRank.vue
@@ -223,7 +223,7 @@ export const m = {
   High: 'Wysoki',
   Mid: 'Średni',
   Low: 'Niski',
-  All: 'All',
+  All: 'Wszystkie',
   Reset: 'Resetuj',
   Pick_One: 'Wybierz jeden',
   Difficulty: 'Trudność',
@@ -232,24 +232,24 @@ export const m = {
   // Register.vue
   RegisterUsername: 'Nazwa użytkownika',
   Email_Address: 'Adres email',
-  RegisterPassword: 'Pasło',
-  Password_Again: 'Znowu pasło',
+  RegisterPassword: 'Hasło',
+  Password_Again: 'Znowu hasło',
   Captcha: 'Captcha',
   UserRegister: 'Zarejestruj',
   Already_Registed: 'Już masz konto? Zaloguj się teraz!',
   The_username_already_exists: 'Nazwa użytkownika jest już zajęta.',
   The_email_already_exists: 'Adres email jest już zajęty',
-  password_does_not_match: 'pasło się nie zgadza',
+  password_does_not_match: 'hasło się nie zgadza',
   Thanks_for_registering:
     'Dziękujemy za rejestrację, możesz się teraz zalogować!',
   // ResetPassword.vue and ApplyResetPassword.vue
-  Reset_Password: 'Zgubione pasło',
-  RPassword: 'Pasło',
-  RPassword_Again: 'Znowu pasło',
+  Reset_Password: 'Zgubione hasło',
+  RPassword: 'Hasło',
+  RPassword_Again: 'Znowu hasło',
   RCaptcha: 'Captcha',
   ApplyEmail: 'Twój adres email',
-  Send_Password_Reset_Email: 'Wyślij maila do przywrócania pasła ponownie',
-  Your_password_has_been_reset: 'Twoje pasło zostało przywrócone.',
+  Send_Password_Reset_Email: 'Wyślij maila do przywrócania hasła ponownie',
+  Your_password_has_been_reset: 'Twoje hasło zostało przywrócone.',
   // Save.vue
   Save: 'Zapisz',
   // Simditor.vue
@@ -274,8 +274,8 @@ export const m = {
   Accepted: 'Zaakceptowane',
   Time_Limit_Exceeded: 'Limit czasu przekroczony',
   Memory_Limit_Exceeded: 'Limit pamięci przekroczony',
-  Runtime_Error: 'Runtime Error',
-  System_Error: 'System Error',
+  Runtime_Error: 'Błąd w trakcie wykonywania',
+  System_Error: 'Błąd systemu',
   Pending: 'W trakcie',
   Partial_Accepted: 'Częściowo zaakceptowane',
   Compile_Error: 'Błąd kompilacji',
@@ -293,5 +293,22 @@ export const m = {
   Submission_Output_Test: 'Wyjście testu:',
   Submission_Output_SubmissionOutput: 'Wyjście programu:',
   Submission_Tests: 'Wyniki testów',
-  Submission_Code: 'Kod'
+  Submission_Code: 'Kod',
+  Real_Name: 'Imię i nazwisko',
+  School: 'Szkoła',
+  Major: 'Kierunek',
+  Settings_Language: 'Język',
+  Mood: 'Humor',
+  Blog: 'Blog',
+  Github: 'GitHub',
+  Settings_Save_All: 'Zapisz wszystko',
+  Settings_Old_Password: 'Stare hasło',
+  Settings_New_Password: 'Nowe hasło',
+  Settings_Confirm_New_Password: 'Potwierdź nowe hasło',
+  Settings_Two_Factor_Auth: 'Autoryzacja dwuskładnikowa',
+  Settings_Login_Again_Alert: 'Za 5 sekund wymagane będzie ponowne zalogowanie',
+  Settings_Current_Password: 'Aktualne hasło',
+  Settings_Old_Email: 'Stary email',
+  Settings_New_Email: 'Nowy email',
+  Search: 'Wyszukaj'
 }

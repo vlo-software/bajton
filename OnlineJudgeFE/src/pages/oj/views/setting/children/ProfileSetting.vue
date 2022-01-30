@@ -70,16 +70,16 @@
     <Form ref="formProfile" :model="formProfile">
       <Grid gap="30" justify="around">
         <Grid gap="20" direction="column" style="width: 100%">
-          <FormItem label="Real Name">
+          <FormItem :label="$t('m.Real_Name')">
             <Input v-model="formProfile.real_name" />
           </FormItem>
-          <Form-item label="School">
+          <Form-item :label="$t('m.School')">
             <Input v-model="formProfile.school" />
           </Form-item>
-          <Form-item label="Major">
+          <Form-item :label="$t('m.Major')">
             <Input v-model="formProfile.major" />
           </Form-item>
-          <FormItem label="Language">
+          <FormItem :label="$t('m.Settings_Language')">
             <Select v-model="formProfile.language">
               <Option
                 v-for="lang in languages"
@@ -94,19 +94,19 @@
               type="primary"
               @click="updateProfile"
               :loading="loadingSaveBtn"
-              >Save All</Button
+              >{{ $t('m.Settings_Save_All') }}</Button
             >
           </Form-item>
         </Grid>
 
         <Grid gap="20" direction="column" style="width: 100%">
-          <Form-item label="Mood">
+          <Form-item :label="$t('m.Mood')">
             <Input v-model="formProfile.mood" />
           </Form-item>
-          <Form-item label="Blog">
+          <Form-item :label="$t('m.Blog')">
             <Input v-model="formProfile.blog" />
           </Form-item>
-          <Form-item label="Github">
+          <Form-item label="GitHub">
             <Input v-model="formProfile.github" />
           </Form-item>
         </Grid>

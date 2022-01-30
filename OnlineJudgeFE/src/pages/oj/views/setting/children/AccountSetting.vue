@@ -9,26 +9,29 @@
           :model="formPassword"
           :rules="rulePassword"
         >
-          <FormItem label="Old Password" prop="old_password">
+          <FormItem :label="$t('m.Settings_Old_Password')" prop="old_password">
             <Input v-model="formPassword.old_password" type="password" />
           </FormItem>
-          <FormItem label="New Password" prop="new_password">
+          <FormItem :label="$t('m.Settings_New_Password')" prop="new_password">
             <Input v-model="formPassword.new_password" type="password" />
           </FormItem>
-          <FormItem label="Confirm New Password" prop="again_password">
+          <FormItem
+            :label="$t('m.Settings_Confirm_New_Password')"
+            prop="again_password"
+          >
             <Input v-model="formPassword.again_password" type="password" />
           </FormItem>
           <FormItem
             v-if="visible.tfaRequired"
-            label="Two Factor Auth"
+            :label="$t('Settings_Two_Factor_Auth')"
             prop="tfa_code"
           >
             <Input v-model="formPassword.tfa_code" />
           </FormItem>
           <FormItem v-if="visible.passwordAlert">
-            <Alert type="success"
-              >You will need to login again after 5 seconds..</Alert
-            >
+            <Alert type="success">{{
+              $t('m.Settings_Login_Again_Alert')
+            }}</Alert>
           </FormItem>
           <Button
             style="margin-top: 30px"
@@ -49,13 +52,13 @@
           :model="formEmail"
           :rules="ruleEmail"
         >
-          <FormItem label="Current Password" prop="password">
+          <FormItem :label="$t('m.Settings_Current_Password')" prop="password">
             <Input v-model="formEmail.password" type="password" />
           </FormItem>
-          <FormItem label="Old Email">
+          <FormItem :label="$t('m.Settings_Old_Email')">
             <Input v-model="formEmail.old_email" disabled />
           </FormItem>
-          <FormItem label="New Email" prop="new_email">
+          <FormItem :label="$t('m.Settings_New_Email')" prop="new_email">
             <Input v-model="formEmail.new_email" />
           </FormItem>
           <FormItem
