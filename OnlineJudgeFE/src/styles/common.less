@@ -2,19 +2,19 @@
 
 // Less variables - all start with oj so that there are no conflicts
 @oj-background-color: #212024;
-@oj-background-color-full: #000000;
+@oj-background-color-full: rgba(0, 0, 0, 0.5);
 @oj-background-color-panel: #272a31;
 @oj-diff-tone-color: #2b2a30;
 @oj-text-color: #e9e8ec;
-@oj-link-color: #0099ff;
+@oj-link-color: #8d5ef3;
 @oj-link-base-color: #ffffff;
-@oj-link-hover-color: #2d8cf0;
+@oj-link-hover-color: #7d47f0;
 @oj-pre-background-color: #2b2b2c;
 @oj-pre-border-color: #323335;
 @oj-code-background-color: rgba(27, 31, 35, 0.05);
 @oj-blockqoute-border-color: #323336;
 @oj-blockqoute-text-color: #cccfdf;
-@oj-hr-text-color: #545661;
+@oj-hr-text-color: @oj-background-color;
 @oj-md-table-border: var(--diff-tone-color);
 @oj-md-table-td-text-color: #adb2c4;
 @oj-table-border-color: #3a3a3b;
@@ -50,8 +50,8 @@
   --table-warn-text-color: @oj-table-warn-text-color;
   --table-warn-background-color: @oj-table-warn-background-color;
   --contest-border-color: @oj-contest-border-color;
-  --primary-color: #7d47f0;
-  --info-color: #572ab9;
+  --primary-color: #8d5ef3;
+  --info-color: #7d47f0;
   --success-color: #19be6b;
   --processing-color: var(--primary-color);
   --warning-color: #ff9900;
@@ -65,6 +65,7 @@
   --rate-star-color: #f5a623;
   --white: @oj-background-color-full;
   --black: @oj-text-color;
+  --navbar-active: rgba(255, 255, 255, 0.033);
   scrollbar-width: thin;
   scrollbar-color: #27272a transparent;
 }
@@ -180,4 +181,14 @@ a.emphasis {
   to {
     opacity: 1;
   }
+}
+
+.markdown-body pre {
+  border: none;
+  border-radius: 8px;
+  background: var(--background-color-panel) !important;
+}
+
+.markdown-body span {
+  color: var(--text-color) !important;
 }

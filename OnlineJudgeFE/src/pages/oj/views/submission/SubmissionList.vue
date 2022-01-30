@@ -27,13 +27,12 @@
             </li>
 
             <li>
+              <span class="toggle-label">{{ $t('m.Mine') }}:</span>
               <Toggle
-                size="large"
+                size="medium"
                 v-model="formFilter.myself"
                 @on-change="handleQueryChange"
               >
-                <span slot="open">{{ $t('m.Mine') }}</span>
-                <span slot="close">{{ $t('m.All') }}</span>
               </Toggle>
             </li>
             <li>
@@ -422,6 +421,10 @@ export default {
 </script>
 
 <style scoped lang="less">
+.toggle-label {
+  margin: 0 4px;
+}
+
 .ivu-btn-text {
   color: #57a3f3;
 }

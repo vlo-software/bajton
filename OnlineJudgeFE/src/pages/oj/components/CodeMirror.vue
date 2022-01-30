@@ -251,6 +251,25 @@ export default {
 <style>
 .CodeMirror {
   height: auto !important;
+  border-radius: 8px !important;
+}
+.cm-s-monokai.CodeMirror {
+  background-color: rgb(25, 22, 34) !important;
+}
+.cm-s-monokai.CodeMirror .CodeMirror-gutters {
+  background-color: rgb(25, 22, 34) !important;
+}
+.cm-s-material.CodeMirror {
+  background-color: #272a31 !important;
+}
+.cm-s-material.CodeMirror .CodeMirror-gutters {
+  background-color: #272a31 !important;
+}
+.cm-s-solarized.CodeMirror {
+  box-shadow: none !important;
+}
+.cm-s-solarized.CodeMirror .CodeMirror-gutters {
+  background-color: white !important;
 }
 .CodeMirror-scroll {
   min-height: 300px;

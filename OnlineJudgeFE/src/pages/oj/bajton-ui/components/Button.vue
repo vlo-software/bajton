@@ -8,8 +8,27 @@
     <!-- TODO: Fix this -->
     <!-- <Icon class="ivu-load-loop" type="load-c" v-if="loading"></Icon> -->
     <i style="height: 5px" :class="`bi bi-${icon}`" v-if="icon && !loading"></i>
-    <div v-if="loading">...</div>
-    <span v-if="showSlot" ref="slot"><slot></slot></span>
+    <div
+      v-if="loading"
+      style="
+        position: absolute;
+        text-align: center;
+        left: calc(50% - 7px);
+        top: calc(50% - 7px);
+        width: 14px;
+        height: 14px;
+        background: white;
+        border-radius: 100%;
+        animation: fade 1s ease infinite;
+      "
+    ></div>
+    <span
+      class="btn-slot"
+      v-if="showSlot"
+      :style="loading ? `opacity: 0` : `opacity: 1`"
+      ref="slot"
+      ><slot></slot
+    ></span>
   </button>
 </template>
 <script>
@@ -87,6 +106,20 @@ export default {
 }
 </script>
 
+<style>
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+</style>
+
 <style scoped lang="less">
 .btn {
   box-sizing: border-box;
@@ -101,6 +134,9 @@ export default {
   outline: none;
   transition: 0.2s ease;
   cursor: pointer;
+  &-slot {
+    transition: opacity 75ms ease-in-out;
+  }
   &-small {
     padding: 8px 10px;
     font-size: 0.8em;

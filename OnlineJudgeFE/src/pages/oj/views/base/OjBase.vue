@@ -7,7 +7,11 @@
         <p v-html="website.website_footer"></p>
         <p>
           Powered by
-          <a href="https://github.com/QingdaoU/OnlineJudge">OnlineJudge</a>
+          <a
+            style="color: #8d5ef3"
+            href="https://github.com/QingdaoU/OnlineJudge"
+            >OnlineJudge</a
+          >
           <span v-if="version">&nbsp; Version: {{ version }}</span>
         </p>
         <p>Customized by Zepsół Cyberniebezpieczeństwa V LO</p>

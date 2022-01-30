@@ -46,6 +46,9 @@
             :index="idx"
             :render="col.render"
           />
+          <b v-else-if="col.type === 'index'">
+            {{ idx + 1 }}
+          </b>
           <span v-else>
             {{ item[col.key] }}
           </span>

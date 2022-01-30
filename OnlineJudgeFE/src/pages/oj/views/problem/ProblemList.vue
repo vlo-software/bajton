@@ -34,7 +34,7 @@
                 v-model="query.keyword"
                 @on-enter="filterByKeyword"
                 @on-click="filterByKeyword"
-                placeholder="keyword"
+                :placeholder="$t('m.Search')"
                 icon="search"
               />
             </li>

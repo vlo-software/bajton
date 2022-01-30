@@ -1,7 +1,9 @@
 <template>
   <div ref="container" class="container">
     <div class="top">
-      <Logo class="logo" />
+      <a @click="goHome">
+        <Logo class="logo" />
+      </a>
     </div>
     <div class="main">
       <h1>{{ $t('m.ResetPasswordTitle') }}</h1>
@@ -103,6 +105,9 @@ export default {
           this.btnLoginLoading = false
         }
       )
+    },
+    goHome () {
+      this.$router.push({ name: 'landing' })
     }
   },
   watch: {
@@ -161,6 +166,9 @@ export default {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  a:hover {
+    cursor: pointer;
+  }
   @media (max-width: 560px) {
     .logo {
       transform: scale(0.7);

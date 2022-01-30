@@ -25,7 +25,8 @@ export default {
 .content {
   display: none;
   position: absolute;
-  background: var(--background-color-panel);
+  background: var(--background-color);
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   padding: 2px;
   margin-top: -1px;

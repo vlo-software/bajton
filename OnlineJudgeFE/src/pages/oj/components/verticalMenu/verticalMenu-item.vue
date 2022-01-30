@@ -44,6 +44,7 @@ export default {
 }
 
 li {
+  border-color: transparent;
   color: var(--text-color);
   display: block;
   text-align: left;
@@ -52,8 +53,8 @@ li {
   cursor: pointer;
   transition: 0.2s ease;
   &:hover {
-    border-left: 2px solid var(--primary-color);
-    background: var(--pre-background-color);
+    border-left: 2px solid transparent;
+    // background: var(--pre-background-color);
     color: var(--primary-color);
   }
   & > .ivu-icon {

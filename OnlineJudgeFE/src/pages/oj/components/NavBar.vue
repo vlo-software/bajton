@@ -2,16 +2,39 @@
   <div id="header">
     <div class="content">
       <div class="left">
-        <logo :style="darkMode ? '' : 'filter: invert(100)'" class="logo" />
-        <i @click="() => handleRoute('/home')" class="icon bi bi-house" />
+        <a @click="() => handleRoute('/home')">
+          <logo :style="darkMode ? '' : 'filter: invert(100)'" class="logo" />
+        </a>
+        <i
+          @click="() => handleRoute('/home')"
+          :class="`icon bi bi-house ${activeMenu === '/home' ? 'active' : ''}`"
+        />
         <i
           @click="() => handleRoute('/problem')"
-          class="icon bi bi-clipboard"
+          :class="`icon bi bi-clipboard ${
+            activeMenu === '/problem' ? 'active' : ''
+          }`"
         />
-        <i @click="() => handleRoute('/contest')" class="icon bi bi-trophy" />
-        <i @click="() => handleRoute('/status')" class="icon bi bi-activity" />
+        <i
+          @click="() => handleRoute('/contest')"
+          :class="`icon bi bi-trophy ${
+            activeMenu === '/contest' ? 'active' : ''
+          }`"
+        />
+        <i
+          @click="() => handleRoute('/status')"
+          :class="`icon bi bi-activity ${
+            activeMenu === '/status' ? 'active' : ''
+          }`"
+        />
         <Dropdown margin="8" @on-click="handleRoute">
-          <i class="icon bi bi-bar-chart" />
+          <i
+            :class="`icon bi bi-bar-chart ${
+              activeMenu === '/acm-rank' || activeMenu === '/oi-rank'
+                ? 'active'
+                : ''
+            }`"
+          />
           <Dropdown-menu slot="list">
             <Dropdown-item name="/acm-rank">
               {{ $t('m.ACM_Rank') }}
@@ -22,7 +45,13 @@
           </Dropdown-menu>
         </Dropdown>
         <Dropdown margin="8" @on-click="handleRoute">
-          <i class="icon bi bi-info-circle" />
+          <i
+            :class="`icon bi bi-info-circle ${
+              activeMenu === '/about' || activeMenu.toLowerCase() === '/faq'
+                ? 'active'
+                : ''
+            }`"
+          />
           <Dropdown-menu slot="list">
             <Dropdown-item name="/about">
               {{ $t('m.Judger') }}
@@ -147,6 +176,7 @@ export default {
   width: 100%;
   height: 60px;
   z-index: 1000;
+  backdrop-filter: blur(20px);
   background-color: var(--background-color-full);
 
   .content {
@@ -187,9 +217,21 @@ export default {
     padding: 9px 15px;
     border-radius: 8px;
     cursor: pointer;
-    transition: 0.2s ease;
-    &:hover {
-      box-shadow: 0px 0px 5px 0px var(--text-color);
+    transition: background 0.2s ease;
+  }
+
+  .active {
+    background: var(--navbar-active);
+  }
+
+  @media only screen and (max-width: 600px) {
+    .logo {
+      display: none;
+    }
+    .icon {
+      font-size: 18px;
+      line-height: 22px;
+      padding: 9px 11px;
     }
   }
 }

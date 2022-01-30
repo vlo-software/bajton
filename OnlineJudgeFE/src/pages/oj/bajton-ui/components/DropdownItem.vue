@@ -80,12 +80,12 @@ export default {
   line-height: normal;
   list-style-type: none;
   margin: 2px;
-  padding: 7px;
+  padding: 11px 36px 11px 11px;
   border-radius: 8px;
   color: var(--text-color);
   transition: 0.2s ease;
   &:hover {
-    background: var(--table-border-color);
+    background: var(--background-color-full);
   }
 }
 </style>

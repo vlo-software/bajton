@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div class="home-page">
     <div class="container">
       <div class="top">
-        <Logo class="logo" />
+        <a>
+          <Logo class="logo" />
+        </a>
       </div>
       <div class="main">
         <div class="content">
@@ -68,6 +70,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.home-page {
+  overflow-x: hidden;
+}
 .container {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
@@ -78,7 +83,8 @@ export default {
   background-repeat: no-repeat;
   background-attachment: fixed;
   height: 100vh;
-  width: 100%;
+  padding-left: 3.5px;
+  overflow-x: hidden;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 130px 2fr 4fr 2fr;
@@ -92,6 +98,8 @@ export default {
   }
   @media (max-width: 560px) {
     grid-template-rows: 100px 1fr 7fr 1fr;
+    width: 100%;
+    padding-left: 0;
   }
 }
 
@@ -100,6 +108,9 @@ export default {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  a:hover {
+    cursor: pointer;
+  }
   @media (max-width: 560px) {
     .logo {
       transform: scale(0.7);

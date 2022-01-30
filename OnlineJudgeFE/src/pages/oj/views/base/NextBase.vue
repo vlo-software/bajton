@@ -54,4 +54,7 @@ body {
   bottom: 0;
   width: 100%;
 }
+.error {
+  text-align: center;
+}
 </style>

@@ -82,10 +82,10 @@
 import { mapActions } from 'vuex'
 import time from '@/utils/time'
 import api from '@oj/api'
-import { Button } from '@oj/bajton-ui'
+import { Card, Button } from '@oj/bajton-ui'
 
 export default {
-  components: { Button },
+  components: { Card, Button },
   data () {
     return {
       username: '',
@@ -142,7 +142,12 @@ export default {
   computed: {
     refreshVisible () {
       if (!this.username) return true
-      if (this.username && this.username === this.$store.getters.user.username) { return true }
+      if (
+        this.username &&
+        this.username === this.$store.getters.user.username
+      ) {
+        return true
+      }
       return false
     }
   },
@@ -165,6 +170,12 @@ export default {
   p {
     margin-top: 8px;
     margin-bottom: 8px;
+  }
+  hr {
+    border: none;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--background-color);
   }
   .avatar-container {
     position: absolute;
@@ -195,8 +206,6 @@ export default {
     }
     .middle {
       flex: 1 1;
-      border-left: 1px solid var(--hr-text-color);
-      border-right: 1px solid var(--hr-text-color);
     }
     .right {
       flex: 1 1;

@@ -14,7 +14,7 @@
                 {{ contest.title }}
               </div>
               <div slot="extra">
-                <Tag type="dot" :color="countdownColor">
+                <Tag type="dot" :color="countdownColor" style="padding: 0 15px">
                   <span id="countdown">{{ countdown }}</span>
                 </Tag>
               </div>
@@ -110,7 +110,7 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 import { types } from '@/store'
 import { CONTEST_STATUS_REVERSE, CONTEST_STATUS } from '@/utils/constants'
 import time from '@/utils/time'
-import { Button, Table, Input, Grid } from '@oj/bajton-ui'
+import { Button, Table, Input, Grid, Tag } from '@oj/bajton-ui'
 
 export default {
   name: 'ContestDetail',
@@ -118,7 +118,8 @@ export default {
     Button,
     Table,
     Input,
-    Grid
+    Grid,
+    Tag
   },
   data () {
     return {

@@ -673,8 +673,8 @@ export default {
 #problem-content {
   margin-top: -50px;
   .title {
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 22px;
+    font-weight: 600;
     margin: 25px 0 8px 0;
     color: var(--primary-color);
     .copy {
@@ -682,25 +682,23 @@ export default {
     }
   }
   p.content {
-    margin-left: 25px;
-    margin-right: 20px;
-    font-size: 15px;
+    font-size: 14px;
   }
   .sample {
     align-items: stretch;
+    &-input {
+      margin-right: 25px;
+    }
     &-input,
     &-output {
       width: 50%;
       flex: 1 1 auto;
       display: flex;
       flex-direction: column;
-      margin-right: 5%;
     }
     pre {
       flex: 1 1 auto;
       align-self: stretch;
-      border-style: solid;
-      background: transparent;
     }
   }
 }

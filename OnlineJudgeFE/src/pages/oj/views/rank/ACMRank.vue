@@ -4,7 +4,16 @@
       <Panel :padding="10">
         <div slot="title">{{ $t('m.ACM_Ranklist') }}</div>
         <div class="echarts">
-          <ECharts :options="options" ref="chart" auto-resize></ECharts>
+          <ECharts
+            :style="
+              darkMode
+                ? 'filter: invert(0.75) saturate(10) hue-rotate(-180deg) saturate(2)'
+                : ''
+            "
+            :options="options"
+            ref="chart"
+            auto-resize
+          ></ECharts>
         </div>
         <Table
           :data="dataRank"
@@ -26,6 +35,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import api from '@oj/api'
 import Pagination from '@oj/components/Pagination'
 import utils from '@/utils/utils'
@@ -173,6 +183,9 @@ export default {
         ]
       }
     }
+  },
+  computed: {
+    ...mapGetters(['darkMode'])
   },
   mounted () {
     this.getRankData(1)

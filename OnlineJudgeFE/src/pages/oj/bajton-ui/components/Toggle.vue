@@ -105,6 +105,14 @@ export default {
   user-select: none;
   transition: 0.2s ease;
 
+  span {
+    opacity: 0.5;
+  }
+
+  &-checked span {
+    opacity: 1;
+  }
+
   &-inner {
     color: var(--text-color);
     font-size: 0.9em;

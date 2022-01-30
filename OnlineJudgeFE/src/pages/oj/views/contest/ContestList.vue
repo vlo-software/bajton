@@ -58,7 +58,7 @@
                 @on-click="changeRoute"
                 v-model="query.keyword"
                 icon="search"
-                placeholder="Keyword"
+                :placeholder="$t('m.Search')"
               />
             </li>
           </ul>

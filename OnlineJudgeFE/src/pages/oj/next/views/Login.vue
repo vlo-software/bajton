@@ -1,7 +1,9 @@
 <template>
   <div ref="container" class="container">
     <div class="top">
-      <Logo class="logo" />
+      <a @click="goHome">
+        <Logo class="logo" />
+      </a>
     </div>
     <div class="main">
       <h1>{{ $t('m.LoginTitle') }}</h1>
@@ -120,6 +122,9 @@ export default {
     },
     goResetPassword () {
       this.$router.push({ name: 'reset-password' })
+    },
+    goHome () {
+      this.$router.push({ name: 'landing' })
     }
   },
   watch: {
@@ -187,6 +192,9 @@ export default {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  a:hover {
+    cursor: pointer;
+  }
   @media (max-width: 560px) {
     .logo {
       transform: scale(0.7);
@@ -205,7 +213,6 @@ export default {
   }
   .error {
     color: #f0475e;
-    padding-left: 50px;
     font-weight: bold;
   }
   form {
@@ -214,8 +221,8 @@ export default {
     justify-content: center;
     flex-direction: column;
     input {
-      background: #cdbcff;
-      color: #4e007d;
+      background: rgba(205, 188, 255, 0.25);
+      color: #fff;
       outline: none;
       height: 60px;
       width: calc(100% - 60px);
@@ -271,6 +278,10 @@ export default {
 
   @media (max-width: 450px) {
     border-radius: 0px;
+  }
+
+  input::placeholder {
+    color: rgb(213, 146, 255) !important;
   }
 }
 </style>
