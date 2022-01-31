@@ -20,6 +20,5 @@ class ForumCommentSerializer(serializers.Serializer):
 
 class ForumPostSerializer(serializers.Serializer):
     content = serializers.CharField()
-    comments = ForumCommentSerializer(many=True, allow_empty=True, default=[])
     author = UsernameSerializer()
     edited = serializers.BooleanField()
