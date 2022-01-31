@@ -51,7 +51,8 @@ LOCAL_APPS = [
     'submission',
     'options',
     'judge',
-    'sql'
+    'sql',
+    'forumPost'
 ]
 
 INSTALLED_APPS = VENDOR_APPS + LOCAL_APPS
