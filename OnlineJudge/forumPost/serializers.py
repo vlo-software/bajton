@@ -1,6 +1,3 @@
-from email.policy import default
-from django import forms
-
 from utils.api import serializers, UsernameSerializer
 
 
@@ -16,9 +13,13 @@ class ForumCommentSerializer(serializers.Serializer):
     content = serializers.CharField()
     author = UsernameSerializer()
     edited = serializers.BooleanField()
+    created_at = serializers.DateTimeField()
+    updated_at = serializers.DateTimeField()
 
 
 class ForumPostSerializer(serializers.Serializer):
     content = serializers.CharField()
     author = UsernameSerializer()
     edited = serializers.BooleanField()
+    created_at = serializers.DateTimeField()
+    updated_at = serializers.DateTimeField()

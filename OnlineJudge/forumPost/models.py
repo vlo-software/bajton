@@ -9,6 +9,8 @@ class ForumPost(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = RichTextField()
     edited = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 class ForumComment(models.Model):
@@ -16,3 +18,5 @@ class ForumComment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = RichTextField()
     edited = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

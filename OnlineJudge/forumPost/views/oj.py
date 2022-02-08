@@ -26,17 +26,49 @@ class ForumPostApi(APIView):
             return self.error("Couldn't create a new forum post")
         return self.success(ForumPostSerializer(forumPost).data)
 
+    @validate_serializer(CreateOrEditForumPostSerializer)
     @login_required
-    def get(self, request):
+    def put(self, request):
+        data = request.data
         id = request.GET.get("forumPostId")
         if not id:
             return self.error("Invalid parameter, forumPostId is required")
+
         try:
             post = ForumPost.objects.get(id=id)
         except ForumPost.DoesNotExist:
             return self.error("Couldn't find post")
 
-        postWithComments = ForumPostSerializer(post).data
-        postWithComments["comments"] = ForumCommentSerializer(ForumComment.objects.select_related("post").filter(post__id=id), many=True, allow_empty=True, default=[]).data
+        setattr(post, "content", data["content"])
+        setattr(post, "edited", True)
 
-        return self.success(postWithComments)
+        try:
+            post.save()
+        except Exception:
+            return self.error("Couldn't update the forum post")
+        return self.success()
+
+    @login_required
+    def get(self, request):
+        id = request.GET.get("forumPostId")
+        problemId = request.GET.get("problemId")
+        if not id and not problemId:
+            return self.error("Invalid parameter, forumPostId or problemId is required")
+        try:
+            db_data = ForumPost.objects.get(id=id) if id else ForumPost.objects.filter(problem_id=problemId)
+        except ForumPost.DoesNotExist:
+            return self.error("Couldn't find post")
+
+        if id:
+            postWithComments = ForumPostSerializer(db_data).data
+            postWithComments["comments"] = ForumCommentSerializer(ForumComment.objects.select_related("post").filter(post__id=id), many=True, allow_empty=True, default=[]).data
+
+            return self.success(postWithComments)
+        else:
+            posts = []
+            for post in db_data:
+                postWithComments = ForumPostSerializer(post).data
+                postWithComments["comments"] = ForumCommentSerializer(ForumComment.objects.select_related(
+                    "post").filter(post__id=post.id), many=True, allow_empty=True, default=[]).data
+                posts.append(postWithComments)
+            return self.success(posts)
