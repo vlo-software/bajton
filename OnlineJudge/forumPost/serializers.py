@@ -15,6 +15,7 @@ class ForumCommentSerializer(serializers.Serializer):
     edited = serializers.BooleanField()
     created_at = serializers.DateTimeField()
     updated_at = serializers.DateTimeField()
+    id = serializers.IntegerField()
 
 
 class ForumPostSerializer(serializers.Serializer):
@@ -23,3 +24,4 @@ class ForumPostSerializer(serializers.Serializer):
     edited = serializers.BooleanField()
     created_at = serializers.DateTimeField()
     updated_at = serializers.DateTimeField()
+    id = serializers.IntegerField()

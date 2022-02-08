@@ -2,7 +2,7 @@ from email.policy import default
 from problem.models import Problem
 from account.decorators import login_required
 from forumPost.models import ForumComment, ForumPost
-from forumPost.serializers import CreateOrEditForumPostSerializer, ForumPostSerializer, ForumCommentSerializer
+from forumPost.serializers import CreateOrEditForumCommentSerializer, CreateOrEditForumPostSerializer, ForumPostSerializer, ForumCommentSerializer
 from utils.api.api import APIView, validate_serializer
 
 
@@ -72,3 +72,45 @@ class ForumPostApi(APIView):
                     "post").filter(post__id=post.id), many=True, allow_empty=True, default=[]).data
                 posts.append(postWithComments)
             return self.success(posts)
+
+
+class ForumCommentApi(APIView):
+    @validate_serializer(CreateOrEditForumCommentSerializer)
+    @login_required
+    def post(self, request):
+        postId = request.GET.get("forumPostId")
+        data = request.data
+        if not postId:
+            return self.error("Invalid parameter, forumPostId is required")
+        try:
+            data["post"] = ForumPost.objects.get(id=postId)
+        except Problem.DoesNotExist:
+            return self.error("Couldn't find a forum post with a provided id")
+        data["author"] = request.user
+        data["edited"] = False
+        try:
+            forumComment = ForumComment.objects.create(**data)
+        except Exception:
+            return self.error("Couldn't create a new comment")
+        return self.success(ForumCommentSerializer(forumComment).data)
+
+    @validate_serializer(CreateOrEditForumCommentSerializer)
+    @login_required
+    def put(self, request):
+        commentId = request.GET.get("commentId")
+        data = request.data
+        if not commentId:
+            return self.error("Invalid parameter, commentId is required")
+        try:
+            comment = ForumComment.objects.get(id=commentId)
+        except Problem.DoesNotExist:
+            return self.error("Couldn't find a forum comment with a provided id")
+
+        setattr(comment, "content", data["content"])
+        setattr(comment, "edited", True)
+
+        try:
+            comment.save()
+        except Exception:
+            return self.error("Couldn't update the comment")
+        return self.success()
