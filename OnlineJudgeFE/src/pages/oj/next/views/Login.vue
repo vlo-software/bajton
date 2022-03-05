@@ -49,6 +49,8 @@
 import FormMixin from '../mixins/form'
 import Logo from '../components/Logo.vue'
 import api from '@oj/api'
+import { STORAGE_KEY } from '@/utils/constants'
+import storage from '@/utils/storage'
 
 export default {
   name: 'login',
@@ -107,6 +109,7 @@ export default {
       }
       api.login(formData).then(
         (res) => {
+          storage.set(STORAGE_KEY.AUTHED, true)
           this.btnLoginLoading = false
           window.location.href = '/home'
         },

@@ -24,38 +24,64 @@ import Register from '@oj/next/views/Register.vue'
 import ResetPassword from '@oj/next/views/ResetPassword.vue'
 import ResetPasswordVerify from '@oj/next/views/ResetPasswordVerify.vue'
 
+import ForumLanding from '@oj/next/views/Forum/Home.vue'
+import ForumProblem from '@oj/next/views/Forum/Problem.vue'
+
 import OjBase from '@oj/views/base/OjBase'
 import NextBase from '@oj/views/base/NextBase'
 
 export default [
   {
+    name: 'forum',
+    path: '/forum',
+    component: NextBase,
+    children: [
+      {
+        name: 'forum-landing',
+        path: '/',
+        component: ForumLanding
+      },
+      {
+        name: 'forum-problem',
+        path: '/forum/:problemId/',
+        component: ForumProblem
+      }
+    ]
+  },
+  {
     name: 'next',
     path: '/next',
+    meta: { noAuthRequired: true },
     component: NextBase,
     children: [
       {
         name: 'landing',
         path: '/',
+        meta: { noAuthRequired: true },
         component: NextHome
       },
       {
         name: 'login',
         path: '/login',
+        meta: { noAuthRequired: true },
         component: Login
       },
       {
         name: 'register',
         path: '/register',
+        meta: { noAuthRequired: true },
         component: Register
       },
       {
         name: 'reset-password',
         path: '/reset-password',
+        meta: { noAuthRequired: true },
         component: ResetPassword
       },
       {
         name: 'reset-password-verify',
         path: '/reset-password-verify/:token',
+        meta: { noAuthRequired: true },
         component: ResetPasswordVerify
       }
     ]
@@ -165,7 +191,7 @@ export default [
         name: 'user-home',
         path: '/user-home',
         component: UserHome,
-        meta: { requiresAuth: true, title: 'User Home' }
+        meta: { title: 'User Home' }
       },
       {
         path: '/setting',
@@ -174,25 +200,25 @@ export default [
           {
             name: 'default-setting',
             path: '',
-            meta: { requiresAuth: true, title: 'Default Settings' },
+            meta: { title: 'Default Settings' },
             component: Setting.ProfileSetting
           },
           {
             name: 'profile-setting',
             path: 'profile',
-            meta: { requiresAuth: true, title: 'Profile Settings' },
+            meta: { title: 'Profile Settings' },
             component: Setting.ProfileSetting
           },
           {
             name: 'account-setting',
             path: 'account',
-            meta: { requiresAuth: true, title: 'Account Settings' },
+            meta: { title: 'Account Settings' },
             component: Setting.AccountSetting
           },
           {
             name: 'security-setting',
             path: 'security',
-            meta: { requiresAuth: true, title: 'Security Settings' },
+            meta: { title: 'Security Settings' },
             component: Setting.SecuritySetting
           }
         ]
