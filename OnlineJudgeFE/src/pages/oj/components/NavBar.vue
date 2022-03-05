@@ -3,7 +3,11 @@
     <div class="content">
       <div class="left">
         <a @click="() => handleRoute('/home')">
-          <logo :style="darkMode ? '' : 'filter: invert(100)'" class="logo" />
+          <logo
+            :style="darkMode || true ? '' : 'filter: invert(100)'"
+            class="logo"
+          />
+          <!-- ^ || true should be removed for a normal logo -->
         </a>
         <i
           @click="() => handleRoute('/home')"

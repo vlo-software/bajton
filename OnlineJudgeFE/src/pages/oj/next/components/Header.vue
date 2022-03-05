@@ -1,6 +1,7 @@
 <template>
   <div class="main">
-    <Logo style="transform: scale(0.7); filter: invert(1)" />
+    <!-- <Logo style="transform: scale(0.7); filter: invert(1)" /> --- Revert to this for a normal logo -->
+    <Logo style="transform: scale(0.7)" />
   </div>
 </template>
 
