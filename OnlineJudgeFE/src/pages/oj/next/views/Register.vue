@@ -64,6 +64,7 @@ export default {
   },
   mounted () {
     this.getCaptchaSrc()
+    api.getUserInfo() // This is required so that we get the csrf token
   },
   data () {
     return {

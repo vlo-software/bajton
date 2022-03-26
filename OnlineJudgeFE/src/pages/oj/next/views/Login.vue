@@ -70,6 +70,9 @@ export default {
       }
     }
   },
+  mounted () {
+    api.getUserInfo() // This is required so that we get the csrf token
+  },
   methods: {
     async CheckRequiredTFA (username) {
       this.tfaRequired = (await api.tfaRequiredCheck(username)).data.data.result
