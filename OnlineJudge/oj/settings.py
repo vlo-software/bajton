@@ -61,7 +61,7 @@ INSTALLED_APPS = VENDOR_APPS + LOCAL_APPS
 MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware', # TODO: enable this
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'account.middleware.APITokenAuthMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
