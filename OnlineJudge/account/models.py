@@ -86,6 +86,8 @@ class UserProfile(models.Model):
     acm_problems_status = JSONField(default=dict)
     # like acm_problems_status, merely add "score" field
     oi_problems_status = JSONField(default=dict)
+    # same as oi_problems_status, but without the contest_problems field
+    sql_problems_status = JSONField(default=dict)
 
     real_name = models.TextField(null=True)
     avatar = models.TextField(default=f"{settings.AVATAR_URI_PREFIX}/default.png")

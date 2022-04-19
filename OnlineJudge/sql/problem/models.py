@@ -3,7 +3,6 @@ from utils.models import JSONField
 
 from account.models import User
 from utils.models import RichTextField
-from utils.constants import Choices
 
 
 class SqlProblemTag(models.Model):
@@ -16,7 +15,7 @@ class SqlProblemTag(models.Model):
 class SqlProblem(models.Model):
     # display ID
     _id = models.TextField(db_index=True, unique=True)
-    is_public = models.BooleanField(default=False)
+    is_public = models.BooleanField(default=False)  # TODO: for future use (no one will)
     title = models.TextField()
     # HTML
     description = RichTextField()

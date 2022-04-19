@@ -1,28 +1,23 @@
-import re
-
-from django import forms
-
-from options.options import SysOptions
 from utils.api import UsernameSerializer, serializers
 
 from .models import SqlProblem, SqlProblemTag
-from .utils import parse_problem_template
 
 
 class CreateTestCasesSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     query = serializers.CharField()
-    score = serializers.IntegerField(min_value=0)
+    score = serializers.IntegerField(min_value=10)
 
 
 class CreateOrEditSqlProblemSerializer(serializers.Serializer):
     _id = serializers.CharField(max_length=32, allow_blank=True, allow_null=True)
     title = serializers.CharField(max_length=1024)
     description = serializers.CharField()
+    problem_data = serializers.CharField()
     test_cases = serializers.ListField(child=CreateTestCasesSerializer(), allow_empty=False)
-    template = serializers.CharField()
+    # template = serializers.CharField() # TODO: support template
     visible = serializers.BooleanField()
-    tags = serializers.ListField(child=serializers.CharField(max_length=32), allow_empty=False)
+    # tags = serializers.ListField(child=serializers.CharField(max_length=32), allow_empty=False) # TODO: support tags
     source = serializers.CharField(max_length=256, allow_blank=True, allow_null=True)
     share_submission = serializers.BooleanField()
 
