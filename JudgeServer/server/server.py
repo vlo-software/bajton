@@ -5,6 +5,7 @@ import shutil
 import uuid
 
 from flask import Flask, request, Response
+from linter import Linter
 
 from compiler import Compiler
 from config import (JUDGER_WORKSPACE_BASE, SPJ_SRC_DIR, SPJ_EXE_DIR, COMPILER_USER_UID, SPJ_USER_UID,
@@ -97,6 +98,9 @@ class JudgeServer:
                 exe_path = Compiler().compile(compile_config=compile_config,
                                               src_path=src_path,
                                               output_dir=submission_dir)
+                if compile_config["src_name"] == "main.cpp":
+                    linter_output = Linter().lint(src_path=src_path, output_dir=submission_dir)
+
                 try:
                     # Java exe_path is SOME_PATH/Main, but the real path is SOME_PATH/Main.class
                     # We ignore it temporarily
@@ -148,7 +152,9 @@ class JudgeServer:
                                        output=output,
                                        io_mode=io_mode)
             run_result = judge_client.run()
-
+            logger.error(linter_output)
+            run_result = [{**i, "linter_output": linter_output if compile_config["src_name"] == "main.cpp" else "" } for i in run_result]
+            #run_result["linter_output"] = linter_output if language_config.get("name") == "C++" else ""
             return run_result
 
     @classmethod

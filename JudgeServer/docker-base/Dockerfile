@@ -9,9 +9,10 @@ RUN buildDeps='software-properties-common git libtool cmake python3-dev python3-
     add-apt-repository ppa:ondrej/php && \
     add-apt-repository ppa:deadsnakes/ppa && \
     curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
-    apt-get update && apt-get install -y golang-go python3.10 openjdk-17-jre-headless php-cli nodejs gcc-9 g++-9 unzip && \
+    apt-get update && apt-get install -y golang-go python3.10 php-cli nodejs gcc-9 g++-9 clang-tidy unzip && \
     update-alternatives --install  /usr/bin/gcc gcc /usr/bin/gcc-9 40 && \
     update-alternatives --install  /usr/bin/g++ g++ /usr/bin/g++-9 40 && \
+    apt-get install -y openjdk-17-jre-headless && \
     apt-get install -y openjdk-17-jre openjdk-17-jdk mono-complete && \
     pip3 install -i https://mirrors.aliyun.com/pypi/simple/ -I --no-cache-dir psutil gunicorn flask requests idna && \
     cd /tmp && git clone -b newnew  --depth 1 https://gitee.com/qduoj/Judger.git && cd Judger && \
