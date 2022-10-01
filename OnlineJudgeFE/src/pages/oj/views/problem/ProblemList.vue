@@ -161,8 +161,8 @@ export default {
               'Button',
               {
                 props: {
-                  type: 'text',
-                  size: 'large'
+                  type: 'text'
+                  // size: 'large'
                 },
                 on: {
                   click: () => {
@@ -171,12 +171,6 @@ export default {
                       params: { problemID: params.row._id }
                     })
                   }
-                },
-                style: {
-                  padding: '2px 0',
-                  overflowX: 'auto',
-                  textAlign: 'left',
-                  width: '100%'
                 }
               },
               params.row.title

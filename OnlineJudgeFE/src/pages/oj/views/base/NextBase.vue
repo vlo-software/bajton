@@ -39,7 +39,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #4c007b;
+  background-color: #2c0c5f;
   border-radius: 10px;
 }
 

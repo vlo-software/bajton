@@ -136,6 +136,7 @@ export default {
   cursor: pointer;
   &-slot {
     transition: opacity 75ms ease-in-out;
+    white-space: nowrap;
   }
   &-small {
     padding: 8px 10px;

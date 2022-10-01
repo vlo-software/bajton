@@ -186,8 +186,8 @@ export default {
     .avatar {
       width: 140px;
       height: 140px;
-      border-radius: 50%;
-      box-shadow: 0 1px 1px 0;
+      border-radius: 10px;
+      box-shadow: 0px 4px 12px 0px rgba(66, 68, 90, 0.11);
     }
   }
   .emphasis {
@@ -231,6 +231,9 @@ export default {
     transform: translate(-50%);
     .icon {
       padding-left: 20px;
+    }
+    * {
+      color: var(--link-color);
     }
   }
 }

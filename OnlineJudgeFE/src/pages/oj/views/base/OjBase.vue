@@ -8,7 +8,7 @@
         <p>
           Powered by
           <a
-            style="color: #8d5ef3"
+            style="color: var(--primary-color);"
             href="https://github.com/QingdaoU/OnlineJudge"
             >OnlineJudge</a
           >

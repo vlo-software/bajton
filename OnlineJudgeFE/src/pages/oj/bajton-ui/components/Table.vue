@@ -62,8 +62,9 @@
 <script>
 import RenderTableCell from './RenderTableCell.vue'
 import RenderTableHeader from './RenderTableHeader.vue'
+import Button from './Button.vue'
 export default {
-  components: { RenderTableCell, RenderTableHeader },
+  components: { Button, RenderTableCell, RenderTableHeader },
   name: 'Table',
   props: {
     columns: Array,
