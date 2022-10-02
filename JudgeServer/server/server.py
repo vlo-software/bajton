@@ -99,7 +99,9 @@ class JudgeServer:
                                               src_path=src_path,
                                               output_dir=submission_dir)
                 if compile_config["src_name"] == "main.cpp":
-                    linter_output = Linter().lint(src_path=src_path, output_dir=submission_dir)
+                    linter_output = Linter().lint(src_path=src_path, output_dir=submission_dir, lang="C++")
+                elif compile_config["src_name"] == "solution.py":
+                    linter_output = Linter().lint(src_path=src_path, output_dir=submission_dir, lang="PY3")
 
                 try:
                     # Java exe_path is SOME_PATH/Main, but the real path is SOME_PATH/Main.class
@@ -152,9 +154,7 @@ class JudgeServer:
                                        output=output,
                                        io_mode=io_mode)
             run_result = judge_client.run()
-            logger.error(linter_output)
-            run_result = [{**i, "linter_output": linter_output if compile_config["src_name"] == "main.cpp" else "" } for i in run_result]
-            #run_result["linter_output"] = linter_output if language_config.get("name") == "C++" else ""
+            run_result = [{**i, "linter_output": linter_output if (compile_config["src_name"] == "main.cpp" or compile_config["src_name"] == "solution.py") else "" } for i in run_result]
             return run_result
 
     @classmethod

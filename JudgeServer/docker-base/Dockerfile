@@ -9,7 +9,7 @@ RUN buildDeps='software-properties-common git libtool cmake python3-dev python3-
     add-apt-repository ppa:ondrej/php && \
     add-apt-repository ppa:deadsnakes/ppa && \
     curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
-    apt-get update && apt-get install -y golang-go python3.10 php-cli nodejs gcc-9 g++-9 clang-tidy unzip && \
+    apt-get update && apt-get install -y golang-go python3.10 pylint nodejs gcc-9 g++-9 clang clang-tidy unzip && \
     update-alternatives --install  /usr/bin/gcc gcc /usr/bin/gcc-9 40 && \
     update-alternatives --install  /usr/bin/g++ g++ /usr/bin/g++-9 40 && \
     apt-get install -y openjdk-17-jre-headless && \
