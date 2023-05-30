@@ -9,9 +9,11 @@ RUN buildDeps='software-properties-common git libtool cmake python3-dev python3-
     add-apt-repository ppa:ondrej/php && \
     add-apt-repository ppa:deadsnakes/ppa && \
     curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
-    apt-get update && apt-get install -y golang-go python3.10 pylint nodejs gcc-9 g++-9 clang clang-tidy unzip && \
+    apt-get update && apt-get install -y golang-go python3.10 pylint nodejs gcc-9 g++-9 clang clang-tidy unzip ca-certificates gnupg && \
     update-alternatives --install  /usr/bin/gcc gcc /usr/bin/gcc-9 40 && \
-    update-alternatives --install  /usr/bin/g++ g++ /usr/bin/g++-9 40 && \
+    update-alternatives --install  /usr/bin/g++ g++ /usr/bin/g++-9 40
+RUN gpg --homedir /tmp --no-default-keyring --keyring /usr/share/keyrings/mono-official-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
+    echo "deb [signed-by=/usr/share/keyrings/mono-official-archive-keyring.gpg] https://download.mono-project.com/repo/ubuntu stable-bionic main" | tee /etc/apt/sources.list.d/mono-official-stable.list && apt-get update && \
     apt-get install -y openjdk-17-jre-headless && \
     apt-get install -y openjdk-17-jre openjdk-17-jdk mono-complete && \
     pip3 install -i https://mirrors.aliyun.com/pypi/simple/ -I --no-cache-dir psutil gunicorn flask requests idna && \
