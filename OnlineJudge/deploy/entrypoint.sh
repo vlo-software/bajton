@@ -47,10 +47,12 @@ if [ -z "$MAX_WORKER_NUM" ]; then
 fi
 
 cd $APP/dist
+if [ "$OJ_DEV" == "production" ]; then
 if [ ! -z "$STATIC_CDN_HOST" ]; then
     find . -name "*.*" -type f -exec sed -i "s/__STATIC_CDN_HOST__/\/$STATIC_CDN_HOST/g" {} \;
 else
     find . -name "*.*" -type f -exec sed -i "s/__STATIC_CDN_HOST__\///g" {} \;
+fi
 fi
 
 cd $APP
@@ -74,4 +76,9 @@ adduser -u 12000 -S -G spj server
 chown -R server:spj $DATA $APP/dist
 find $DATA/test_case -type d -exec chmod 710 {} \;
 find $DATA/test_case -type f -exec chmod 640 {} \;
-exec supervisord -c /app/deploy/supervisord.conf
+if [ "$OJ_ENV" == "production" ]; then
+    exec supervisord -c /app/deploy/supervisord.conf;
+else
+    echo "Running in development mode";
+    exec supervisord -c /app/deploy/supervisord_dev.conf;
+fi

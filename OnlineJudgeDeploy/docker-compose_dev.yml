@@ -52,7 +52,7 @@ services:
   oj-backend:
     build:
       context: ../OnlineJudge
-      dockerfile: prod.Dockerfile
+      dockerfile: dev.Dockerfile
     container_name: oj-backend
     restart: always
     depends_on:
@@ -60,6 +60,7 @@ services:
       - oj-postgres
       - judge-server
     volumes:
+      - ../OnlineJudge:/app
       - ./data/backend:/data
     environment:
       - POSTGRES_DB=onlinejudge
