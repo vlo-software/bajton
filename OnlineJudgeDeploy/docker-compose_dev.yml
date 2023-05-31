@@ -49,6 +49,17 @@ services:
     depends_on:
       - oj-redis
 
+  bajton-baza-wiedzy:
+    build: ../BazaWiedzy
+    container_name: bajton-baza-wiedzy
+    restart: always
+    depends_on:
+      - oj-backend
+    volumes:
+      - ../BazaWiedzy:/app
+    environment:
+      - BAJTON_ENV=dev
+
   oj-backend:
     build:
       context: ../OnlineJudge
