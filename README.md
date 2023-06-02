@@ -141,7 +141,7 @@ sudo docker-compose -f docker-compose_dev.yml -f docker-compose_win.yml up
 In order to test the Baza Wiedzy you need to run the production build, and then run the tests:
 
 ```sh
-cd ./BazaWiedzy && sudo ./run_tests.sh && cd ../
+sudo ./BazaWiedzy/run_tests.sh
 ```
 
 ## Contribution
