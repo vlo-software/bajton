@@ -102,6 +102,14 @@ First, you need to enable the WSL2 integration in Docker.
 
 Then you have to use the WSL2 (Ubuntu) and follow the instructions for Linux.
 
+> Windows by default will try to convert the line endings to CRLF, which will break the build process. You have to disable that in your git config and reset the repository:
+
+```sh
+git config core.autocrlf false
+git rm --cached -r .
+git reset --hard
+```
+
 The only difference is that you have to use a different command to run the docker-compose:
 
 ```sh
