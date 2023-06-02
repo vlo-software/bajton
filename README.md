@@ -28,7 +28,7 @@
 
 - Docker-Compose
 
-- NodeJS (14 or 16)
+- NodeJS (NVM is recommended)
 
 - Yarn (you can use npm instead)
 
@@ -46,7 +46,13 @@ Then, you have to enter the newly created `bajton` directory:
 cd ./bajton
 ```
 
-The next step is to build the frontend:
+The next step is to build the OnlineJudge frontend:
+
+> The frontend is built using NodeJS 14, so you have to use NVM to install it.
+
+```sh
+nvm install 14 && nvm use 14
+```
 
 ```sh
 cd ./OnlineJudgeFE && yarn && yarn build:dll && yarn build
@@ -58,10 +64,22 @@ After that, you need to copy the `dist` directory to the `OnlineJudge` folder:
 cp -rf ./dist ../OnlineJudge/dist
 ```
 
-When that's done, you can go back to the root directory of the project:
+And replace the CDN related lines
 
 ```sh
-cd ..
+cd ../OnlineJudge/dist && find . -name "*.*" -type f -exec sed -i "s/__STATIC_CDN_HOST__\///g" {} \; && cd ../../
+```
+
+Next, you have to build the Baza Wiedzy frontend:
+
+> The Baza Wiedzy is built using NodeJS 18, so you have to use NVM to install it.
+
+```sh
+nvm install 18 && nvm use 18
+```
+
+```sh
+cd ./BazaWiedzy && yarn && yarn build && cd ../
 ```
 
 Now, you have to build the docker image used by the `JudgeServer` service:
@@ -80,11 +98,43 @@ cd OnlineJudgeDeploy && sudo docker-compose up -d
 
 ### Windows
 
-You have to follow the instructions for Linux, with one caveat, the way docker works on windows prevents the Postgres database from functioning properly when configured the way it's configured in our project.
+First, you need to enable the WSL2 integration in Docker.
 
-The solution is to mount a physical drive formatted as ext4 and keep the project on that drive.
+Then you have to use the WSL2 (Ubuntu) and follow the instructions for Linux.
 
-> Note this is only possible on windows 11
+The only difference is that you have to use a different command to run the docker-compose:
+
+```sh
+sudo docker-compose -f docker-compose.yml -f docker-compose_win.yml up -d
+```
+
+> Because of the limitations of docker on Windows, Postgres has to be mounted in a virtual volume, the `docker-compose_win.yml` file takes care of that.
+
+## Development
+
+The steps for running in development are the same as for installation, except that you have to use a different docker-compose file:
+
+#### Linux
+
+```sh
+sudo docker-compose -f docker-compose_dev.yml up
+```
+
+#### Windows
+
+```sh
+sudo docker-compose -f docker-compose_dev.yml -f docker-compose_win.yml up
+```
+
+#
+
+### Running tests
+
+In order to test the Baza Wiedzy you need to run the production build, and then run the tests:
+
+```sh
+cd ./BazaWiedzy && sudo ./run_tests.sh && cd ../
+```
 
 ## Contribution
 
