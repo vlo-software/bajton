@@ -12,7 +12,12 @@ ENV PATH $NODE_PATH:$PATH
 
 RUN npm install -g yarn
 
+COPY ./package.json /app/
+COPY ./playwright.config.ts /app/
+
 WORKDIR /app
+RUN yarn
+
 
 RUN npx playwright install-deps && npx playwright install
 
