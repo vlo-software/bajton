@@ -146,11 +146,35 @@ sudo ./BazaWiedzy/run_tests.sh
 
 ## Contribution
 
-If you want to contribute to this project, open an issue or create a pull request for an existing one.
+### Branch naming convention
 
-There are no official guidelines as far as coding conventions are concerned.
+The branch name should start with the issue type, followed by the issue number and a short description of the task divided by dashes.
 
-Just follow your common sense :wink: .
+For example, if you are working on issue number 42, which is a bug, and you are fixing the login form, the branch name should be `bug-42-fix-login-form`.
+
+The issue type can be one of the following:
+
+- `bug` - a bug that needs to be fixed
+
+- `feature` - a new feature that needs to be implemented
+
+- `refactor` - a part of the code that needs to be refactored
+
+- `docs` - a part of the documentation that needs to be updated
+
+### Team members
+
+Most of the work is done through the GitHub project board, so if you are a part of our team, you can find the tasks there.
+
+Choose one of the tasks from the `Ready` column that you want to work on, make sure you are one of the assigned people, and create a new branch following our naming convention.
+
+When you are done, create a pull request to the `dev` branch, make sure you link it with the issue, move the task to the `In review` column in the project, and request a review from [Capure](https://github.com/orgs/vlo-software/people/Capure) or [0ZeroFive5](https://github.com/0ZeroFive5).
+
+### Others
+
+If you are not a part of our team, you can contribute to this project by opening an issue or creating a pull request for an existing one.
+
+Make sure to follow the branch naming convention.
 
 ## License
 
