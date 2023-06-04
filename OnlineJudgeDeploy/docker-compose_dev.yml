@@ -57,6 +57,8 @@ services:
       - oj-backend
     volumes:
       - ../BazaWiedzy:/app
+      - /app/.next
+      - /app/node_modules
     environment:
       - BAJTON_ENV=dev
 
