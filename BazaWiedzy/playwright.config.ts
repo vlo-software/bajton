@@ -4,6 +4,6 @@ export default defineConfig({
   testDir: "e2e",
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: "http://localhost:3000",
+    baseURL: "http://oj-backend:8000",
   },
 });
