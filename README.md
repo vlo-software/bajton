@@ -125,13 +125,13 @@ The steps for running in development are the same as for installation, except th
 #### Linux
 
 ```sh
-sudo docker-compose -f docker-compose_dev.yml up
+sudo docker-compose -f docker-compose.yml -f docker-compose_dev.yml up
 ```
 
 #### Windows
 
 ```sh
-sudo docker-compose -f docker-compose_dev.yml -f docker-compose_win.yml up
+sudo docker-compose -f docker-compose.yml -f docker-compose_dev.yml -f docker-compose_win.yml up
 ```
 
 #
