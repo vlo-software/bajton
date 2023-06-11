@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bajton Baza Wiedzy
 
-## Getting Started
+## Development
 
-First, run the development server:
+### Running tests
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+Make sure you are running the production build and then run:
+
+```sh
+sudo ./run_tests.sh
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Updating the migrations
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+sudo docker exec -it bajton-baza-wiedzy npx migrate dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Common issues
 
-## Learn More
+- VS Code complains about missing `prisma` client. Run `yarn` and then `npx prisma generate` on your local machine.
 
-To learn more about Next.js, take a look at the following resources:
+- Changes to prisma middleware require a restart of the server. This is because the middleware is loaded on server start. You can restart the server by running `sudo docker-compose restart bajton-baza-wiedzy` in the `OnlineJudgeDeploy` directory.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- The production build is not up to date. Run `sudo docker exec -it bajton-baza-wiedzy yarn build` to rebuild it and restart the `docker` containers.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- The newly added `npm` package is not present in the `docker` container. You need to rebuild the `docker` image by running `sudo docker-compose build --no-cache` in the `OnlineJudgeDeploy` directory.
 
-## Deploy on Vercel
+### Important notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Rember to ALWAYS import the prisma client from the `utils/db` file and not directly from the `@prisma/client` package. This is because the `utils/db` file contains the middlewares required for the `prisma` client to work in our project.

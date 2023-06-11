@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
+}
+
+model Course {
+  id                      Int                  @id @default(autoincrement())
+  ownerId                 Int
+  author                  String
+  title                   String
+  description             String
+  estimatedCompletionTime Int
+  thumbnail               String
+  public                  Boolean              @default(false)
+  articles                Article[]
+  completedBy             CompletionOnCourse[]
+  createdAt               DateTime             @default(now())
+  updatedAt               DateTime             @updatedAt
+}
+
+model CompletionOnCourse {
+  id          Int      @id @default(autoincrement())
+  courseId    Int
+  course      Course   @relation(fields: [courseId], references: [id])
+  userId      Int
+  completion  Int      @default(0)
+  lastVisited DateTime @default(now())
+}
+
+model Article {
+  id                Int             @id @default(autoincrement())
+  ownerId           Int
+  title             String
+  lead              String
+  content           String
+  author            String
+  estimatedReadTime Int
+  courseId          Int?
+  course            Course?         @relation(fields: [courseId], references: [id])
+  order             Int             @default(0)
+  public            Boolean         @default(false)
+  readBy            ReadOnArticle[]
+  likedBy           LikeOnArticle[]
+  tags              TagOnArticle[]
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+}
+
+model ReadOnArticle {
+  id        Int      @id @default(autoincrement())
+  articleId Int
+  article   Article  @relation(fields: [articleId], references: [id])
+  userId    Int
+  lastRead  DateTime @default(now())
+}
+
+model LikeOnArticle {
+  id        Int      @id @default(autoincrement())
+  articleId Int
+  article   Article  @relation(fields: [articleId], references: [id])
+  userId    Int
+  createdAt DateTime @default(now())
+}
+
+model Tag {
+  id        Int            @id @default(autoincrement())
+  name      String         @unique
+  articles  TagOnArticle[]
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+}
+
+model TagOnArticle {
+  id        Int      @id @default(autoincrement())
+  articleId Int
+  article   Article  @relation(fields: [articleId], references: [id])
+  tagId     Int
+  tag       Tag      @relation(fields: [tagId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
