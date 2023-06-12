@@ -13,7 +13,7 @@ sudo ./run_tests.sh
 ### Updating the migrations
 
 ```sh
-sudo docker exec -it bajton-baza-wiedzy npx migrate dev
+sudo docker exec -it bajton-baza-wiedzy npx prisma migrate dev
 ```
 
 ### Common issues
