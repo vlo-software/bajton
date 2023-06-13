@@ -59,6 +59,7 @@ services:
       - ../BazaWiedzy:/app
     environment:
       - BAJTON_ENV=production
+      - POSTGRES_URL=postgresql://onlinejudge:onlinejudge@oj-postgres:5432/bazawiedzy
 
   oj-backend:
     build:
