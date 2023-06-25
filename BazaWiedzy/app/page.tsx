@@ -11,6 +11,12 @@ export default function Home() {
       <Link className="text-blue-950" href="/dashboard">
         Dashboard
       </Link>
+      <Link className="text-blue-950" href="/search">
+        Search
+      </Link>
+      <Link className="text-blue-950" href="/statistics">
+        Statistics
+      </Link>
       {/* This div is just a placeholder to showcase the UserInfo component */}
       <div className="w-96 h-14 bg-slate-200 dark:bg-slate-800">
         <UserInfo userData={userData} loading={loading} />
